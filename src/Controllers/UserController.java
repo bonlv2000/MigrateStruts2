@@ -71,8 +71,8 @@ public class UserController extends HttpServlet {
                 request.getSession().setAttribute("email",request.getParameter("email"));
                 request.getRequestDispatcher("resetPassword.jsp").forward(request,response);
                 break;
-            case "test":
-                request.s
+//            case "test":
+//                request.s
         }
     }
 

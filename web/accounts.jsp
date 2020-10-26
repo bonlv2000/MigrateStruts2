@@ -21,14 +21,11 @@
 <div class="content-area">
     <div class="inner" style="margin-top: 50px;background-color: ghostwhite!important;width: 960px">
         <div class="title" style="margin-top: -30px; height: 60px!important;">List of All Registered Persons</div>
-
         <br>
         <br>
         <br/>
         <a href="Register.jsp" class="button"><span class="add-btn" style="margin-left: 80px;">Add New Person</span></a>
         <br>
-
-
         <table id="one-column-emphasis">
             <colgroup>
                 <col class="oce-first"/>
@@ -38,8 +35,6 @@
                 <th scope="col">Name</th>
 
                 <th scope="col">email</th>
-                <th scope="col">City</th>
-                <th scope="col">Address</th>
                 <th scope="col">Action</th>
 
             </tr>
@@ -57,10 +52,6 @@
                 <td><%=user.getFirstName() + " " + user.getLastName() %>
                 </td>
                 <td><%=user.getEmail() %>
-                </td>
-                <td><%=user.getCity() %>
-                </td>
-                <td><%=user.getAddress() %>
                 </td>
                 <td><a href="controller.jsp?page=accounts&operation=del&uid=<%=user.getUserId() %>"
                        onclick="return confirm('Are you sure you want to delete this ?');">

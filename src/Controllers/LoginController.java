@@ -1,6 +1,7 @@
 package Controllers;
 
 import myPackage.DatabaseClass;
+import myPackage.classes.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +23,9 @@ public class LoginController extends HttpServlet {
             e.printStackTrace();
         }
         try {
-            if(pDAO.loginValidate(request.getParameter("username").toString(), request.getParameter("password").toString())){
+            User user = pDAO.loginValidate(request.getParameter("username"), request.getParameter("password"));
+            if(user!=null){
+                request.getSession().setAttribute("type", user.getType().equals("admin")? "1":"0");
                 request.getSession().setAttribute("userStatus", "1");
                 request.getSession().setAttribute("userId",pDAO.getUserId(request.getParameter("username")));
                 response.sendRedirect("dashboard.jsp");

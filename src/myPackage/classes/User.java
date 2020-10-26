@@ -9,6 +9,7 @@ public class User {
    public User(){
        
    }
+
     public User(int userId, String firstName, String lastName, String userName, String email, String password, String type, String contact, String city, String address) {
         this.userId = userId;
         this.firstName = firstName;
@@ -20,6 +21,10 @@ public class User {
         this.contact = contact;
         this.city = city;
         this.address = address;
+    }
+
+    public User(String type) {
+        this.type = type;
     }
 
     public int getUserId() {

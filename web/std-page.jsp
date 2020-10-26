@@ -13,7 +13,7 @@
     
     <%
             if(session.getAttribute("userStatus")!=null){
-           if(session.getAttribute("userStatus").equals("1")){
+           if(session.getAttribute("userStatus").equals("1") && session.getAttribute("type").equals("0")){
             %>
             	
             <div class="menu">
