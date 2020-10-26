@@ -28,6 +28,7 @@ public class LoginController extends HttpServlet {
                 request.getSession().setAttribute("type", user.getType().equals("admin")? "1":"0");
                 request.getSession().setAttribute("userStatus", "1");
                 request.getSession().setAttribute("userId",pDAO.getUserId(request.getParameter("username")));
+                request.getSession().setMaxInactiveInterval(300);
                 response.sendRedirect("dashboard.jsp");
 
             }else{

@@ -17,7 +17,17 @@ public class HomeController extends HttpServlet {
         String action = request.getParameter("action");
         switch (action) {
             case "login":
-                request.getRequestDispatcher("login.jsp").forward(request,response);
+                if(request.getSession().getAttribute("userStatus")!=null) {
+                    if(request.getSession().getAttribute("type").toString().equals("1"))
+                        response.sendRedirect("adm-page.jsp?pgprt=0");
+                    else {
+                        response.sendRedirect("std-page.jsp?pgprt=0");
+                    }
+                }
+                else {
+                    request.getRequestDispatcher("login.jsp").forward(request,response);
+                }
+
                 break;
             case "home":
                 request.getRequestDispatcher("index.jsp").forward(request,response);
