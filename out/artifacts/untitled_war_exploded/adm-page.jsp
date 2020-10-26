@@ -10,38 +10,41 @@
         body {
             background-color: whitesmoke;
         }
+
         .title {
             height: 60px;
         }
-        .content-area{
-            display: block!important;
+
+        .content-area {
+            display: block !important;
             margin-top: 4rem;
             margin-left: 20rem;
             padding: 20px;
             padding-left: 30px;
         }
+
         .question-label {
-            height: 65px!important;
+            height: 65px !important;
         }
     </style>
 </head>
 <body>
 <div class="top-area">
     <<h2 class="text-center text-dark">Admin Panel</h2>
-    <a href="controller.jsp?page=logout" class="button btn btn-danger" style="float: right;background:crimson;color:white;margin-right: 1rem"
+    <a href="controller.jsp?page=logout" class="button btn btn-danger"
+       style="float: right;background:crimson;color:white;margin-right: 1rem"
     >Logout</a>
 
 </div>
 
 <%
     if (session.getAttribute("userStatus") != null) {
-        if (session.getAttribute("userStatus").equals("1")) {
+        if (session.getAttribute("userStatus").equals("1") && session.getAttribute("type").equals("1")) {
 
 %>
 
 
 <%
-    //pgpart = pagepart, accounts=1,courses=2,questions=3 and profile is default
     if (request.getParameter("pgprt").equals("1")) {
 
 %>
