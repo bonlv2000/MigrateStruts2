@@ -4,13 +4,14 @@ package myPackage.classes;
 
 public class Exams {
     
-    private int examId;
-    private String stdId,cName,tMarks,obtMarks,date,startTime,endTime,examTime,status;
+    private int examId,stdId;
+    private String cName,tMarks,obtMarks,date,startTime,endTime,examTime,status;
 
     public Exams() {
     }
 
-    public Exams(int examId, String stdId,String cName, String tMarks, String obtMarks, String date, String startTime, String endTime, String examTime, String status) {
+    public Exams(int examId, String cName, String tMarks, String obtMarks, String date
+            , String startTime, String endTime, String examTime, String status,int stdId) {
         this.examId = examId;
         this.stdId = stdId;
         this.cName=cName;
@@ -41,11 +42,11 @@ public class Exams {
         this.examId = examId;
     }
 
-    public String getStdId() {
+    public int getStdId() {
         return stdId;
     }
 
-    public void setStdId(String stdId) {
+    public void setStdId(int stdId) {
         this.stdId = stdId;
     }
 

@@ -1,4 +1,5 @@
 <%@page import="java.util.ArrayList" %>
+<%@ page import="myPackage.classes.Courses" %>
 <jsp:useBean id="pDAO" class="myPackage.DatabaseClass" scope="page"/>
 
 <!-- SIDEBAR -->
@@ -29,23 +30,25 @@
             </colgroup>
             <thead>
             <tr>
+                <th scope="col">Course Code</th>
                 <th scope="col">Courses</th>
-
                 <th scope="col">T.Marks</th>
                 <th scope="col">Action</th>
 
             </tr>
             </thead>
             <%
-                ArrayList list = pDAO.getAllCourses();
-                for (int i = 0; i < list.size(); i = i + 2) {
+                ArrayList<Courses> list = pDAO.getAllCourses();
+                for (int i = 0; i < list.size(); i++) {
             %>
             <tr>
-                <td><%=list.get(i)%>
+                <td><%=list.get(i).getcCode()%>
                 </td>
-                <td><%=list.get(i + 1)%>
+                <td><%=list.get(i).getcName()%>
                 </td>
-                <td><a href="controller.jsp?page=courses&operation=del&cname=<%=list.get(i)%>"
+                <td><%=list.get(i).gettMarks()%>
+                </td>
+                <td><a href="CourseController?action=delete&cCode=<%=list.get(i).getcCode()%>"
                        onclick="return confirm('Are you sure you want to delete this ?');" class="del">
                     <div class="delete-btn" style="max-width: 40px;font-size: 17px; padding: 3px">X</div>
                 </a></td>
@@ -60,9 +63,14 @@
             Add New Course
         </div>
         <center>
-            <form action="controller.jsp">
+            <form action="controller.jsp" method="post">
                 <br>
                 <table>
+                    <tr>
+                        <td><label>Course Code</label></td>
+                        <td><input type="text" name="courseCode" class="text" placeholder="Course Name"
+                                   style="width: 230px;"></td>
+                    </tr>
                     <tr>
                         <td><label>Course Name</label></td>
                         <td><input type="text" name="coursename" class="text" placeholder="Course Name"

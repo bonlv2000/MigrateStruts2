@@ -7,16 +7,24 @@ package myPackage.classes;
 
 
 public class Courses {
-    
+    private String cCode;
    private String cName;
    private int tMarks;
    private String time;
 
-    public Courses(String cName, int tMarks, String time) {
+    public Courses(String cCode, String cName, int tMarks, String time) {
+        this.cCode = cCode;
         this.cName = cName;
         this.tMarks = tMarks;
-        
         this.time = time;
+    }
+
+    public String getcCode() {
+        return cCode;
+    }
+
+    public void setcCode(String cCode) {
+        this.cCode = cCode;
     }
 
     public Courses(String cName, int tMarks) {

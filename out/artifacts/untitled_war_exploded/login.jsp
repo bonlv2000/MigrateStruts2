@@ -71,6 +71,14 @@
                     </a>
 
                 </div>
+                <div class="text-center p-t-136" style="padding-top: 2rem;">
+                    <a class="txt2" href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code
+		&client_id=208411658054-6f63qudpv6nafjq9qihbog8sgc4dht0e.apps.googleusercontent.com&approval_prompt=force" style="font-size: 1.5rem">
+                        Login with Google
+                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+
+                    </a>
+                </div>
 
                 <div class="text-center p-t-136" style="padding-top: 2rem;">
                     <a class="txt2" href="HomeController?action=register" style="font-size: 1.5rem">

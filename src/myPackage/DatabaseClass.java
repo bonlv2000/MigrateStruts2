@@ -18,10 +18,7 @@
  import java.util.logging.Level;
  import java.util.logging.Logger;
 
- import myPackage.classes.Answers;
- import myPackage.classes.Exams;
- import myPackage.classes.Questions;
- import myPackage.classes.User;
+ import myPackage.classes.*;
 
  public class DatabaseClass {
      private Connection conn;
@@ -234,15 +231,15 @@
 
      }
 
-     public ArrayList getAllCourses() {
-         ArrayList list = new ArrayList();
+     public ArrayList<Courses> getAllCourses() {
+         ArrayList<Courses> list = new ArrayList<>();
          try {
              String sql = "SELECT * from courses";
              PreparedStatement pstm = conn.prepareStatement(sql);
              ResultSet rs = pstm.executeQuery();
              while (rs.next()) {
-                 list.add(rs.getString(1));
-                 list.add(rs.getInt(2));
+                 list.add(new Courses(rs.getString(4)
+                         ,rs.getString(1),rs.getInt(2),rs.getString(3)));
              }
              pstm.close();
          } catch (SQLException ex) {
@@ -251,13 +248,14 @@
          return list;
      }
 
-     public void addNewCourse(String courseName, int tMarks, String time) {
+     public void addNewCourse(String courseName, int tMarks, String time,String courseId) {
          try {
-             String sql = "INSERT into courses(course_name,total_marks,time) Values(?,?,?)";
+             String sql = "INSERT into courses Values(?,?,?,?)";
              PreparedStatement pstm = conn.prepareStatement(sql);
              pstm.setString(1, courseName);
              pstm.setInt(2, tMarks);
              pstm.setString(3, time);
+             pstm.setString(4, courseId);
              pstm.executeUpdate();
              pstm.close();
          } catch (SQLException ex) {
@@ -265,11 +263,12 @@
          }
      }
 
-     public void delCourse(String cName) {
+     public void delCourse(String cCode) {
          try {
-             String sql = "DELETE from courses where course_name=?";
+             System.out.println(cCode);
+             String sql = "DELETE from courses where course_id=?";
              PreparedStatement pstm = conn.prepareStatement(sql);
-             pstm.setString(1, cName);
+             pstm.setString(1, cCode);
              pstm.executeUpdate();
              pstm.close();
          } catch (SQLException ex) {
@@ -327,7 +326,7 @@
          ArrayList list = new ArrayList();
          try {
 
-             String sql = "Select * from questions where course_name=?";
+             String sql = "Select * from questions where course_id=?";
              PreparedStatement pstm = conn.prepareStatement(sql);
              pstm.setString(1, courseName);
              ResultSet rs = pstm.executeQuery();
@@ -349,15 +348,15 @@
      public int startExam(String cName, int sId) {
          int examId = 0;
          try {
-             String sql = "INSERT into exams(course_name,date,start_time,exam_time,std_id,total_Marks) "
+             String sql = "INSERT into exams(course_id,date,start_time,exam_time,user_id,total_Marks) "
                      + "VALUES(?,?,?,?,?,?)";
              PreparedStatement pstm = conn.prepareStatement(sql);
              pstm.setString(1, cName);
              pstm.setString(2, getFormatedDate(LocalDate.now().toString()));
              pstm.setString(3, LocalTime.now().toString());
-             pstm.setString(4, getCourseTimeByName(cName));
+             pstm.setString(4, getCourseTimeByCode(cName));
              pstm.setInt(5, sId);
-             pstm.setInt(6, getTotalMarksByName(cName));
+             pstm.setInt(6, getTotalMarksByCode(cName));
              pstm.executeUpdate();
              pstm.close();
              examId = getLastExamId();
@@ -404,11 +403,11 @@
          return time;
      }
 
-     public String getCourseTimeByName(String cName) {
+     public String getCourseTimeByCode(String code) {
          String c = null;
          try {
-             PreparedStatement pstm = conn.prepareStatement("Select time from courses where course_name=?");
-             pstm.setString(1, cName);
+             PreparedStatement pstm = conn.prepareStatement("Select time from courses where course_id=?");
+             pstm.setString(1, code);
              ResultSet rs = pstm.executeQuery();
              while (rs.next()) {
                  c = rs.getString(1);
@@ -421,11 +420,11 @@
          return c;
      }
 
-     public int getTotalMarksByName(String cName) {
+     public int getTotalMarksByCode(String code) {
          int marks = 0;
          try {
-             PreparedStatement pstm = conn.prepareStatement("Select total_marks from courses where course_name=?");
-             pstm.setString(1, cName);
+             PreparedStatement pstm = conn.prepareStatement("Select total_marks from courses where course_id=?");
+             pstm.setString(1, code);
              ResultSet rs = pstm.executeQuery();
              while (rs.next()) {
                  marks = rs.getInt(1);
@@ -439,13 +438,13 @@
          return marks;
      }
 
-     public ArrayList getAllQuestions(String courseName) {
-         ArrayList list = new ArrayList();
+     public ArrayList getAllQuestions(String courseCode) {
+         ArrayList<Questions> list = new ArrayList<>();
          try {
 
-             String sql = "Select * from questions where course_name=?";
+             String sql = "Select * from questions where course_id=?";
              PreparedStatement pstm = conn.prepareStatement(sql);
-             pstm.setString(1, courseName);
+             pstm.setString(1, courseCode);
              ResultSet rs = pstm.executeQuery();
              Questions question;
              while (rs.next()) {
@@ -575,16 +574,17 @@
          ArrayList list = new ArrayList();
          Exams exam = null;
          try {
-             PreparedStatement pstm = conn.prepareStatement("select * from exams where std_id=? order by date desc");
+             PreparedStatement pstm = conn.prepareStatement("select * from exams where user_id=? order by date desc");
              pstm.setInt(1, stdId);
              ResultSet rs = pstm.executeQuery();
              while (rs.next()) {
-                 exam = new Exams(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)
-                         , rs.getString(6), getFormatedTime(rs.getString(7)), getFormatedTime(rs.getString(8)), rs.getString(9), rs.getString(10));
+                 exam = new Exams(rs.getInt(1), rs.getString(2),
+                         rs.getString(3), rs.getString(4), rs.getString(5),
+                         getFormatedTime(rs.getString(6)),getFormatedTime(rs.getString(7)),
+                         rs.getString(8),rs.getString(9),rs.getInt(10));
                  list.add(exam);
              }
          } catch (SQLException ex) {
-             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
          }
          return list;
 
@@ -641,9 +641,10 @@
              pstm.setInt(1, examId);
              ResultSet rs = pstm.executeQuery();
              while (rs.next()) {
-                 exam = new Exams(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)
-                         , rs.getString(6), getFormatedTime(rs.getString(7)), getFormatedTime(rs.getString(8)), rs.getString(9), rs.getString(10));
-
+                 exam = new Exams(rs.getInt(1), rs.getString(2),
+                         rs.getString(3), rs.getString(4), rs.getString(5),
+                         getFormatedTime(rs.getString(6)),getFormatedTime(rs.getString(7)),
+                         rs.getString(8),rs.getString(9),rs.getInt(10));
              }
          } catch (SQLException ex) {
              Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);

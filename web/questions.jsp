@@ -27,11 +27,11 @@
             <input type="hidden" name="pgprt" value="4">
             <select name="coursename" class="text">
                 <%
-                    ArrayList list1 = pDAO.getAllCourses();
+                    ArrayList<Courses> list1 = pDAO.getAllCourses();
 
-                    for (int i = 0; i < list1.size(); i = i + 2) {
+                    for (int i = 0; i < list1.size(); i++) {
                 %>
-                <option value="<%=list1.get(i)%>"><%=list1.get(i)%>
+                <option value="<%=list1.get(i).getcCode()%>"><%=list1.get(i).getcName()%>
                 </option>
                 <%
                     }
@@ -50,11 +50,11 @@
                     <td colspan="3">
                         <select name="coursename" class="text">
                             <%
-                                ArrayList list = pDAO.getAllCourses();
+                                ArrayList<Courses> list = pDAO.getAllCourses();
 
                                 for (int i = 0; i < list.size(); i = i + 2) {
                             %>
-                            <option value="<%=list.get(i)%>"><%=list.get(i)%>
+                            <option value="<%=list.get(i).getcCode()%>"><%=list.get(i).getcName()%>
                             </option>
                             <%
                                 }
