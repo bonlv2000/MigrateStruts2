@@ -61,8 +61,26 @@
          }
      }
 
-     public ArrayList getAllUsers() {
-         ArrayList list = new ArrayList();
+     public User isAccessWithGmail(String email) throws SQLException {
+         String sql = "Select * from Users where email=? and isGmailLogin=1";
+         PreparedStatement preparedStatement = conn.prepareStatement(sql);
+         preparedStatement.setString(1,email);
+         ResultSet resultSet = preparedStatement.executeQuery();
+         if(resultSet.next()) {
+            return new User(resultSet.getString("user_name"),resultSet.getString("email"));
+         }
+         return null;
+     }
+
+     public boolean isGmailExist(String email) throws SQLException {
+         String sql = "Select * from Users where email=?";
+         PreparedStatement preparedStatement = conn.prepareStatement(sql);
+         preparedStatement.setString(1,email);
+         return preparedStatement.executeQuery().next() ? true : false;
+     }
+
+     public ArrayList<User> getAllUsers() {
+         ArrayList<User> list = new ArrayList<>();
          User user = null;
          PreparedStatement pstm;
          try {
@@ -134,10 +152,29 @@
          return userDetails;
      }
 
+     public void addNewGmailLogin(String fName, String lName, String email) {
+         try {
+             String sql = "INSERT into users (first_name,last_name,user_name,email,password,user_type,isGmailLogin)"
+                     + "Values(?,?,?,?,?,?,?)";
+
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             pstm.setString(1, fName);
+             pstm.setString(2, lName);
+             pstm.setString(3, email);
+             pstm.setString(4, email);
+             pstm.setString(5,email);
+             pstm.setString(6, "student");
+             pstm.setInt(7,1);
+             pstm.executeUpdate();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+     }
+
      public void addNewStudent(String fName, String lName, String uName, String email, String pass) {
          try {
-             String sql = "INSERT into users(first_name,last_name,user_name,email,password,user_type) "
-                     + "Values(?,?,?,?,?,?)";
+             String sql = "INSERT into users(first_name,last_name,user_name,email,password,user_type,isGmailLogin) "
+                     + "Values(?,?,?,?,?,?,?)";
 
              PreparedStatement pstm = conn.prepareStatement(sql);
              pstm.setString(1, fName);
@@ -146,6 +183,7 @@
              pstm.setString(4, email);
              pstm.setString(5, pass);
              pstm.setString(6, "student");
+             pstm.setInt(7, 0);
              pstm.executeUpdate();
          } catch (SQLException ex) {
              Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);

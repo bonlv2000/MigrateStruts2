@@ -50,7 +50,7 @@
             %>
             
             <%
-           }else response.sendRedirect("login.jsp");
+           }else response.sendRedirect("adm-page.jsp?pgprt=0");
             }else response.sendRedirect("login.jsp");
             
           

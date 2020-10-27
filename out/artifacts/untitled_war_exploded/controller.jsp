@@ -89,9 +89,7 @@ if(request.getParameter("page").equals("profile")){
     }
 
 }else if(request.getParameter("page").toString().equals("logout")){
-    session.setAttribute("userStatus","0");
-    session.removeAttribute("examId");
-    session.removeAttribute("examStarted");
+    session.invalidate();
     response.sendRedirect("index.jsp");
 }
 

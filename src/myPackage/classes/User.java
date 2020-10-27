@@ -10,6 +10,11 @@ public class User {
        
    }
 
+    public User(String userName, String email) {
+        this.userName = userName;
+        this.email = email;
+    }
+
     public User(int userId, String firstName, String lastName, String userName, String email, String password, String type, String contact, String city, String address) {
         this.userId = userId;
         this.firstName = firstName;
@@ -23,9 +28,12 @@ public class User {
         this.address = address;
     }
 
+
     public User(String type) {
         this.type = type;
     }
+
+
 
     public int getUserId() {
         return userId;

@@ -7,15 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0266b363-7cdd-4f00-8c23-7babf5593f91" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Hibernate_5_4_11_5_4_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_logging_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LoginWithSocial/Google/common/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LoginWithSocial/Google/common/GooglePojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LoginWithSocial/Google/common/GoogleUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LoginWithSocial/Google/servlet/LoginGoogleServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/untitled_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/untitled_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/Student.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/Student.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/Controllers/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/Controllers/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/Controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/Controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/adm-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/adm-page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/controller.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/controller.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/std-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/std-page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/Controllers/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled/Controllers/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/Controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled/Controllers/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/myPackage/DatabaseClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myPackage/DatabaseClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/myPackage/classes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myPackage/classes/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/untitled.iml" beforeDir="false" afterPath="$PROJECT_DIR$/untitled.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/adm-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/adm-page.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/controller.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/controller.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/std-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/std-page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/login.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,23 +67,23 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Problems" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../AccessGoogle/AccessGoogle/WebContent/WEB-INF/lib/httpcore-4.4.9.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\rin0806\Desktop\Sevlet\untitled\web\Common\login" />
-      <recent name="C:\Users\rin0806\Desktop\Sevlet\untitled\web\Common" />
-      <recent name="C:\Users\rin0806\Desktop\Sevlet\untitled\web" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\rin0806\Desktop\Sevlet\untitled\src\LoginWithSocial\Google" />
       <recent name="C:\Users\rin0806\Desktop\Sevlet\untitled\src\myPackage" />
       <recent name="C:\Users\rin0806\Desktop\Sevlet\untitled\web\Common\register" />
       <recent name="C:\Users\rin0806\Desktop\Sevlet\untitled\web\wwwroot\Register" />
       <recent name="C:\Users\rin0806\Desktop\Sevlet\untitled\web" />
-      <recent name="C:\Users\rin0806\Desktop\Sevlet\untitled\web\LoginCss" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rin0806\Desktop\Sevlet\untitled\web\Common\login" />
+      <recent name="C:\Users\rin0806\Desktop\Sevlet\untitled\web\Common" />
+      <recent name="C:\Users\rin0806\Desktop\Sevlet\untitled\web" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.58">
@@ -297,7 +308,8 @@
       <workItem from="1603361009378" duration="249000" />
       <workItem from="1603719917072" duration="161000" />
       <workItem from="1603721136340" duration="2365000" />
-      <workItem from="1603726045706" duration="780000" />
+      <workItem from="1603726045706" duration="1183000" />
+      <workItem from="1603789994806" duration="3815000" />
     </task>
     <task id="LOCAL-00001" summary="Revert &quot;bon ngu upload new file&quot;&#10;&#10;This reverts commit 4b76b706ae3b2191e4311d6363d3d6718d54113b.">
       <created>1603722427282</created>
@@ -313,15 +325,33 @@
       <option name="project" value="LOCAL" />
       <updated>1603722620554</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="UpdateFilter">
+      <created>1603726919552</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1603726919552</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Revert &quot;bon ngu upload new file&quot;&#10;&#10;This reverts commit 4b76b706ae3b2191e4311d6363d3d6718d54113b." />
-    <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;bon ngu upload new file&quot;&#10;&#10;This reverts commit 4b76b706ae3b2191e4311d6363d3d6718d54113b." />
+    <MESSAGE value="UpdateFilter" />
+    <option name="LAST_COMMIT_MESSAGE" value="UpdateFilter" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#Project_Structure" timestamp="1601559148942">
@@ -340,70 +370,70 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1602938265553" />
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1603721480913">
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1603791827833">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1603721480913" />
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1603791827833" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602945450383">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1602945450383" />
-    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1603722619853">
+    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1603794075727">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1603722619853" />
-    <state x="473" y="153" key="FileChooserDialogImpl" timestamp="1603724235027">
+    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1603794075727" />
+    <state x="473" y="153" key="FileChooserDialogImpl" timestamp="1603790225948">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="473" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603724235027" />
-    <state width="1024" height="210" key="GridCell.Tab.0.bottom" timestamp="1603726840573">
+    <state x="473" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603790225948" />
+    <state width="1024" height="210" key="GridCell.Tab.0.bottom" timestamp="1603793863847">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603726840573" />
-    <state width="1024" height="210" key="GridCell.Tab.0.center" timestamp="1603726840573">
+    <state width="1024" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603793863847" />
+    <state width="1024" height="210" key="GridCell.Tab.0.center" timestamp="1603793863847">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603726840573" />
-    <state width="1024" height="210" key="GridCell.Tab.0.left" timestamp="1603726840573">
+    <state width="1024" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603793863847" />
+    <state width="1024" height="210" key="GridCell.Tab.0.left" timestamp="1603793863846">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603726840573" />
-    <state width="1024" height="210" key="GridCell.Tab.0.right" timestamp="1603726840573">
+    <state width="1024" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603793863846" />
+    <state width="1024" height="210" key="GridCell.Tab.0.right" timestamp="1603793863847">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603726840573" />
-    <state width="1024" height="210" key="GridCell.Tab.1.bottom" timestamp="1603726840428">
+    <state width="1024" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603793863847" />
+    <state width="1024" height="210" key="GridCell.Tab.1.bottom" timestamp="1603793863729">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603726840428" />
-    <state width="1024" height="210" key="GridCell.Tab.1.center" timestamp="1603726840427">
+    <state width="1024" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603793863729" />
+    <state width="1024" height="210" key="GridCell.Tab.1.center" timestamp="1603793863728">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1603726840427" />
-    <state width="1024" height="210" key="GridCell.Tab.1.left" timestamp="1603726840427">
+    <state width="1024" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1603793863728" />
+    <state width="1024" height="210" key="GridCell.Tab.1.left" timestamp="1603793863728">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1603726840427" />
-    <state width="1024" height="210" key="GridCell.Tab.1.right" timestamp="1603726840428">
+    <state width="1024" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1603793863728" />
+    <state width="1024" height="210" key="GridCell.Tab.1.right" timestamp="1603793863728">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1603726840428" />
-    <state width="1024" height="210" key="GridCell.Tab.2.bottom" timestamp="1603726840428">
+    <state width="1024" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1603793863728" />
+    <state width="1024" height="210" key="GridCell.Tab.2.bottom" timestamp="1603793863729">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603726840428" />
-    <state width="1024" height="210" key="GridCell.Tab.2.center" timestamp="1603726840428">
+    <state width="1024" height="210" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603793863729" />
+    <state width="1024" height="210" key="GridCell.Tab.2.center" timestamp="1603793863729">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1603726840428" />
-    <state width="1024" height="210" key="GridCell.Tab.2.left" timestamp="1603726840428">
+    <state width="1024" height="210" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1603793863729" />
+    <state width="1024" height="210" key="GridCell.Tab.2.left" timestamp="1603793863729">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1603726840428" />
-    <state width="1024" height="210" key="GridCell.Tab.2.right" timestamp="1603726840428">
+    <state width="1024" height="210" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1603793863729" />
+    <state width="1024" height="210" key="GridCell.Tab.2.right" timestamp="1603793863729">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1603726840428" />
+    <state width="1024" height="210" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1603793863729" />
     <state width="1024" height="210" key="GridCell.Tab.3.bottom" timestamp="1602940527276">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -420,14 +450,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1024" height="210" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1602940527276" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1603724158828">
+    <state x="558" y="134" key="RollbackChangesDialog" timestamp="1603727220471">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1603724158828" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603722623976">
+    <state x="558" y="134" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1603727220471" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1603790236034">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603722623976" />
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1603790236034" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603726922198">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603726922198" />
     <state x="209" y="0" key="new project wizard" timestamp="1603720079219">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

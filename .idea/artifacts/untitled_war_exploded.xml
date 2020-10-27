@@ -11,6 +11,8 @@
           <element id="library" level="project" name="sqljdbc42" />
           <element id="library" level="project" name="jstl-1.2" />
           <element id="library" level="project" name="javax.mail" />
+          <element id="library" level="project" name="Hibernate 5.4.11-5.4.11" />
+          <element id="library" level="project" name="commons-logging-1.2" />
         </element>
       </element>
     </root>

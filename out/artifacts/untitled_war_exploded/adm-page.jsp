@@ -81,7 +81,10 @@
 %>
 
 <%
-        } else response.sendRedirect("login.jsp");
+        } else {
+
+            response.sendRedirect("std-page.jsp?pgprt=0");
+        }
     } else response.sendRedirect("login.jsp");
 %>
 
