@@ -21,17 +21,7 @@ if(request.getParameter("page").equals("profile")){
          
     pDAO.updateStudent(uid,fName,lName,uName,email,pass,contactNo,city,address,uType);
     response.sendRedirect("dashboard.jsp");
-}else if(request.getParameter("page").toString().equals("courses")){
-    if(request.getParameter("operation").toString().equals("addnew")){
-        pDAO.addNewCourse(request.getParameter("coursename"),Integer.parseInt(request.getParameter("totalmarks")),
-                request.getParameter("time"));
-        response.sendRedirect("adm-page.jsp?pgprt=2");
-    }else if(request.getParameter("operation").toString().equals("del")){
-        pDAO.delCourse(request.getParameter("cname").toString());
-        response.sendRedirect("adm-page.jsp?pgprt=2");
-    }
-
-}else if(request.getParameter("page").toString().equals("accounts")){
+}else  if(request.getParameter("page").toString().equals("accounts")){
     if(request.getParameter("operation").toString().equals("del")){
         pDAO.delUser(Integer.parseInt(request.getParameter("uid")));
         response.sendRedirect("adm-page.jsp?pgprt=1");

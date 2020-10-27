@@ -1,6 +1,7 @@
 <%@page import="myPackage.classes.Exams" %>
 <%@page import="myPackage.classes.Questions" %>
 <%@page import="java.util.ArrayList" %>
+<%@ page import="myPackage.classes.Courses" %>
 <jsp:useBean id="pDAO" class="myPackage.DatabaseClass" scope="page"/>
 
 <style>
@@ -81,7 +82,7 @@
         %>
         <input type="hidden" name="size" value="<%=list.size()%>">
         <input type="hidden" name="totalmarks"
-               value="<%=pDAO.getTotalMarksByName(request.getParameter("coursename"))%>">
+               value="<%=pDAO.getTotalMarksByCode(request.getParameter("coursename"))%>">
 
         <%
             for (int i = 0; i < list.size(); i++) {
@@ -166,11 +167,11 @@
             <input type="hidden" name="operation" value="startexam">
             <select name="coursename" class="text">
                 <%
-                    ArrayList list1 = pDAO.getAllCourses();
+                    ArrayList<Courses> list1 = pDAO.getAllCourses();
 
-                    for (int i = 0; i < list1.size(); i = i + 2) {
+                    for (int i = 0; i < list1.size(); i++) {
                 %>
-                <option value="<%=list1.get(i)%>"><%=list1.get(i)%>
+                <option value="<%=list1.get(i).getcCode()%>"><%=list1.get(i).getcName()%>
                 </option>
                 <%
                     }

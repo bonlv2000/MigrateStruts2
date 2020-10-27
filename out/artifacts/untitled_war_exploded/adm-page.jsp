@@ -66,7 +66,7 @@
 
 <jsp:include page="questions.jsp"/>
 <%
-} else if (request.getParameter("pgprt").equals("4")) {// if( 4 == 4 )
+} else if (request.getParameter("pgprt").equals("4")) {
 %>
 
 <jsp:include page="showall.jsp"/>
