@@ -31,7 +31,7 @@
          String dbURL = "jdbc:sqlserver://localhost:1433;"
                  + "databaseName=ExaminationOnline;";
          String userName = "sa";
-         String password = "hoaibao0806";
+         String password = "maiyeuem123";
 
          try {
              Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

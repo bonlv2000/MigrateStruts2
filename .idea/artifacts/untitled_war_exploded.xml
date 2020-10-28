@@ -8,11 +8,14 @@
           <element id="module-output" name="untitled" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="commons-logging-1.2" />
+          <element id="library" level="project" name="fluent-hc-4.5.5" />
+          <element id="library" level="project" name="httpcore-4.4.9" />
+          <element id="library" level="project" name="httpclient-4.5.5" />
+          <element id="library" level="project" name="javax.mail" />
           <element id="library" level="project" name="sqljdbc42" />
           <element id="library" level="project" name="jstl-1.2" />
-          <element id="library" level="project" name="javax.mail" />
-          <element id="library" level="project" name="Hibernate 5.4.11-5.4.11" />
-          <element id="library" level="project" name="commons-logging-1.2" />
+          <element id="library" level="project" name="gson-2.8.2" />
         </element>
       </element>
     </root>

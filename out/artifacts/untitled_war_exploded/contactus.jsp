@@ -1,209 +1,175 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Dreams Template">
-    <meta name="keywords" content="Dreams, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dreams | Template</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Learn &mdash; Free Website Template, Free HTML5 Template by freehtml5.co</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
+    <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+    <meta name="author" content="freehtml5.co" />
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!--
+    //////////////////////////////////////////////////////
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="/Common/login/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="/Common/login/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="/Common/login/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="/Common/login/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="/Common/login/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="/Common/login/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="/Common/login/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="/Common/login/css/style.css" type="text/css">
+    FREE HTML5 TEMPLATE
+    DESIGNED & DEVELOPED by FreeHTML5.co
+
+    Website: 		http://freehtml5.co/
+    Email: 			info@freehtml5.co
+    Twitter: 		http://twitter.com/fh5co
+    Facebook: 		https://www.facebook.com/fh5co
+
+    //////////////////////////////////////////////////////
+     -->
+
+    <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:description" content=""/>
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:image" content="" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800" rel="stylesheet">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="/Common/test/css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="/Common/test/css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="/Common/test/css/bootstrap.css">
+
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="/Common/test/css/magnific-popup.css">
+
+    <!-- Owl Carousel  -->
+    <link rel="stylesheet" href="/Common/test/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Common/test/css/owl.theme.default.min.css">
+
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="/Common/test/css/style.css">
+
+    <!-- Modernizr JS -->
+    <script src="/Common/test/js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="/Common/test/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .fh5co-nav ul li.btn-cta a span{
+            padding: 4px 4rem;
+        }
+    </style>
 </head>
-
 <body>
-<!-- Page Preloder -->
-<div id="preloder">
-    <div class="loader"></div>
-</div>
 
-<!-- Offcanvas Menu Begin -->
-<div class="offcanvas-menu-overlay"></div>
-<div class="offcanvas-menu-wrapper">
-    <div class="offcanvas__search">
-        <i class="fa fa-search search-switch"></i>
-    </div>
-    <div class="offcanvas__logo">
-        <a href="./index.html"><img src="/Common/test/img/logo.png" alt=""></a>
-    </div>
-    <nav class="offcanvas__menu mobile-menu">
-        <ul>
-            <li><a href="index.jsp">Home</a></li>
-            <li><a href="contactus.jsp">Contact us</a></li>
-        </ul>
+<div class="fh5co-loader"></div>
+
+<div id="page">
+    <nav class="fh5co-nav" role="navigation">
+        <div class="top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-right">
+                        <p class="num">Call: +01 123 456 7890</p>
+                        <ul class="fh5co-social">
+                            <li><a href="#"><i class="icon-twitter"></i></a></li>
+                            <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                            <li><a href="#"><i class="icon-github"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="top-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-1">
+                        <div id="fh5co-logo"><a href="index.html">Learn<span>.</span></a></div>
+                    </div>
+                    <div class="col-xs-11 text-right menu-1">
+                        <ul>
+                            <li><a href="index.jsp">Home</a></li>
+
+                            <li class="active"><a href="contactus.jsp">Contact</a></li>
+                            <li class="btn-cta"><a href="HomeController?action=login"><span>Login</span></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </nav>
-    <div id="mobile-menu-wrap"></div>
-    <div class="offcanvas__social">
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-instagram"></i></a>
-        <a href="#"><i class="fa fa-dribbble"></i></a>
+
+    <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style='background-image:url(Common/test/images/img_bg_2.jpg); background-size: 100%;' data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <div class="display-t">
+                        <div class="display-tc animate-box" data-animate-effect="fadeIn">
+                            <h1>Contact Us</h1>
+                            <h2>Free html5 templates Made by <a href="http://freehtml5.co" target="_blank">freehtml5.co</a></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="row copyright" >
+        <div class="col-md-12 text-center" style="padding: 5rem;">
+            <p>
+                <small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
+                <small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
+            </p>
+            <p>
+            <ul class="fh5co-social-icons">
+                <li><a href="#"><i class="icon-twitter"></i></a></li>
+                <li><a href="#"><i class="icon-facebook"></i></a></li>
+                <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                <li><a href="#"><i class="icon-dribbble"></i></a></li>
+            </ul>
+            </p>
+        </div>
     </div>
-    <div class="offcanvas__btn">
-        <a href="#" class="primary-btn">Get Started</a>
-    </div>
+
 </div>
-<!-- Offcanvas Menu End -->
-
-<!-- Header Section Begin -->
-<header class="header">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-2">
-                <div class="header__logo">
-                    <a href="./index.html"><img src="/Common/test/img/logo.png" alt=""></a>
-                </div>
-            </div>
-            <div class="col-lg-5">
-                <nav class="header__menu">
-                    <ul>
-                        <li class="active"><a href="index.jsp">Home</a></li>
-                        <li><a href="contactus.jsp">Contact us</a></li>
-
-                    </ul>
-                </nav>
-            </div>
-            <div class="col-lg-5">
-                <div class="header__right">
-                    <div class="header__right__search">
-                        <i class="fa fa-search search-switch"></i>
-                    </div>
-                    <div class="header__right__social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-dribbble"></i></a>
-                    </div>
-                    <div class="header__right__btn">
-                        <a href="login.jsp" class="primary-btn">Login</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="canvas__open">
-            <span class="fa fa-bars"></span>
-        </div>
-    </div>
-</header>
-<!-- Header Section End -->
-
-<!-- Hero Section Begin -->
-<section class="hero set-bg" data-setbg="/Common/login/IMG/hero-bg.jpg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="hero__text" >
-                    <h5 >Nhom 2</h5>
-                    <h2 >Thanh vien</h2>
-                    <h3 style='color: wheat; font-family: "Malgun Gothic Semilight"'> Le Hoai Bao</h3>
-                    <h3 style="color: wheat"> Nguyen Huy Hoang</h3>
-                    <h3 style="color: wheat"> Nguyen Hong Quang</h3>
-                    <h3 style="color: wheat"> Nguyen Dinh Hieu</h3>
-                    <h3 style="color: wheat"> Le Van Bon</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Hero Section End -->
-
-
-<!-- Footer Section Begin -->
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-2 col-sm-6">
-                <div class="footer__widget">
-                    <h5>COMPANY</h5>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="contactus.jsp">Contact us</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
-                <div class="footer__widget">
-                    <h5>Courses</h5>
-                    <ul>
-                        <li><a href="#">Winter driving</a></li>
-                        <li><a href="#">Program for seniors</a></li>
-                        <li><a href="#">Adult in car lesons</a></li>
-                        <li><a href="#">Defensive driving</a></li>
-                        <li><a href="#">Stick shit lessons</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
-                <div class="footer__widget">
-                    <h5>USEFUL LINKS</h5>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Drupal Themes</a></li>
-                        <li><a href="#">WordPress Themes</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">Services</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="footer__about">
-                    <div class="footer__logo">
-                        <a href="#"><img src="img/footer-logo.png" alt=""></a>
-                    </div>
-                    <p>Address : 15 Division Street, New York, NY 12032, United States of America</p>
-                    <ul>
-                        <li>Phone : +0 (123) 456789</li>
-                        <li>Email : Kaseo@gmail.com</li>
-                        <li>Fax : +8 (123) 456 789</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                <div class="footer__copyright__text">
-                    <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
-                </div>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </div>
-        </div>
-    </div>
 </footer>
-<!-- Footer Section End -->
-
-<!-- Search Begin -->
-<div class="search-model">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="search-close-switch">+</div>
-        <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search here.....">
-        </form>
-    </div>
 </div>
-<!-- Search End -->
 
-<!-- Js Plugins -->
-<script src="/Common/login/js/jquery-3.3.1.min.js"></script>
-<script src="/Common/login/js/bootstrap.min.js"></script>
-<script src="/Common/login/js/jquery.nice-select.min.js"></script>
-<script src="/Common/login/js/jquery.magnific-popup.min.js"></script>
-<script src="/Common/login/js/jquery-ui.min.js"></script>
-<script src="/Common/login/js/jquery.slicknav.js"></script>
-<script src="/Common/login/js/owl.carousel.min.js"></script>
-<script src="/Common/login/js/main.js"></script>
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+</div>
+
+<!-- jQuery -->
+<script src="/Common/test/js/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="/Common/test/js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="/Common/test/js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="/Common/test/js/jquery.waypoints.min.js"></script>
+<!-- Stellar Parallax -->
+<script src="/Common/test/js/jquery.stellar.min.js"></script>
+<!-- Carousel -->
+<script src="/Common/test/js/owl.carousel.min.js"></script>
+<!-- countTo -->
+<script src="/Common/test/js/jquery.countTo.js"></script>
+<!-- Magnific Popup -->
+<script src="/Common/test/js/jquery.magnific-popup.min.js"></script>
+<script src="/Common/test/js/magnific-popup-options.js"></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+<script src="/Common/test/js/google_map.js"></script>
+<!-- Main -->
+<script src="/Common/test/js/main.js"></script>
+
 </body>
-
 </html>

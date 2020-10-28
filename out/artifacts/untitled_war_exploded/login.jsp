@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="/Common/test/css/util.css">
     <link rel="stylesheet" type="text/css" href="/Common/test/css/main.css">
     <!--===============================================================================================-->
+
 </head>
 <body>
 
@@ -71,22 +72,34 @@
                     </a>
 
                 </div>
-                <div class="text-center p-t-136" style="padding-top: 2rem;">
-                    <a class="txt2" href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code
-		&client_id=208411658054-6f63qudpv6nafjq9qihbog8sgc4dht0e.apps.googleusercontent.com&approval_prompt=force" style="font-size: 1.5rem">
-                        Login with Google
-                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+<%--                <div class="text-center p-t-136" style="padding-top: 2rem;">--%>
+<%--                    <a class="txt2" href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code--%>
+<%--		&client_id=208411658054-6f63qudpv6nafjq9qihbog8sgc4dht0e.apps.googleusercontent.com&approval_prompt=force" style="font-size: 1.5rem">--%>
+<%--                        Login with Google--%>
+<%--                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>--%>
 
-                    </a>
-                </div>
+<%--                    </a>--%>
+<%--                </div>--%>
 
-                <div class="text-center p-t-136" style="padding-top: 2rem;">
-                    <a class="txt2" href="HomeController?action=register" style="font-size: 1.5rem">
-                        Create your Account
-                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+             <div>
+                <p class="alert alert-warning" >
+                <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code
+		&client_id=208411658054-6f63qudpv6nafjq9qihbog8sgc4dht0e.apps.googleusercontent.com&approval_prompt=force">
+                    <button type="button" style="background:#F41D20; color:white; border:none; width:200px; height:40px; border-radius:3%;right: -23px; position: relative;">
+                        <img src="Common/test/images/Google.png" style='width:30px; background:white; border-radius:50%;' alt="">
+                        <b style="top: -10px; left: 7px; ">Login With Google</b>
+                    </button>
+                </a>
 
-                    </a>
-                </div>
+                </p>
+             </div>
+
+
+
+                <p class="alert alert-warning" >
+                    <a href="HomeController?action=register" class="btn btn-primary" style="right: -23px; position: relative;">Create New Account!</a>
+                </p>
+
 
             </form>
         </div>
@@ -104,6 +117,7 @@
 <%--            }--%>
 <%--        }--%>
 <%--    %>--%>
+
     <script>
         document.getElementById("login").addEventListener("click",()=> {
 
