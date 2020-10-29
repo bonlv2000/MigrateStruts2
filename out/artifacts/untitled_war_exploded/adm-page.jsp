@@ -31,7 +31,7 @@
 <body>
 <div class="top-area">
     <<h2 class="text-center text-dark">Admin Panel</h2>
-    <a href="controller.jsp?page=logout" class="button btn btn-danger"
+    <a href="HomeController?action=logout" class="button btn btn-danger"
        style="float: right;background:crimson;color:white;margin-right: 1rem"
     >Logout</a>
 

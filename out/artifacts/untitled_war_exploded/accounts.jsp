@@ -2,23 +2,20 @@
 <%@page import="java.util.ArrayList" %>
 <%@ page import="myPackage.DatabaseClass" %>
 <jsp:useBean id="pDAO" class="myPackage.DatabaseClass" scope="page"/>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 
-    User user=pDAO.getUserDetails(session.getAttribute("userId").toString());
-    if(user.getType().endsWith("admin")){
+    User user = pDAO.getUserDetails(session.getAttribute("userId").toString());
+    if (user.getType().endsWith("admin")) {
 %>
 <!-- SIDEBAR -->
 <%
     ArrayList<User> users;
-
     users = new DatabaseClass().getStudent();
-
-
-
-    session.setAttribute("list",users);
+    session.setAttribute("list", users);
 %>
 <link rel="stylesheet" href="Common/test/css/styleAccount.css">
+<link rel="stylesheet" href="Common/test/fonts/font-awesome-4.7.0/css/font-awesome.css">
 <style>
 
 
@@ -33,8 +30,8 @@
         width: 100%; /* Full width */
         height: 100%; /* Full height */
         overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        background-color: rgb(0, 0, 0); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
     }
 
     /* Modal Content */
@@ -86,7 +83,8 @@
         <br>
         <br>
         <br/>
-        <a href="Register.jsp" class="button" style="text-decoration: none!important;"><span class="add-btn" style="margin-left: 80px;">Add New Person</span></a>
+        <a href="Register.jsp" class="button" style="text-decoration: none!important;"><span class="add-btn"
+                                                                                             style="margin-left: 80px;">Add New Person</span></a>
         <br>
         <table id="one-column-emphasis">
             <colgroup>
@@ -117,31 +115,31 @@
                     <td style="padding: 12px 15px;">${item.email}</td>
 
                     <td>
+
                         <div class="container">
-                        <input style="width:70%;" id="user${item.password}"  type="password" value="${item.password}" disabled>
-                        <i class="far fa-eye" id="user${item.password}" onClick="reply_click(this.id)"></i>
+<%--                            <input style="width:70%;" id="user${item.password}" type="password" value="${item.password}"--%>
+<%--                                   disabled>--%>
+                            <i class="far fa-eye" id="user${item.password}"
+                               onClick="reply_click(this.id); console.log(this.id)"></i>
 
                         </div>
                     </td>
 
                     <td style="padding: 12px 15px;">${item.type}</td>
 
-                    <td style="padding: 20px 15px;"> <button  type="submit" class="btn btn-primary" id="myBtn" ><i  aria-hidden="true"></i> Update</button> </td>
-                    <td style="padding: 12px 15px;"> <button  type="submit" class="btn btn-danger"><i href="adm-page.jsp?pgprt=0&pedt=1" aria-hidden="true"></i> Delete</button> </td>
+                    <td style="padding: 20px 15px;">
+                        <a href="UserController?action=update&userId=${item.userId}"
+                           type="submit" class="btn btn-primary" id="myBtn"><i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                    <td style="padding: 12px 15px;">
+                        <a type="submit" class="btn btn-danger" href="UserController?action=delete&userId=${item.userId}"
+                           onclick="return confirm('Are you sure you want to delete this ?');">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
                 </tr>
             </c:forEach>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             <div id="myModal" class="modal">
@@ -149,41 +147,52 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <form action="code.php" method="POST">
+                    <form action="UserController" method="POST">
                         <div class="modal-body">
                             <h2>Update Info</h2>
-                            <input type="hidden" name="edit_id" id="edit_id">
+                            <input type="hidden" name="userId" id="edit_id" value="${sessionScope.userUpdate.userId}">
                             <div class="form-group">
-                                <label >First Name</label>
-                                <input type="text" name="fname" id="edit_fname" class="form-control" placeholder="Enter First Name">
+                                <label>First Name</label>
+                                <input type="text" name="firstName" id="edit_fname" class="form-control"
+                                       value="${sessionScope.userUpdate==null ? "":sessionScope.userUpdate.firstName}">
                             </div>
                             <div class="form-group">
-                                <label >Last Name</label>
-                                <input type="text" name="lname" id="edit_lname" class="form-control" placeholder="Enter Last Name">
+                                <label>Last Name</label>
+                                <input type="text" name="lastName" id="edit_lname" class="form-control"
+                                       value="${sessionScope.userUpdate==null ? "":sessionScope.userUpdate.lastName}">
                             </div>
                             <div class="form-group">
-                                <label >Email</label>
-                                <input type="text" name="class" id="edit_class" class="form-control" placeholder="Enter Email">
+                                <label>Email</label>
+                                <input type="text" name="email" id="edit_class" class="form-control"
+                                       value="${sessionScope.userUpdate==null ? "":sessionScope.userUpdate.email}">
                             </div>
                             <div class="form-group">
-                                <label >Pass</label>
-                                <input type="text" name="section" id="edit_section" class="form-control" placeholder="Enter Pass">
+                                <label>Pass</label>
+                                <input type="password" name="password" id="edit_section" class="form-control"
+                                       value="${sessionScope.userUpdate==null ? "":sessionScope.userUpdate.password}">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeForm()">Close</button>
-                            <button type="submit" name="update_student" class="btn btn-primary">Update</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeForm()">
+                                Close
+                            </button>
+                            <input type="hidden" name="action" value="update">
+                            <input type="submit" name="update_student" class="btn btn-primary" value="Update">
                         </div>
                     </form>
                 </div>
 
             </div>
 
-
-
-
-
+            <%
+                if(session.getAttribute("isUpdate")!=null) {
+                    out.println("<script>var modal = document.getElementById(\"myModal\");" +
+                            "modal.style.display = \"block\";</script>");
+                }
+            %>
             <script>
+
+
                 // Get the modal
                 var modal = document.getElementById("myModal");
 
@@ -194,23 +203,28 @@
                 var span = document.getElementsByClassName("close")[0];
 
                 // When the user clicks the button, open the modal
-                btn.onclick = function() {
+                btn.onclick = function () {
                     modal.style.display = "block";
                 }
 
                 // When the user clicks on <span> (x), close the modal
-                span.onclick = function() {
+                span.onclick = function () {
                     modal.style.display = "none";
                 }
 
                 // When the user clicks anywhere outside of the modal, close it
-                window.onclick = function(event) {
+                window.onclick = function (event) {
                     if (event.target == modal) {
                         modal.style.display = "none";
                     }
                 }
+
                 function closeForm() {
                     modal.style.display = "none";
+                    <%
+                        session.removeAttribute("isUpdate");
+                        session.removeAttribute("userUpdate");
+                    %>
                 }
             </script>
 
@@ -218,13 +232,11 @@
             <script src="Common/test/js/ShowpassAndHide.js"></script>
 
 
-
             <!-- and so on... -->
             </tbody>
         </table>
 
     </div>
-
 
 
     <%

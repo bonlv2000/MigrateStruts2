@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="top-area">
-		<center><h2>Student Panel</h2></center> <a href="controller.jsp?page=logout" class="button" style="float: right;background:crimson;color:white">Logout</a>
+		<center><h2>Student Panel</h2></center> <a href="HomeController?action=logout" class="button" style="float: right;background:crimson;color:white">Logout</a>
 	</div>
     
     <%

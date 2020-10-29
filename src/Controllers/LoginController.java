@@ -28,9 +28,7 @@ public class LoginController extends HttpServlet {
                 request.getSession().setAttribute("type", user.getType().equals("admin")? "1":"0");
                 request.getSession().setAttribute("userStatus", "1");
                 request.getSession().setAttribute("userId",pDAO.getUserId(request.getParameter("username")));
-
                 response.sendRedirect("dashboard.jsp");
-
             }else{
                 request.getSession().setAttribute("userStatus", "-1");
                 response.sendRedirect("login.jsp");
@@ -41,6 +39,6 @@ public class LoginController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        
     }
 }
