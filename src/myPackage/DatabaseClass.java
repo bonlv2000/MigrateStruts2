@@ -5,11 +5,7 @@
   */
  package myPackage;
 
- import java.sql.Connection;
- import java.sql.DriverManager;
- import java.sql.PreparedStatement;
- import java.sql.ResultSet;
- import java.sql.SQLException;
+ import java.sql.*;
  import java.time.Duration;
  import java.time.LocalDate;
  import java.time.LocalTime;
@@ -110,6 +106,28 @@
              str = "error";
          }
          return str;
+     }
+
+     public  ArrayList<User> getStudent() throws SQLException {
+         ArrayList<User> courses = new ArrayList<User>();
+         String sql = "Select * from users where user_type = 'student'";
+         Statement statement = conn.createStatement();
+         ResultSet result = statement.executeQuery(sql);
+         while(result.next()) {
+             int userId = result.getInt(1);
+             String firstName = result.getString(2);
+             String lastName = result.getString(3);
+             String username = result.getString(4);
+             String email  = result.getString(5);
+             String password  = result.getString(6);
+             String type  = result.getString(7);
+             String contact  = result.getString(8);
+             String city  = result.getString(9);
+             String address  = result.getString(10);
+             String isGmail  = result.getString(11);
+             courses.add(new User(userId,firstName,lastName,username,email,password,type,contact,city,address,isGmail));
+         }
+         return courses;
      }
 
      public int getUserId(String userName) {

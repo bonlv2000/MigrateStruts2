@@ -4,7 +4,7 @@ package myPackage.classes;
 
 public class User {
    private int userId;
-   private String firstName,lastName,userName,email,password,type,contact,city,address;
+   private String firstName,lastName,userName,email,password,type,contact,city,address,isGmail;
 
    public User(){
        
@@ -28,6 +28,19 @@ public class User {
         this.address = address;
     }
 
+    public User(int userId, String firstName, String lastName, String userName, String email, String password, String type, String contact, String city, String address,String isGmail) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.type = type;
+        this.contact = contact;
+        this.city = city;
+        this.address = address;
+        this.isGmail = isGmail;
+    }
 
     public User(String type) {
         this.type = type;
@@ -115,5 +128,11 @@ public class User {
         this.address = address;
     }
 
-   
+    public String getIsGmail() {
+        return isGmail;
+    }
+
+    public void setIsGmail(String isGmail) {
+        this.isGmail = isGmail;
+    }
 }
