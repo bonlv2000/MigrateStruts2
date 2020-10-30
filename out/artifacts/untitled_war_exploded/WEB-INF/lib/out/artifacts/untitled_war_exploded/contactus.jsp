@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -114,7 +114,15 @@
                     <div class="display-t">
                         <div class="display-tc animate-box" data-animate-effect="fadeIn">
                             <h1>Contact Us</h1>
-                            <h2>Free html5 templates Made by <a href="http://freehtml5.co" target="_blank">freehtml5.co</a></h2>
+                            <h2>Team 2</h2>
+                            <div style="font-size: 2rem; color: navajowhite">
+                                <p>Le Hoai Bao</p>
+                                <p>Le Van Bon</p>
+                                <p>Nguyen Hong Quang</p>
+                                <p>Nguyen Dinh Hieu</p>
+                                <p>Nguyen Huy Hoang</p>
+                            </div>
+
                         </div>
                     </div>
                 </div>

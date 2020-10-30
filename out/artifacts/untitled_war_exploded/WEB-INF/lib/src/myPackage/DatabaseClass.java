@@ -224,8 +224,6 @@
      }
 
      public User loginValidate(String userName, String userPass) throws SQLException {
-         boolean status = false;
-
          String sql = "SELECT * FROM users\n"
                  + "WHERE user_name=? ";
          PreparedStatement pstm = conn.prepareStatement(sql);
@@ -234,13 +232,12 @@
          String pass;
          while (rs.next()) {
              pass = rs.getString("password");
-
-             if (pass.equals(userPass)) {
+             String userHash = EncryptPassword.generateHash(userPass);
+             if (pass.equals(userHash)) {
                  return new User(rs.getString("user_type"));
              }
-         }//end while
+         }
          return null;
-
      }
 
      public ArrayList<Courses> getAllCourses() {

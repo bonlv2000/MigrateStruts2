@@ -5,22 +5,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="/Common/test/images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="Common/test/images/icons/favicon.ico"/>
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Common/test/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="Common/test/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Common/test/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Common/test/fonts/font-awesome-4.7.0/css/font-awesome.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Common/test/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="Common/test/vendor/animate/animate.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Common/test/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="Common/test/vendor/css-hamburgers/hamburgers.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Common/test/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="Common/test/vendor/select2/select2.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Common/test/css/util.css">
-    <link rel="stylesheet" type="text/css" href="/Common/test/css/main.css">
+    <link rel="stylesheet" type="text/css" href="Common/test/css/util.css">
+    <link rel="stylesheet" type="text/css" href="Common/test/css/main.css">
     <!--===============================================================================================-->
+    <style>
+        @media (min-width: 768px) {
+            .omb_row-sm-offset-3 div:first-child[class*="col-"] {
+                margin-left: 25%;
+            }
+        }
 
+        .omb_login .omb_authTitle {
+            text-align: center;
+            line-height: 300%;
+        }
+
+        .omb_login .omb_socialButtons a {
+            color: white; // In yourUse @body-bg
+        opacity:0.9;
+        }
+        .omb_login .omb_socialButtons a:hover {
+            color: white;
+            opacity:1;
+        }
+        .omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;}
+        .omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;}
+        .omb_login .omb_socialButtons .omb_btn-google {background: #c32f10;}
+
+
+        .omb_login .omb_loginOr {
+            position: relative;
+            font-size: 1.5em;
+            color: #aaa;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+        }
+        .omb_login .omb_loginOr .omb_hrOr {
+            background-color: #cdcdcd;
+            height: 1px;
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
+        }
+        .omb_login .omb_loginOr .omb_spanOr {
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: -0.6em;
+            margin-left: -1.5em;
+            background-color: white;
+            width: 3em;
+            text-align: center;
+        }
+
+        .omb_login .omb_loginForm .input-group.i {
+            width: 2em;
+        }
+        .omb_login .omb_loginForm  .help-block {
+            color: red;
+        }
+
+
+        @media (min-width: 768px) {
+            .omb_login .omb_forgotPwd {
+                text-align: right;
+                margin-top:10px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -28,12 +93,12 @@
     <div class="container-login100">
         <div class="wrap-login100" style="padding-top: 100px">
             <div class="login100-pic js-tilt" data-tilt>
-                <img src="/Common/test/images/img-01.png" alt="IMG">
+                <img src="Common/test/images/img-01.png" alt="IMG">
             </div>
 
             <form class="login100-form validate-form" action="LoginController" method="post">
 					<span class="login100-form-title">
-						<img src="/Common/login/IMG/login.png" height="70" width="70" style="margin-bottom: .5rem"><br>
+						<img src="Common/login/IMG/login.png" height="70" width="70" style="margin-bottom: .5rem"><br>
                         Login
 					</span>
 
@@ -81,18 +146,38 @@
 <%--                    </a>--%>
 <%--                </div>--%>
 
-             <div>
-                <p class="alert alert-warning" >
-                <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code
-		&client_id=208411658054-6f63qudpv6nafjq9qihbog8sgc4dht0e.apps.googleusercontent.com&approval_prompt=force">
-                    <button type="button" style="background:#F41D20; color:white; border:none; width:200px; height:40px; border-radius:3%;right: -23px; position: relative;">
-                        <img src="Common/test/images/Google.png" style='width:30px; background:white; border-radius:50%;' alt="">
-                        <b style="top: -10px; left: 7px; ">Login With Google</b>
-                    </button>
-                </a>
 
-                </p>
-             </div>
+                 <h3 class="omb_authTitle" style="text-align: center; margin-top: 1rem">Login or Sign up with</h3>
+                 <div class="row  omb_socialButtons" style="margin: 1rem auto">
+                     <div class="col-6" style=" margin-left: 2rem">
+                         <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
+                             <i class="fa fa-facebook visible-xs"></i>
+                             <span class="hidden-xs">Facebook</span>
+                         </a>
+                     </div>
+
+                     <div class="col-6">
+                         <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code
+		&client_id=208411658054-6f63qudpv6nafjq9qihbog8sgc4dht0e.apps.googleusercontent.com&approval_prompt=force" class="btn btn-lg btn-block omb_btn-google">
+                             <i class="fa fa-google-plus visible-xs"></i>
+                             <span class="hidden-xs">Google+</span>
+                         </a>
+                     </div>
+                 </div>
+<%--                 <div class="col-xs-4 col-sm-2">--%>
+<%--                     <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code--%>
+<%--		&client_id=208411658054-6f63qudpv6nafjq9qihbog8sgc4dht0e.apps.googleusercontent.com&approval_prompt=force" class="btn btn-lg btn-block omb_btn-facebook">--%>
+<%--                         <i class="fa fa-facebook visible-xs"></i>--%>
+<%--                         <span class="hidden-xs">Facebook</span>--%>
+<%--                     </a>--%>
+<%--                 </div>--%>
+<%--                 <div class="col-xs-4 col-sm-2">--%>
+<%--                     <a href="#" class="btn btn-lg btn-block omb_btn-google">--%>
+<%--                         <i class="fa fa-google-plus visible-xs"></i>--%>
+<%--                         <span class="hidden-xs">Google+</span>--%>
+<%--                     </a>--%>
+<%--                 </div>--%>
+
 
 
 
@@ -145,7 +230,7 @@
 
 </script>
 <!--===============================================================================================-->
-<script src="/test/js/main.js"></script>
+<script src="test/js/main.js"></script>
 
 </body>
 </html>

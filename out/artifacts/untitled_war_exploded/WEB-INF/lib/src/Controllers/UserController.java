@@ -1,6 +1,7 @@
 package Controllers;
 
 import myPackage.DatabaseClass;
+import myPackage.EncryptPassword;
 import myPackage.MailConfig;
 import myPackage.classes.User;
 
@@ -103,7 +104,7 @@ public class UserController extends HttpServlet {
         String lName =request.getParameter("lname");
         String uName=request.getParameter("uname");
         String email=request.getParameter("email");
-        String pass=request.getParameter("pass");
+        String pass= EncryptPassword.generateHash(request.getParameter("pass"));
         if(pDAO.isGmailExist(email)) {
             request.getRequestDispatcher("failed.jsp").forward(request,response);
             return;

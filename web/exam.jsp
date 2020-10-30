@@ -159,7 +159,6 @@
     <div class="panel form-style-6" style="float: left;max-width: 900px; padding-top: 40px;">
         <div class="title" style="margin-top: -60px;">Select Course to Take Exam</div>
         <br/>
-
         <form action="controller.jsp">
             <br/><br>
             <label>Select Course</label>
@@ -168,7 +167,6 @@
             <select name="coursename" class="text">
                 <%
                     ArrayList<Courses> list1 = pDAO.getAllCourses();
-
                     for (int i = 0; i < list1.size(); i++) {
                 %>
                 <option value="<%=list1.get(i).getcCode()%>"><%=list1.get(i).getcName()%>
@@ -179,9 +177,7 @@
             </select>
             <input type="submit" value="Take Exam" class="form-button">
         </form>
-
     </div>
     <% }%>
-
 </div>
        

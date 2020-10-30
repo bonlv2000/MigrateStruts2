@@ -29,8 +29,7 @@ public class LoginGoogleServlet extends HttpServlet {
 		String code = request.getParameter("code");
 
 		if (code == null || code.isEmpty()) {
-			RequestDispatcher dis = request.getRequestDispatcher("login.jsp");
-			dis.forward(request, response);
+			response.sendRedirect("HomeController?action=login");
 		} else {
 			try {
 				DatabaseClass db = new DatabaseClass();
@@ -42,7 +41,7 @@ public class LoginGoogleServlet extends HttpServlet {
 						request.getSession().setAttribute("type", "0");
 						request.getSession().setAttribute("userStatus", "1");
 						request.getSession().setAttribute("userId",db.getUserId(googlePojo.getEmail()));
-						request.getRequestDispatcher("dashboard.jsp").forward(request,response);
+						request.getRequestDispatcher("LoginController").forward(request,response);
 					}
 					else {
 						response.sendRedirect("HomeController?action=login");
@@ -54,7 +53,7 @@ public class LoginGoogleServlet extends HttpServlet {
 					request.getSession().setAttribute("type", "0");
 					request.getSession().setAttribute("userStatus", "1");
 					request.getSession().setAttribute("userId",db.getUserId(googlePojo.getEmail()));
-					response.sendRedirect("dashboard.jsp");
+					response.sendRedirect("LoginController");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
