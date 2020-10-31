@@ -9,21 +9,6 @@
     <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
     <meta name="author" content="freehtml5.co" />
 
-    <!--
-    //////////////////////////////////////////////////////
-
-    FREE HTML5 TEMPLATE
-    DESIGNED & DEVELOPED by FreeHTML5.co
-
-    Website: 		http://freehtml5.co/
-    Email: 			info@freehtml5.co
-    Twitter: 		http://twitter.com/fh5co
-    Facebook: 		https://www.facebook.com/fh5co
-
-    //////////////////////////////////////////////////////
-     -->
-
-    <!-- Facebook and Twitter integration -->
     <meta property="og:title" content=""/>
     <meta property="og:image" content=""/>
     <meta property="og:url" content=""/>
@@ -116,11 +101,8 @@
                             <h1>Contact Us</h1>
                             <h2>Team 2</h2>
                             <div style="font-size: 2rem; color: navajowhite">
-                                <p>Le Hoai Bao</p>
-                                <p>Le Van Bon</p>
-                                <p>Nguyen Hong Quang</p>
-                                <p>Nguyen Dinh Hieu</p>
-                                <p>Nguyen Huy Hoang</p>
+                                <p>Le Hoai Bao - Le Van Bon</p>
+                                <p>Nguyen Hong Quang - Nguyen Dinh Hieu - Nguyen Huy Hoang</p>
                             </div>
 
                         </div>

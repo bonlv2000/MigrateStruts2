@@ -17,7 +17,7 @@
     }
 </style>
 
-<div class="sidebar" style="background-image: url(sidebar-1.jpg)">
+<div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
     <div class="sidebar-background">
         <h2 class="logo-text">
             Online Examination System
@@ -74,7 +74,7 @@
         }
     </script>
 
-    <form id="myform" action="controller.jsp">
+    <form id="myform" action="ExamController">
 
         <%
             ArrayList list = pDAO.getQuestions(request.getParameter("coursename"));
@@ -123,8 +123,8 @@
                        %>
 
 
-            <input type="hidden" name="page" value="exams">
-            <input type="hidden" name="operation" value="submitted">
+
+            <input type="hidden" name="action" value="submitted">
             <input type="submit" class="add-btn" value="Done">
     </form>
 
@@ -159,16 +159,13 @@
     <div class="panel form-style-6" style="float: left;max-width: 900px; padding-top: 40px;">
         <div class="title" style="margin-top: -60px;">Select Course to Take Exam</div>
         <br/>
-
-        <form action="controller.jsp">
+        <form action="ExamController" method="post">
             <br/><br>
             <label>Select Course</label>
-            <input type="hidden" name="page" value="exams">
-            <input type="hidden" name="operation" value="startexam">
+            <input type="hidden" name="action" value="startExam">
             <select name="coursename" class="text">
                 <%
                     ArrayList<Courses> list1 = pDAO.getAllCourses();
-
                     for (int i = 0; i < list1.size(); i++) {
                 %>
                 <option value="<%=list1.get(i).getcCode()%>"><%=list1.get(i).getcName()%>
@@ -179,9 +176,7 @@
             </select>
             <input type="submit" value="Take Exam" class="form-button">
         </form>
-
     </div>
     <% }%>
-
 </div>
        

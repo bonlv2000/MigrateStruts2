@@ -3,7 +3,7 @@
 <jsp:useBean id="pDAO" class="myPackage.DatabaseClass" scope="page"/>
 
 <!-- SIDEBAR -->
-<div class="sidebar" style="background-image: url(sidebar-1.jpg)">
+<div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
     <div class="sidebar-background">
         <h2 class="logo-text">
             Online Examination System

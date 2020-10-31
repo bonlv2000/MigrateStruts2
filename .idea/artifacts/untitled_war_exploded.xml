@@ -16,8 +16,8 @@
           <element id="library" level="project" name="gson-2.8.2" />
           <element id="library" level="project" name="fluent-hc-4.5.5" />
           <element id="library" level="project" name="commons-logging-1.2" />
-          <element id="library" level="project" name="bcrypt-0.4.1" />
-          <element id="library" level="project" name="bytes-0.4.6" />
+          <element id="library" level="project" name="fluent-hc-4.5.51" />
+          <element id="library" level="project" name="struts2-core-2.5.25" />
         </element>
       </element>
     </root>

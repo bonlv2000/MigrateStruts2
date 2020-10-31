@@ -1,6 +1,5 @@
 package myPackage;
 
-import at.favre.lib.crypto.bcrypt.BCrypt;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

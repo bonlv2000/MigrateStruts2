@@ -7,7 +7,7 @@
     if (user.getType().endsWith("admin")) {
 %>
 <!-- SIDEBAR -->
-<div class="sidebar" style="background-image: url(sidebar-1.jpg)">
+<div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
     <div class="sidebar-background">
         <h2 class="logo-text">
             Online Examination System
@@ -31,7 +31,7 @@
                %>
 
         <!-- SIDEBAR -->
-        <div class="sidebar" style="background-image: url(sidebar-1.jpg)">
+        <div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
             <div class="sidebar-background">
                 <h2 class="logo-text">
                     Online Examination System
@@ -80,7 +80,7 @@
                 <!-- Start of Edit Form --->
                 <div class="title">Edit Profile</div>
                 <div class="central-div form-style-6" style="position:inherit;margin-top: 70px;">
-                    <form action="controller.jsp">
+                    <form action="UserController">
                         <input type="hidden" name="page" value="profile">
                         <input type="hidden" name="utype" value="<%=user.getType()%>">
                         <table>

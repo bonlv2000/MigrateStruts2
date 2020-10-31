@@ -4,7 +4,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="style-backend.css">
+    <link rel="stylesheet" type="text/css" href="Common/Manual/style-backend.css">
     <link rel="stylesheet" href="/Common/login/css/bootstrap.min.css" type="text/css">
     <style>
         body {

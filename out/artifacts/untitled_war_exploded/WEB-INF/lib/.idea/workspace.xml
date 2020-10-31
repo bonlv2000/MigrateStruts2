@@ -7,48 +7,181 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0266b363-7cdd-4f00-8c23-7babf5593f91" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/bcrypt_0_4_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/bytes_0_4_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/myPackage/EncryptPassword.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/.idea/libraries/bcrypt_0_4_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/.idea/libraries/bytes_0_4_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/bcrypt-0.4.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/bytes-0.4.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/classes/myPackage/EncryptPassword.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/classes/myPackage/EncryptPassword.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/myPackage/EncryptPassword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/myPackage/EncryptPassword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/production/untitled/myPackage/EncryptPassword.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/Controllers/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/Controllers/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/myPackage/EncryptPassword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/untitled/myPackage/EncryptPassword.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/myPackage/EncryptPassword.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/fluent_hc_4_5_51.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/struts2_core_2_5_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/LoginWithSocial/Facebook/common/Constants.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/LoginWithSocial/Facebook/common/RestFB.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/LoginWithSocial/Facebook/servlet/LoginFacebookServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/.idea/libraries/restfb_2_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/Common/Manual/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/Common/Manual/a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/Common/Manual/img.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/Common/Manual/sidebar-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/Common/Manual/style-backend.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/Common/Manual/style-front.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/Common/Manual/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/Common/Manual/web1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/classes/LoginWithSocial/Facebook/common/Constants.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/classes/LoginWithSocial/Facebook/common/RestFB.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/classes/LoginWithSocial/Facebook/servlet/LoginFacebookServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/classes/LoginWithSocial/Facebook/common/Constants.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/classes/LoginWithSocial/Facebook/common/RestFB.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/classes/LoginWithSocial/Facebook/servlet/LoginFacebookServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/LoginWithSocial/Facebook/common/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/LoginWithSocial/Facebook/common/RestFB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/LoginWithSocial/Facebook/servlet/LoginFacebookServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/production/untitled/LoginWithSocial/Facebook/common/Constants.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/production/untitled/LoginWithSocial/Facebook/common/RestFB.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/production/untitled/LoginWithSocial/Facebook/servlet/LoginFacebookServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/restfb-2.3.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/LoginWithSocial/Facebook/common/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/LoginWithSocial/Facebook/common/RestFB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/LoginWithSocial/Facebook/servlet/LoginFacebookServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/img.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/sidebar-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/style-backend.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/style-front.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/web1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/production/untitled/LoginWithSocial/Facebook/common/Constants.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/production/untitled/LoginWithSocial/Facebook/common/RestFB.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/production/untitled/LoginWithSocial/Facebook/servlet/LoginFacebookServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/restfb-2.3.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/LoginWithSocial/Facebook/common/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/LoginWithSocial/Facebook/common/RestFB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/LoginWithSocial/Facebook/servlet/LoginFacebookServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/img.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/sidebar-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/style-backend.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/style-front.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/Common/Manual/web1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/untitled/Action/ExamAction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/untitled/LoginWithSocial/Facebook/common/Constants.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/untitled/LoginWithSocial/Facebook/common/RestFB.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/untitled/LoginWithSocial/Facebook/servlet/LoginFacebookServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/untitled/struts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Action/ExamAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LoginWithSocial/Facebook/common/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LoginWithSocial/Facebook/common/RestFB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LoginWithSocial/Facebook/servlet/LoginFacebookServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/struts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/Common/Manual/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/Common/Manual/a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/Common/Manual/img.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/Common/Manual/sidebar-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/Common/Manual/style-backend.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/Common/Manual/style-front.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/Common/Manual/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/Common/Manual/web1.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/untitled_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/untitled_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/bcrypt_0_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/bytes_0_4_6.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/Controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/Controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/EmailResetpass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/EmailResetpass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/LoginWithSocial/Google/servlet/LoginGoogleServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/LoginWithSocial/Google/servlet/LoginGoogleServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/myPackage/DatabaseClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/myPackage/DatabaseClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/myPackage/EncryptPassword.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/classes/myPackage/EncryptPassword.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/.idea/artifacts/untitled_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/.idea/artifacts/untitled_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/EmailResetpass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/EmailResetpass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/classes/Controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/classes/Controllers/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/classes/myPackage/DatabaseClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/classes/myPackage/DatabaseClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/classes/myPackage/EncryptPassword.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/classes/myPackage/EncryptPassword.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/courses.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/courses.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/Controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/Controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/Controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/Controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/LoginWithSocial/Google/servlet/LoginGoogleServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/LoginWithSocial/Google/servlet/LoginGoogleServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/myPackage/DatabaseClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/myPackage/DatabaseClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/myPackage/EncryptPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/myPackage/EncryptPassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/EmailResetpass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/EmailResetpass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/accounts.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/accounts.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/adm-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/adm-page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/contactus.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/contactus.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/controller.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/controller.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/courses.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/courses.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/exam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/exam.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/questions.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/questions.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/results.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/results.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/showall.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/showall.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/accounts.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/accounts.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/adm-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/adm-page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/contactus.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/contactus.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/controller.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/controller.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/courses.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/courses.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/exam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/exam.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/questions.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/questions.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/results.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/results.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/showall.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/artifacts/untitled_war_exploded/showall.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/production/untitled/Controllers/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/production/untitled/Controllers/HomeController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/production/untitled/Controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/production/untitled/Controllers/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/production/untitled/myPackage/DatabaseClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/production/untitled/myPackage/DatabaseClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/Controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/Controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/production/untitled/myPackage/EncryptPassword.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/out/production/untitled/myPackage/EncryptPassword.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/LoginWithSocial/Google/servlet/LoginGoogleServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/LoginWithSocial/Google/servlet/LoginGoogleServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/myPackage/DatabaseClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/myPackage/DatabaseClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/myPackage/EncryptPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/src/myPackage/EncryptPassword.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/untitled.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/untitled.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/EmailResetpass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/EmailResetpass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/accounts.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/accounts.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/adm-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/adm-page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/contactus.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/contactus.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/controller.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/controller.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/courses.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/courses.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/exam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/exam.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/questions.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/questions.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/results.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/results.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/showall.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/WEB-INF/lib/web/showall.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/accounts.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/accounts.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/adm-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/adm-page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/contactus.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/contactus.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/courses.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/courses.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/exam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/exam.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled/Controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled/Controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/questions.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/questions.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/results.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/results.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/showall.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/showall.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/LoginWithSocial/Google/servlet/LoginGoogleServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled/LoginWithSocial/Google/servlet/LoginGoogleServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/untitled/myPackage/DatabaseClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled/myPackage/DatabaseClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled/myPackage/EncryptPassword.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled/myPackage/EncryptPassword.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LoginWithSocial/Google/servlet/LoginGoogleServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginWithSocial/Google/servlet/LoginGoogleServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/myPackage/DatabaseClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myPackage/DatabaseClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/myPackage/EncryptPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myPackage/EncryptPassword.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/untitled.iml" beforeDir="false" afterPath="$PROJECT_DIR$/untitled.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/Common/Manual/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/EmailResetpass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/EmailResetpass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/sqljdbc42.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/a.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/Common/Manual/a.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/accounts.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/accounts.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/adm-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/adm-page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/contactus.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/contactus.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/controller.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/controller.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/courses.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/courses.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/exam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/exam.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/img.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/Common/Manual/img.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/questions.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/questions.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/results.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/results.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/showall.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/showall.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/sidebar-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/Common/Manual/sidebar-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/style-backend.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/Common/Manual/style-backend.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/style-front.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/Common/Manual/style-front.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/Common/Manual/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/web1.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/untitled_war_exploded/Common/Manual/web1.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +193,7 @@
       <list>
         <option value="Jsp File" />
         <option value="Class" />
+        <option value="struts_2_5" />
       </list>
     </option>
   </component>
@@ -97,23 +231,24 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../api/bytes-0.4.6.jar!/" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rin0806\Desktop\Sevlet\ExaminationOnline\web\Common\Manual" />
       <recent name="C:\Users\rin0806\Desktop\Sevlet\untitled\web\Common\login" />
       <recent name="C:\Users\rin0806\Desktop\Sevlet\untitled\web\Common" />
       <recent name="C:\Users\rin0806\Desktop\Sevlet\untitled\web" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\rin0806\Desktop\Sevlet\ExaminationOnline\src" />
+      <recent name="C:\Users\rin0806\Desktop\Sevlet\ExaminationOnline\web\WEB-INF" />
+      <recent name="C:\Users\rin0806\Desktop\Sevlet\ExaminationOnline\web\WEB-INF\lib" />
+      <recent name="C:\Users\rin0806\Desktop\Sevlet\ExaminationOnline\src\LoginWithSocial\Facebook" />
       <recent name="C:\Users\rin0806\Desktop\Sevlet\ExaminationOnline\web" />
-      <recent name="C:\Users\binlv2011\Desktop\Menu_LVB_PRO\ExaminationOnline\web\Common\test\images" />
-      <recent name="C:\Users\binlv2011\Desktop\Menu_LVB_PRO\ExaminationOnline\web\Common\test\js" />
-      <recent name="C:\Users\binlv2011\Desktop\Menu_LVB_PRO\ExaminationOnline\web\Common\test\css" />
-      <recent name="C:\Users\binlv2011\Desktop\Menu_LVB_PRO\ExaminationOnline\web\Common\test\fonts" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.58">
@@ -151,43 +286,6 @@
     </configuration>
     <configuration name="index.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/index.jsp">
       <method v="2" />
-    </configuration>
-    <configuration name="Hello.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 9.0.341" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Hello.jsp" />
-      <deployment>
-        <artifact name="untitled:war exploded">
-          <settings>
-            <option name="CONTEXT_PATH" value="/untitled_war_exploded" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Hello_jsp_untitled" />
-      </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true" />
-      </method>
     </configuration>
     <configuration name="Tomcat 8.5.58" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.34" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/HomeController?action=home" />
@@ -268,7 +366,6 @@
       <item itemvalue="JavaScript Debug.index.jsp" />
       <item itemvalue="JavaScript Debug.Register.jsp" />
       <item itemvalue="Tomcat Server.Tomcat 8.5.58" />
-      <item itemvalue="Tomcat Server.Hello.jsp" />
     </list>
     <recent_temporary>
       <list>
@@ -289,6 +386,11 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -364,7 +466,11 @@
       <workItem from="1603985296618" duration="3349000" />
       <workItem from="1603988740167" duration="1054000" />
       <workItem from="1603991318536" duration="2606000" />
-      <workItem from="1604030982269" duration="181000" />
+      <workItem from="1604030982269" duration="1122000" />
+      <workItem from="1604037919050" duration="1915000" />
+      <workItem from="1604060978245" duration="93000" />
+      <workItem from="1604151179567" duration="5738000" />
+      <workItem from="1604170210950" duration="1968000" />
     </task>
     <task id="LOCAL-00001" summary="Revert &quot;bon ngu upload new file&quot;&#10;&#10;This reverts commit 4b76b706ae3b2191e4311d6363d3d6718d54113b.">
       <created>1603722427282</created>
@@ -408,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603987930331</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="UpdateByBao">
+      <created>1604037973389</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1604037973389</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,10 +545,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="UpdateByBao" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="70" key="#Project_Structure" timestamp="1601559148942">
+    <state x="361" y="70" key="#Project_Structure" timestamp="1604171362415">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="70" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1601559148942" />
+    <state x="361" y="70" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1604171362415" />
     <state x="361" y="70" key="#SQL_Dialects" timestamp="1602918580829">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -444,102 +557,118 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="70" key="#Template_Data_Languages/0.0.1536.824@0.0.1536.824" timestamp="1602607228513" />
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603975411834">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604172193927">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1603975411834" />
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1603800116330">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1604172193927" />
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1604171973564">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1603800116330" />
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1604171973564" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1603858082995">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1603858082995" />
-    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1603987916578">
+    <state x="335" y="0" key="CommitChangelistDialog2" timestamp="1604037969734">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1603987916578" />
-    <state x="859" y="167" key="FileChooserDialogImpl" timestamp="1603993197409">
+    <state x="335" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1604037969734" />
+    <state x="859" y="167" key="FileChooserDialogImpl" timestamp="1604170453487">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="859" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603993197409" />
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1603993949672">
+    <state x="859" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604170453487" />
+    <state width="1024" height="210" key="GridCell.Tab.0.bottom" timestamp="1604172207060">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603993949672" />
-    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1603993949672">
+    <state width="1024" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604172207060" />
+    <state width="1024" height="210" key="GridCell.Tab.0.center" timestamp="1604172207060">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603993949672" />
-    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1603993949672">
+    <state width="1024" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604172207060" />
+    <state width="1024" height="210" key="GridCell.Tab.0.left" timestamp="1604172207059">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603993949672" />
-    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1603993949672">
+    <state width="1024" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604172207059" />
+    <state width="1024" height="210" key="GridCell.Tab.0.right" timestamp="1604172207060">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603993949672" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1603993949672">
+    <state width="1024" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604172207060" />
+    <state width="1024" height="210" key="GridCell.Tab.1.bottom" timestamp="1604172195878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603993949672" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1603993949672">
+    <state width="1024" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604172195878" />
+    <state width="1024" height="210" key="GridCell.Tab.1.center" timestamp="1604172195878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1603993949672" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1603993949672">
+    <state width="1024" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1604172195878" />
+    <state width="1024" height="210" key="GridCell.Tab.1.left" timestamp="1604172195878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1603993949672" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1603993949672">
+    <state width="1024" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1604172195878" />
+    <state width="1024" height="210" key="GridCell.Tab.1.right" timestamp="1604172195878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1603993949672" />
-    <state width="1024" height="210" key="GridCell.Tab.2.bottom" timestamp="1603993949656">
+    <state width="1024" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1604172195878" />
+    <state width="1024" height="210" key="GridCell.Tab.2.bottom" timestamp="1604172195879">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603993949656" />
-    <state width="1024" height="210" key="GridCell.Tab.2.center" timestamp="1603993949656">
+    <state width="1024" height="210" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604172195879" />
+    <state width="1024" height="210" key="GridCell.Tab.2.center" timestamp="1604172195878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1603993949656" />
-    <state width="1024" height="210" key="GridCell.Tab.2.left" timestamp="1603993949656">
+    <state width="1024" height="210" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1604172195878" />
+    <state width="1024" height="210" key="GridCell.Tab.2.left" timestamp="1604172195878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1603993949656" />
-    <state width="1024" height="210" key="GridCell.Tab.2.right" timestamp="1603993949656">
+    <state width="1024" height="210" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1604172195878" />
+    <state width="1024" height="210" key="GridCell.Tab.2.right" timestamp="1604172195878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1603993949656" />
-    <state width="1024" height="210" key="GridCell.Tab.3.bottom" timestamp="1603993839241">
+    <state width="1024" height="210" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1604172195878" />
+    <state width="1024" height="210" key="GridCell.Tab.3.bottom" timestamp="1604155414432">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603993839241" />
-    <state width="1024" height="210" key="GridCell.Tab.3.center" timestamp="1603993839241">
+    <state width="1024" height="210" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604155414432" />
+    <state width="1024" height="210" key="GridCell.Tab.3.center" timestamp="1604155414432">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1603993839241" />
-    <state width="1024" height="210" key="GridCell.Tab.3.left" timestamp="1603993839241">
+    <state width="1024" height="210" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1604155414432" />
+    <state width="1024" height="210" key="GridCell.Tab.3.left" timestamp="1604155414432">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1603993839241" />
-    <state width="1024" height="210" key="GridCell.Tab.3.right" timestamp="1603993839241">
+    <state width="1024" height="210" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1604155414432" />
+    <state width="1024" height="210" key="GridCell.Tab.3.right" timestamp="1604155414432">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1603993839241" />
+    <state width="1024" height="210" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1604155414432" />
+    <state width="1024" height="210" key="GridCell.Tab.4.bottom" timestamp="1604154732245">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="210" key="GridCell.Tab.4.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604154732245" />
+    <state width="1024" height="210" key="GridCell.Tab.4.center" timestamp="1604154732245">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="210" key="GridCell.Tab.4.center/0.0.1536.824@0.0.1536.824" timestamp="1604154732245" />
+    <state width="1024" height="210" key="GridCell.Tab.4.left" timestamp="1604154732245">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="210" key="GridCell.Tab.4.left/0.0.1536.824@0.0.1536.824" timestamp="1604154732245" />
+    <state width="1024" height="210" key="GridCell.Tab.4.right" timestamp="1604154732245">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="210" key="GridCell.Tab.4.right/0.0.1536.824@0.0.1536.824" timestamp="1604154732245" />
     <state x="558" y="134" key="RollbackChangesDialog" timestamp="1603727220471">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="558" y="134" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1603727220471" />
-    <state x="342" y="0" key="SettingsEditor" timestamp="1603993256234">
+    <state x="342" y="0" key="SettingsEditor" timestamp="1604172058045">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="342" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1603993256234" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603987986277">
+    <state x="342" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1604172058045" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1604037981765">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603987986277" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604037981765" />
     <state x="591" y="305" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1603993239706">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -548,25 +677,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1603892391192" />
-    <state x="209" y="0" key="new project wizard" timestamp="1603720079219">
+    <state x="209" y="0" key="new project wizard" timestamp="1604170918040">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="209" y="0" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1603720079219" />
+    <state x="209" y="0" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1604170918040" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1603992099919">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603992099919" />
+    <state x="478" y="142" key="struts2 file set editor" timestamp="1604171359516">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="478" y="142" key="struts2 file set editor/0.0.1536.824@0.0.1536.824" timestamp="1604171359516" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/myPackage/DatabaseClass.java</url>
-          <line>225</line>
+          <line>270</line>
           <properties class="myPackage.DatabaseClass" method="loginValidate">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LoginWithSocial/Facebook/servlet/LoginFacebookServlet.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

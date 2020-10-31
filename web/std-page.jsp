@@ -20,7 +20,7 @@
             <a href="std-page.jsp?pgprt=0" class="button">profile</a>
             <a class="button" href="std-page.jsp?pgprt=1">exams</a>
             <a class="button" href="std-page.jsp?pgprt=2">results</a>
-            <a href="controller.jsp?page=logout" class="button" style="float: right;background:crimson;color:white">Logout</a>
+            <a href="HomeController?action=logout" class="button" style="float: right;background:crimson;color:white">Logout</a>
             </div>
             <% 
             //pgpart = pagepart, exams=1,results=2 and profile is default

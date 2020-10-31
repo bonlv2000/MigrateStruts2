@@ -55,7 +55,7 @@
      }
 
      public User isAccessWithGmail(String email) throws SQLException {
-         String sql = "Select * from Users where email=? and isGmailLogin=1";
+         String sql = "Select * from Users where email=? and socialLogin=1 and idFacebook is null";
          PreparedStatement preparedStatement = conn.prepareStatement(sql);
          preparedStatement.setString(1,email);
          ResultSet resultSet = preparedStatement.executeQuery();
@@ -69,6 +69,13 @@
          String sql = "Select * from Users where email=?";
          PreparedStatement preparedStatement = conn.prepareStatement(sql);
          preparedStatement.setString(1,email);
+         return preparedStatement.executeQuery().next() ? true : false;
+     }
+
+     public boolean isIdFacebookExist(String id) throws SQLException {
+         String sql = "Select * from Users where socialLogin = 1  and idFacebook=?";
+         PreparedStatement preparedStatement = conn.prepareStatement(sql);
+         preparedStatement.setString(1,id);
          return preparedStatement.executeQuery().next() ? true : false;
      }
 
@@ -147,6 +154,23 @@
          return str;
      }
 
+     public int getUserIdFromIdFacebook(String id) {
+         int str = 0;
+         PreparedStatement pstm;
+         try {
+             pstm = conn.prepareStatement("Select * from users where idFacebook=?");
+             pstm.setString(1, id);
+             ResultSet rs = pstm.executeQuery();
+             while (rs.next()) {
+                 str = rs.getInt("user_id");
+             }
+         } catch (SQLException ex) {
+             System.out.println(ex.getMessage());
+
+         }
+         return str;
+     }
+
      public User getUserDetails(String userId) {
          User userDetails = null;
 
@@ -180,6 +204,27 @@
              pstm.setString(5,email);
              pstm.setString(6, "student");
              pstm.setInt(7,1);
+             pstm.executeUpdate();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+     }
+
+     public void addNewFacebookLogin(String fName, String lName, String email,String fbId) {
+         try {
+             String sql = "INSERT into users (first_name,last_name,user_name,email,password,user_type,socialLogin" +
+                     ",idFacebook)"
+                     + "Values(?,?,?,?,?,?,?,?)";
+
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             pstm.setString(1, fName);
+             pstm.setString(2, lName);
+             pstm.setString(3, email);
+             pstm.setString(4, email);
+             pstm.setString(5,email);
+             pstm.setString(6, "student");
+             pstm.setInt(7,1);
+             pstm.setString(8,fbId);
              pstm.executeUpdate();
          } catch (SQLException ex) {
              Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);

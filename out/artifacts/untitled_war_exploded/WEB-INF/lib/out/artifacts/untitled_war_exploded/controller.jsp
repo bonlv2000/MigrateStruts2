@@ -29,22 +29,23 @@
 //    }
 //
 //}else
-    if(request.getParameter("page").toString().equals("questions")){
-    if(request.getParameter("operation").toString().equals("addnew")){
-        pDAO.addQuestion(request.getParameter("coursename"),request.getParameter("question"),
-                request.getParameter("opt1"), request.getParameter("opt2"),request.getParameter("opt3"),
-        request.getParameter("opt4"), request.getParameter("correct"));
-        response.sendRedirect("adm-page.jsp?pgprt=3");
-    }else if(request.getParameter("operation").toString().equals("del")){
-        pDAO.delCourse(request.getParameter("cname").toString());
-        response.sendRedirect("adm-page.jsp?pgprt=3");
-    }else if(request.getParameter("operation").toString().equals("delQuestion")){
-        pDAO.delQuestion(Integer.parseInt(request.getParameter("qid")));
-        response.sendRedirect("adm-page.jsp?pgprt=3");
-        
-    }
-
-}else if(request.getParameter("page").toString().equals("exams")){
+//    if(request.getParameter("page").toString().equals("questions")){
+//    if(request.getParameter("operation").toString().equals("addnew")){
+//        pDAO.addQuestion(request.getParameter("coursename"),request.getParameter("question"),
+//                request.getParameter("opt1"), request.getParameter("opt2"),request.getParameter("opt3"),
+//        request.getParameter("opt4"), request.getParameter("correct"));
+//        response.sendRedirect("adm-page.jsp?pgprt=3");
+//    }else if(request.getParameter("operation").toString().equals("del")){
+//        pDAO.delCourse(request.getParameter("cname").toString());
+//        response.sendRedirect("adm-page.jsp?pgprt=3");
+//    }else if(request.getParameter("operation").toString().equals("delQuestion")){
+//        pDAO.delQuestion(Integer.parseInt(request.getParameter("qid")));
+//        response.sendRedirect("adm-page.jsp?pgprt=3");
+//
+//    }
+//
+//}else
+if(request.getParameter("page").toString().equals("exams")){
     if(request.getParameter("operation").toString().equals("startexam")){
         String cName=request.getParameter("coursename");
         int userId=Integer.parseInt(session.getAttribute("userId").toString());

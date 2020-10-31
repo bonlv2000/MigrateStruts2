@@ -29,6 +29,10 @@ public class HomeController extends HttpServlet {
                 }
 
                 break;
+            case "logout":
+                request.getSession().invalidate();
+                response.sendRedirect("HomeController?action=home");
+                break;
             case "home":
                 request.getRequestDispatcher("index.jsp").forward(request,response);
                 break;

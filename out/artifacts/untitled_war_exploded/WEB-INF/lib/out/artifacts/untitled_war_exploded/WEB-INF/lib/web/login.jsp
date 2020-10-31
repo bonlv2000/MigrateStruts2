@@ -149,14 +149,14 @@
 
                  <h3 class="omb_authTitle" style="text-align: center; margin-top: 1rem">Login or Sign up with</h3>
                  <div class="row omb_row-sm-offset-3 omb_socialButtons" style="margin: 1rem auto">
-                     <div class="col-6" >
-                         <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
+                     <div class="col-5" >
+                         <a href="https://www.facebook.com/dialog/oauth?client_id=1029406370872772&redirect_uri=http://localhost:8080/login-facebook" class="btn btn-lg btn-block omb_btn-facebook">
                              <i class="fa fa-facebook visible-xs"></i>
                              <span class="hidden-xs">Facebook</span>
                          </a>
                      </div>
 
-                     <div class="col-6">
+                     <div class="col-5">
                          <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code
 		&client_id=208411658054-6f63qudpv6nafjq9qihbog8sgc4dht0e.apps.googleusercontent.com&approval_prompt=force" class="btn btn-lg btn-block omb_btn-google">
                              <i class="fa fa-google-plus visible-xs"></i>

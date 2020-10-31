@@ -7,7 +7,7 @@
     if (user.getType().endsWith("admin")) {
 %>
 <!-- SIDEBAR -->
-<div class="sidebar" style="background-image: url(sidebar-1.jpg)">
+<div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
     <div class="sidebar-background">
         <h2 class="logo-text">
             Online Examination System
@@ -31,7 +31,7 @@
                %>
 
         <!-- SIDEBAR -->
-        <div class="sidebar" style="background-image: url(sidebar-1.jpg)">
+        <div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
             <div class="sidebar-background">
                 <h2 class="logo-text">
                     Online Examination System
