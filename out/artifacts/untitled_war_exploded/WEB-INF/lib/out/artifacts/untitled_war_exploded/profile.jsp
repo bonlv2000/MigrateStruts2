@@ -80,7 +80,7 @@
                 <!-- Start of Edit Form --->
                 <div class="title">Edit Profile</div>
                 <div class="central-div form-style-6" style="position:inherit;margin-top: 70px;">
-                    <form action="controller.jsp">
+                    <form action="UserController">
                         <input type="hidden" name="page" value="profile">
                         <input type="hidden" name="utype" value="<%=user.getType()%>">
                         <table>

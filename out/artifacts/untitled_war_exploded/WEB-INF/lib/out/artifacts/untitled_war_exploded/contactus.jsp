@@ -74,7 +74,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-1">
-                        <div id="fh5co-logo"><a href="index.html">Learn<span>.</span></a></div>
+                        <div id="fh5co-logo"><a href="index.jsp">Learn<span>.</span></a></div>
                     </div>
                     <div class="col-xs-11 text-right menu-1">
                         <ul>
@@ -116,8 +116,8 @@
     <div class="row copyright" >
         <div class="col-md-12 text-center" style="padding: 5rem;">
             <p>
-                <small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
-                <small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
+                <small class="block">&copy;All Rights Reserved.</small>
+                <small class="block">Designed by Team 2 Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
             </p>
             <p>
             <ul class="fh5co-social-icons">
