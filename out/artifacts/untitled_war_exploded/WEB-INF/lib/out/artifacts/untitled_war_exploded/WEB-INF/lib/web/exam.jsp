@@ -1,19 +1,22 @@
-<%@page import="myPackage.classes.Exams" %>
-<%@page import="myPackage.classes.Questions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="Models.classes.Exams" %>
+<%@page import="Models.classes.Questions" %>
 <%@page import="java.util.ArrayList" %>
-<%@ page import="myPackage.classes.Courses" %>
-<jsp:useBean id="pDAO" class="myPackage.DatabaseClass" scope="page"/>
+<%@ page import="Models.classes.Courses" %>
+<%@ page import="Models.DatabaseClass" %>
+<jsp:useBean id="pDAO" class="Models.DatabaseClass" scope="page"/>
 
 <style>
-    .content-area{
-        display: block!important;
+    .content-area {
+        display: block !important;
         margin-top: 4rem;
         margin-left: 20rem;
         padding: 20px;
         padding-left: 30px;
     }
+
     .question-label {
-        height: 65px!important;
+        height: 65px !important;
     }
 </style>
 
@@ -30,10 +33,9 @@
     </div>
 
 </div>
+
 <!-- CONTENT AREA -->
 <div class="content-area">
-
-
     <% if (session.getAttribute("examStarted") != null) { %>
 
     <% }%>
@@ -46,38 +48,49 @@
     <span id="remainingTime"
           style="position: fixed;top:90px;left: 300px;font-size: 23px;background: rgba(255,0,77,0.38);border-radius: 5px;padding: 10px;box-shadow: 2px -2px 6px 0px;">
         </span>
-
+    <%
+        int time = new DatabaseClass().getRemainingTime(Integer.parseInt(session.getAttribute("examId").toString()));
+        System.out.println(time);
+    %>
     <script>
-        var time = <%=pDAO.getRemainingTime(Integer.parseInt(session.getAttribute("examId").toString())) %>;
-        time--;
-        var sec = 60;
+        let time,sec;
+        if(window.localStorage.getItem("time")==null) {
+            time = <%=time%>;
+            sec = 0;
+            window.localStorage.setItem("time",time);
+            window.localStorage.setItem("sec",sec);
+        }
+        else {
+            time = window.localStorage.getItem("time");
+            sec = window.localStorage.getItem("sec");
+        }
+
+
+
         document.getElementById("remainingTime").innerHTML = time + " : " + sec;
-        //it calls fuction after specific time again and again
-        var x = window.setInterval(timerFunction, 1000);
+        let x = window.setInterval(timerFunction, 1000);
 
         function timerFunction() {
             sec--;
-            // Display the result in the element with id="demo"
-
-
+            window.localStorage.setItem("sec",sec);
             if (time < 0) {
                 clearInterval(x);
                 document.getElementById("remainingTime").innerHTML = "00 : 00";
                 document.getElementById("myform").submit();
             }
-            document.getElementById("remainingTime").innerHTML = time + " : " + sec;
-            if (sec == 0) {
-                sec = 60;
+            if (sec <= 0) {
+                sec = 59;
                 time--;
-
+                window.localStorage.setItem("time",time);
             }
+            document.getElementById("remainingTime").innerHTML = time + " : " + sec;
         }
     </script>
 
-    <form id="myform" action="ExamController">
+    <form id="myform" action="exam.action" method="post">
 
         <%
-            ArrayList list = pDAO.getQuestions(request.getParameter("coursename"));
+            ArrayList<Questions> list = pDAO.getQuestions(request.getParameter("coursename"));
             Questions question;
         %>
         <input type="hidden" name="size" value="<%=list.size()%>">
@@ -115,15 +128,10 @@
             </div>
             <input type="hidden" name="question<%=i%>" value="<%=question.getQuestion()%>">
             <input type="hidden" name="qid<%=i%>" value="<%=question.getQuestionId()%>">
-
-
                 <%
                        }
                        
                        %>
-
-
-
             <input type="hidden" name="action" value="submitted">
             <input type="submit" class="add-btn" value="Done">
     </form>
@@ -133,7 +141,7 @@
         }
     } else if (request.getParameter("showresult") != null) {
         if (request.getParameter("showresult").equals("1")) {
-            Exams result = pDAO.getResultByExamId(Integer.parseInt(request.getParameter("eid")));
+            Exams result = new DatabaseClass().getResultByExamId(Integer.parseInt(request.getParameter("eid")));
     %>
     <div class="panel" style="float: left;max-width: 900px">
         <div class="title">Result of Recent Exam</div>
@@ -159,7 +167,7 @@
     <div class="panel form-style-6" style="float: left;max-width: 900px; padding-top: 40px;">
         <div class="title" style="margin-top: -60px;">Select Course to Take Exam</div>
         <br/>
-        <form action="ExamController" method="post">
+        <form action="exam.action" method="post">
             <br/><br>
             <label>Select Course</label>
             <input type="hidden" name="action" value="startExam">

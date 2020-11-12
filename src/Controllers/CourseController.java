@@ -1,6 +1,6 @@
 package Controllers;
 
-import myPackage.DatabaseClass;
+import Models.DatabaseClass;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +13,7 @@ import java.sql.SQLException;
 @WebServlet("/CourseController")
 public class CourseController extends HttpServlet {
     private DatabaseClass db = null;
+
 
     public CourseController() throws SQLException, ClassNotFoundException {
         db = new DatabaseClass();

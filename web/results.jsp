@@ -1,9 +1,9 @@
 
-<%@page import="myPackage.classes.Answers"%>
-<%@page import="myPackage.classes.Exams"%>
-<%@page import="myPackage.classes.Questions"%>
+<%@page import="Models.classes.Answers"%>
+<%@page import="Models.classes.Exams"%>
+<%@page import="Models.classes.Questions"%>
 <%@page import="java.util.ArrayList"%>
-<jsp:useBean id="pDAO" class="myPackage.DatabaseClass" scope="page"/>
+<jsp:useBean id="pDAO" class="Models.DatabaseClass" scope="page"/>
 <!-- SIDEBAR -->
 			<div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
 				<div class="sidebar-background" >

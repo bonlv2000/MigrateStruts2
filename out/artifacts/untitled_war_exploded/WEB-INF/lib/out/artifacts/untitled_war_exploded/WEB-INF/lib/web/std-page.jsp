@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="top-area">
-		<center><h2>Student Panel</h2></center> <a href="HomeController?action=logout" class="button" style="float: right;background:crimson;color:white">Logout</a>
+		<center><h2>Student Panel</h2></center> <a href="home?action=logout" class="button" style="float: right;background:crimson;color:white">Logout</a>
 	</div>
     
     <%
@@ -42,18 +42,13 @@
                 
             }else{
                 %>
-            
                 <jsp:include page="profile.jsp"/>
-            
             <%
             }
             %>
-            
             <%
            }else response.sendRedirect("adm-page.jsp?pgprt=0");
             }else response.sendRedirect("login.jsp");
-            
-          
            %>
             
            </body>

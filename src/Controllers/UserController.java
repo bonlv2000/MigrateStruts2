@@ -1,13 +1,10 @@
 package Controllers;
 
-import myPackage.DatabaseClass;
-import myPackage.EncryptPassword;
-import myPackage.MailConfig;
-import myPackage.classes.User;
+import Models.DatabaseClass;
+import Models.EncryptPassword;
+import Models.MailConfig;
+import Models.classes.User;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Properties;
 import java.util.Random;
 
 @WebServlet("/UserController")
@@ -34,7 +30,6 @@ public class UserController extends HttpServlet {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-
                 break;
             case "reset":
                 reset(request,response);
@@ -88,8 +83,6 @@ public class UserController extends HttpServlet {
                 request.getSession().setAttribute("email",request.getParameter("email"));
                 request.getRequestDispatcher("resetPassword.jsp").forward(request,response);
                 break;
-//            case "test":
-//                request.s
             case "update":
                 User user = pDAO.getUserDetails(request.getParameter("userId"));
                 request.getSession().setAttribute("isUpdate",1);

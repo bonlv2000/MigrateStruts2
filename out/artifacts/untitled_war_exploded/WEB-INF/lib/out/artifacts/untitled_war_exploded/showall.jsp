@@ -1,6 +1,7 @@
-<%@page import="myPackage.classes.Questions" %>
-<%@page import="java.util.ArrayList" %>
-<jsp:useBean id="pDAO" class="myPackage.DatabaseClass" scope="page"/>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="myPackage.classes.Questions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="pDAO" class="myPackage.DatabaseClass"/>
 
 
 <!-- SIDEBAR -->
@@ -19,41 +20,38 @@
     </div>
 </div>
 <!-- CONTENT AREA -->
+<%
+    ArrayList<Questions> questions = pDAO.getQuestions(request.getParameter("coursename"));
+    session.setAttribute("questions",questions);
+%>
 <div class="content-area">
     <center>
-        <%
-            if (request.getParameter("coursename") != null) {
-                ArrayList list = pDAO.getAllQuestions(request.getParameter("coursename"));
-                for (int i = 0; i < list.size(); i++) {
-                    Questions question = (Questions) list.get(i);
-
-        %>
-        <div class="question-panel">
-            <div class="question">
-                <label class="question-label"><%=i + 1 %>
-                </label>
-                <%=question.getQuestion() %>
-                <a href="QuestionController?action=delete&qid=<%=question.getQuestionId()%>"
-                   onclick="return confirm('Are you sure you want to delete this ?');">
-                    <div class="delete-btn" style="position: absolute;right: 10px;top: -20px;">delete</div>
-                </a>
-            </div>
-            <div class="answer">
-                <label class="show"><%=question.getOpt1() %>
-                </label>
-                <label class="show"><%=question.getOpt2() %>
-                </label>
-                <label class="show"><%=question.getOpt3() %>
-                </label>
-                <label class="show"><%=question.getOpt4() %>
-                </label>
-                <label class="show-correct"><%=question.getCorrect() %>
-                </label>
-            </div>
-        </div>
-
-        <%
-                }
-            } %>
+        <c:if test="${sessionScope.questions.size()>0}">
+            <c:forEach items="${sessionScope.questions}" var="item">
+                <div class="question-panel">
+                    <div class="question">
+                        ${item.question}
+                        <a href="question?action=delete&qid=${item.questionId}"
+                           onclick="return confirm('Are you sure you want to delete this ?');">
+                            <div class="delete-btn" style="position: absolute;right: 10px;top: -20px;">delete</div>
+                        </a>
+                    </div>
+                    <div class="answer">
+                        <label class="show">${item.opt1}</label>
+                        <label class="show">${item.opt2}
+                        </label>
+                        <label class="show">${item.opt3}
+                        </label>
+                        <label class="show">${item.opt4}
+                        </label>
+                        <label class="show-correct">${item.correct}
+                        </label>
+                    </div>
+                </div>
+            </c:forEach>
+        </c:if>
+        <c:if test="${sessionScope.questions.size()==0}">
+            <h3>This course don't have any question</h3>
+        </c:if>
     </center>
 </div>

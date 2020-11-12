@@ -92,7 +92,7 @@
             <ul>
               <li class="active"><a href="index.html">Home</a></li>
               <li><a href="contactus.jsp">Contact</a></li>
-              <li class="btn-cta" ><a href="HomeController?action=login" ><span style="font-size: 120%!important;padding: 4px 4rem!important;">Login</span></a></li>
+              <li class="btn-cta" ><a href="home?action=login" ><span style="font-size: 120%!important;padding: 4px 4rem!important;">Login</span></a></li>
             </ul>
           </div>
         </div>

@@ -1,27 +1,11 @@
-<%@page import="myPackage.classes.User" %>
+<%@page import="Models.classes.User" %>
 <%@page import="java.util.ArrayList" %>
-<jsp:useBean id="pDAO" class="myPackage.DatabaseClass" scope="page"/>
+<jsp:useBean id="pDAO" class="Models.DatabaseClass" scope="page"/>
 
 <%
     User user = pDAO.getUserDetails(session.getAttribute("userId").toString());
     if (user.getType().endsWith("admin")) {
 %>
-<!-- SIDEBAR -->
-<div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
-    <div class="sidebar-background">
-        <h2 class="logo-text">
-            Online Examination System
-        </h2>
-
-        <div class="left-menu">
-            <a class="active" href="adm-page.jsp?pgprt=0"><h2>Profile</h2></a>
-            <a href="adm-page.jsp?pgprt=2"><h2>Courses</h2></a>
-            <a href="adm-page.jsp?pgprt=3"><h2>Questions</h2></a>
-            <a href="adm-page.jsp?pgprt=1"><h2>Accounts</h2></a>
-        </div>
-    </div>
-</div>
-<!-- CONTENT AREA -->
 <div class="content-area">
     <div class="panel" style="float: left;max-width: 600px">
 
@@ -52,13 +36,14 @@
                     if (request.getParameter("pedt") == null) {
                 %>
                 <div class="title">Profile</div>
-                <div class="profile ">
-                    <h2><span class="tag">Your Name</span><span
-                            class="val"><%=user.getFirstName() + " " %><%=user.getLastName() %></span><br/>
-                        <span class="tag">Email</span><span class="val"><%=user.getEmail() %></span><br/>
-                        <span class="tag">Contact No</span><span class="val"><%=user.getContact() %></span><br/>
-                        <span class="tag">City</span><span class="val"><%=user.getCity() %></span><br/>
-                        <span class="tag">Address</span><span class="val"><%=user.getAddress() %></span></h2>
+                <h2 style="padding-left: 131px">Your information</h2>
+                <div class="profile " >
+
+                    <span class="tag">Your Name</span>
+                        <span style="background-color: floralwhite"
+                            class="val"><%=user.getFirstName() + " " %><%=user.getLastName()%></span><br/>
+                        <span class="tag">Email</span><span style="background-color: floralwhite" class="val"><%=user.getEmail()%></span><br/>
+                        <span class="tag">Username</span><span style="background-color: floralwhite" class="val"><%=user.getUserName()%></span><br/>
                 </div>
                 <%
                     if (user.getType().equals("admin")) {
@@ -80,7 +65,7 @@
                 <!-- Start of Edit Form --->
                 <div class="title">Edit Profile</div>
                 <div class="central-div form-style-6" style="position:inherit;margin-top: 70px;">
-                    <form action="UserController">
+                    <form action="user.action">
                         <input type="hidden" name="page" value="profile">
                         <input type="hidden" name="utype" value="<%=user.getType()%>">
                         <table>

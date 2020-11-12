@@ -1,24 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.ArrayList" %>
-<%@ page import="myPackage.classes.Courses" %>
-<jsp:useBean id="pDAO" class="myPackage.DatabaseClass" scope="page"/>
+<%@ page import="Models.classes.Courses" %>
+<%@ page import="Models.DatabaseClass" %>
 
-<!-- SIDEBAR -->
-<div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
-    <div class="sidebar-background">
-        <h2 class="logo-text">
-            Online Examination System
-        </h2>
-
-        <div class="left-menu">
-            <a href="adm-page.jsp?pgprt=0"><h2>Profile</h2></a>
-            <a href="adm-page.jsp?pgprt=2"><h2>Courses</h2></a>
-            <a class="active" href="adm-page.jsp?pgprt=3"><h2>Questions</h2></a>
-            <a href="adm-page.jsp?pgprt=1"><h2>Accounts</h2></a>
-        </div>
-    </div>
-</div>
-<!-- CONTENT AREA -->
-<div class="content-area" style="display: flex;flex-direction: row-reverse">
     <div class="panel form-style-6" style="min-width: 300px;max-width: 390px">
         <form action="adm-page.jsp">
             <div class="title">Show All Questions for</div>
@@ -27,38 +11,28 @@
             <input type="hidden" name="pgprt" value="4">
             <select name="coursename" class="text">
                 <%
-                    ArrayList<Courses> list1 = pDAO.getAllCourses();
-
-                    for (int i = 0; i < list1.size(); i++) {
+                    ArrayList<Courses> list1 = new DatabaseClass().getAllCourses();
+                    session.setAttribute("courses",list1);
                 %>
-                <option value="<%=list1.get(i).getcCode()%>"><%=list1.get(i).getcName()%>
-                </option>
-                <%
-                    }
-                %>
+                <c:forEach var="item" items="${sessionScope.courses}">
+                    <option value=${item.cCode}>${item.cName}</option>
+                </c:forEach>
             </select>
             <input type="submit" value="Show" class="form-button">
         </form>
     </div>
 
     <div class="panel form-style-6" style="max-width: 700px!important;">
-        <form action="QuestionController" method="post">
+        <form action="question.action" method="post">
             <div class="title">Add New Question</div>
             <table>
                 <tr>
                     <td><label>Course Name</label></td>
                     <td colspan="3">
                         <select name="coursename" class="text">
-                            <%
-                                ArrayList<Courses> list = pDAO.getAllCourses();
-
-                                for (int i = 0; i < list.size(); i = i + 2) {
-                            %>
-                            <option value="<%=list.get(i).getcCode()%>"><%=list.get(i).getcName()%>
-                            </option>
-                            <%
-                                }
-                            %>
+                            <c:forEach var="item" items="${sessionScope.courses}">
+                                <option value=${item.cCode}>${item.cName}</option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
@@ -96,4 +70,3 @@
 
 
     </div>
-</div>

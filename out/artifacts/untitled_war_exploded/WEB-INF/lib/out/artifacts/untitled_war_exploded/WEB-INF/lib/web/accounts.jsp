@@ -1,11 +1,13 @@
-<%@page import="myPackage.classes.User" %>
+
 <%@page import="java.util.ArrayList" %>
-<%@ page import="myPackage.DatabaseClass" %>
-<jsp:useBean id="pDAO" class="myPackage.DatabaseClass" scope="page"/>
+<%@ page import="Models.classes.User" %>
+<%@ page import="Models.DatabaseClass" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 
-    User user = pDAO.getUserDetails(session.getAttribute("userId").toString());
+    User user = new DatabaseClass().getUserDetails(session.getAttribute("userId").toString());
     if (user.getType().endsWith("admin")) {
 %>
 <!-- SIDEBAR -->
@@ -62,23 +64,8 @@
         cursor: pointer;
     }
 </style>
-<div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
-    <div class="sidebar-background">
-        <h2 class="logo-text">
-            Online Examination System
-        </h2>
 
-        <div class="left-menu">
-            <a href="adm-page.jsp?pgprt=0"><h2>Profile</h2></a>
-            <a href="adm-page.jsp?pgprt=2"><h2>Courses</h2></a>
-            <a href="adm-page.jsp?pgprt=3"><h2>Questions</h2></a>
-            <a class="active" href="adm-page.jsp?pgprt=1"><h2>Accounts</h2></a>
-        </div>
-    </div>
-</div>
-<!-- CONTENT AREA -->
-<div class="content-area">
-    <div class="inner" style="margin-top: 50px;background-color: ghostwhite!important;width: 1078px">
+    <div class="inner" style="margin-top: 50px;background-color: whitesmoke!important;width: 1078px">
         <div class="title" style="margin-top: -30px; height: 60px!important;">List of All Registered Persons</div>
         <br>
         <br>
@@ -97,7 +84,6 @@
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Email</th>
-                <th scope="col">Password</th>
                 <th scope="col">Roles</th>
 
                 <th scope="col">Update</th>
@@ -107,47 +93,31 @@
             </thead>
             <tbody>
             <c:forEach var="item" items="${sessionScope.list}">
-
                 <tr>
                     <td style="padding: 12px 15px;">${item.userName}</td>
                     <td style="padding: 12px 15px;">${item.firstName}</td>
                     <td style="padding: 12px 15px;">${item.lastName}</td>
                     <td style="padding: 12px 15px;">${item.email}</td>
-
-                    <td>
-
-                        <div class="container">
-<%--                            <input style="width:70%;" id="user${item.password}" type="password" value="${item.password}"--%>
-<%--                                   disabled>--%>
-                            <i class="far fa-eye" id="user${item.password}"
-                               onClick="reply_click(this.id); console.log(this.id)"></i>
-
-                        </div>
-                    </td>
-
                     <td style="padding: 12px 15px;">${item.type}</td>
-
                     <td style="padding: 20px 15px;">
-                        <a href="UserController?action=update&userId=${item.userId}"
+                        <a href="updateUser?action=updateGet&userId=${item.userId}"
                            type="submit" class="btn btn-primary" id="myBtn"><i class="fas fa-edit"></i>
                         </a>
                     </td>
                     <td style="padding: 12px 15px;">
-                        <a type="submit" class="btn btn-danger" href="UserController?action=delete&userId=${item.userId}"
+                        <a type="submit" class="btn btn-danger" href="user?action=delete&userId=${item.userId}"
                            onclick="return confirm('Are you sure you want to delete this ?');">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </td>
                 </tr>
             </c:forEach>
-
-
             <div id="myModal" class="modal">
-
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <form action="UserController" method="POST">
+                    <form action="updateUser.action" method="POST">
+                        <input type="hidden" name="userName" value="${sessionScope.userUpdate.userName}">
                         <div class="modal-body">
                             <h2>Update Info</h2>
                             <input type="hidden" name="userId" id="edit_id" value="${sessionScope.userUpdate.userId}">
@@ -162,6 +132,7 @@
                                        value="${sessionScope.userUpdate==null ? "":sessionScope.userUpdate.lastName}">
                             </div>
                             <div class="form-group">
+                                <s:fielderror fieldName="emailValidation" style="color:red"></s:fielderror>
                                 <label>Email</label>
                                 <input type="text" name="email" id="edit_class" class="form-control"
                                        value="${sessionScope.userUpdate==null ? "":sessionScope.userUpdate.email}">
@@ -222,8 +193,8 @@
                 function closeForm() {
                     modal.style.display = "none";
                     <%
-                        session.removeAttribute("isUpdate");
-                        session.removeAttribute("userUpdate");
+//                        session.removeAttribute("isUpdate");
+//                        session.removeAttribute("userUpdate");
                     %>
                 }
             </script>
@@ -245,4 +216,4 @@
     %>
 
 </div>
-</div>
+<%--</div>--%>

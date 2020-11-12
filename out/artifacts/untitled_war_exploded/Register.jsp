@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!--<!DOCTYPE html>-->
 <!--<html>-->
 <!--<head>-->
@@ -115,27 +116,31 @@
     <section class="signup">
         <div class="container">
             <div class="signup-content">
-                <form method="POST" action="UserController" id="signup-form" class="signup-form">
+                <form method="post" action="user.action" id="signup-form" class="signup-form">
+                    <input type="hidden" name="action" value="register">
                     <h2 class="form-title">Create account</h2>
                     <div class="form-group">
-                        <input type="text" class="form-input" name="fname" id="fname" placeholder="First Name"/>
+                        <input type="text" class="form-input" name="firstName" id="fname" placeholder="First Name"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-input" name="lname" id="lname" placeholder="Last Name"/>
-                    </div><div class="form-group">
-                    <input type="text" class="form-input" name="uname" id="uname" placeholder="User Name"/>
-                </div>
-                    <div class="form-group">
-                        <input type="email" class="form-input" name="email" id="email" placeholder="Your Email"/>
+                        <input type="text" class="form-input" name="lastName" id="lname" placeholder="Last Name"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-input" name="pass" id="password" placeholder="Password"/>
+                        <s:fielderror fieldName="userName" style="color:red;"></s:fielderror>
+                        <input type="text" class="form-input" name="userName" id="uname" placeholder="User Name"/>
+                    </div>
+                    <div class="form-group">
+                        <s:fielderror fieldName="email" style="color:red;"></s:fielderror>
+                        <input type="email" required class="form-input" name="email" id="email" placeholder="Your Email"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="password" id="password" placeholder="Password"/>
                         <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                     </div>
                     <div class="form-group">
                         <input type="submit" style="cursor: pointer;" name="submit" id="submit" class="form-submit" value="Sign up"/>
                     </div>
-                    <input type="hidden" name="action" value="register">
+
                 </form>
                 <p class="loginhere">
                     Have already an account ? <a href="HomeController?action=login" class="loginhere-link">Login here</a>

@@ -97,7 +97,11 @@
 <!--</center>-->
 <!--</body>-->
 <!--</html>-->
-
+<%
+    if(session.getAttribute("email")==null) {
+        response.sendRedirect("home?action=resetPassword");
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>

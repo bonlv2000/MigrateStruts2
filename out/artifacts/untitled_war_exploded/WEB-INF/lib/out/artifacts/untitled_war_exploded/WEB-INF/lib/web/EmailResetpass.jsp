@@ -14,7 +14,7 @@
     <section class="signup">
         <div class="container">
             <div class="signup-content">
-                <form method="POST" action="UserController" id="signup-form" class="signup-form">
+                <form method="POST" action="user.action" id="signup-form" class="signup-form">
                     <h2 class="form-title">Reset password</h2>
                     <div class="form-group">
                         <input type="text" class="form-input" name="email" id="email" placeholder="Enter email to reset password"/>

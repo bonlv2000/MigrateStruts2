@@ -81,7 +81,7 @@
                             <li><a href="index.jsp">Home</a></li>
 
                             <li class="active"><a href="contactus.jsp">Contact</a></li>
-                            <li class="btn-cta"><a href="HomeController?action=login"><span>Login</span></a></li>
+                            <li class="btn-cta"><a href="home?action=login"><span>Login</span></a></li>
 
                         </ul>
                     </div>

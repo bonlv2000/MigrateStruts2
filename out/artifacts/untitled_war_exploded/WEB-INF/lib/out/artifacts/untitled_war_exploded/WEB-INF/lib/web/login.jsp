@@ -96,7 +96,7 @@
                 <img src="Common/test/images/img-01.png" alt="IMG">
             </div>
 
-            <form class="login100-form validate-form" action="LoginController" method="post">
+            <form class="login100-form validate-form" action="login.action" method="post">
 					<span class="login100-form-title">
 						<img src="Common/login/IMG/login.png" height="70" width="70" style="margin-bottom: .5rem"><br>
                         Login
@@ -132,21 +132,11 @@
 						<span class="txt1" style="font-size: 1.2rem">
 							Forgot
 						</span>
-                    <a class="txt2" href="HomeController?action=resetPassword" style="font-size: 1.2rem">
+                    <a class="txt2" href="home?action=resetPassword" style="font-size: 1.2rem">
                         Username / Password?
                     </a>
 
                 </div>
-<%--                <div class="text-center p-t-136" style="padding-top: 2rem;">--%>
-<%--                    <a class="txt2" href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code--%>
-<%--		&client_id=208411658054-6f63qudpv6nafjq9qihbog8sgc4dht0e.apps.googleusercontent.com&approval_prompt=force" style="font-size: 1.5rem">--%>
-<%--                        Login with Google--%>
-<%--                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>--%>
-
-<%--                    </a>--%>
-<%--                </div>--%>
-
-
                  <h3 class="omb_authTitle" style="text-align: center; margin-top: 1rem">Login or Sign up with</h3>
                  <div class="row omb_row-sm-offset-3 omb_socialButtons" style="margin: 1rem auto">
                      <div class="col-5" >
@@ -157,51 +147,22 @@
                      </div>
 
                      <div class="col-5">
-                         <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code
+                         <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/loginGoogle&response_type=code
 		&client_id=208411658054-6f63qudpv6nafjq9qihbog8sgc4dht0e.apps.googleusercontent.com&approval_prompt=force" class="btn btn-lg btn-block omb_btn-google">
                              <i class="fa fa-google-plus visible-xs"></i>
                              <span class="hidden-xs">Google+</span>
                          </a>
                      </div>
                  </div>
-<%--                 <div class="col-xs-4 col-sm-2">--%>
-<%--                     <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code--%>
-<%--		&client_id=208411658054-6f63qudpv6nafjq9qihbog8sgc4dht0e.apps.googleusercontent.com&approval_prompt=force" class="btn btn-lg btn-block omb_btn-facebook">--%>
-<%--                         <i class="fa fa-facebook visible-xs"></i>--%>
-<%--                         <span class="hidden-xs">Facebook</span>--%>
-<%--                     </a>--%>
-<%--                 </div>--%>
-<%--                 <div class="col-xs-4 col-sm-2">--%>
-<%--                     <a href="#" class="btn btn-lg btn-block omb_btn-google">--%>
-<%--                         <i class="fa fa-google-plus visible-xs"></i>--%>
-<%--                         <span class="hidden-xs">Google+</span>--%>
-<%--                     </a>--%>
-<%--                 </div>--%>
-
-
-
 
                 <p class="alert alert-warning" >
-                    <a href="HomeController?action=register" class="btn btn-primary" style="right: -23px; position: relative;">Create New Account!</a>
+                    <a href="home?action=register" class="btn btn-primary" style="right: -23px; position: relative;">Create New Account!</a>
                 </p>
 
 
             </form>
         </div>
     </div>
-<%--    <%--%>
-<%--        if (request.getSession().getAttribute("userStatus") != null) {--%>
-<%--            System.out.println("its called");--%>
-<%--            if (request.getSession().getAttribute("userStatus").equals("-1")) {--%>
-<%--                System.out.println("now inside");--%>
-<%--    %>--%>
-<%--    <script>--%>
-<%--        alert("Invalid username or password")--%>
-<%--    </script>--%>
-<%--    <%--%>
-<%--            }--%>
-<%--        }--%>
-<%--    %>--%>
 
     <script>
         document.getElementById("login").addEventListener("click",()=> {
