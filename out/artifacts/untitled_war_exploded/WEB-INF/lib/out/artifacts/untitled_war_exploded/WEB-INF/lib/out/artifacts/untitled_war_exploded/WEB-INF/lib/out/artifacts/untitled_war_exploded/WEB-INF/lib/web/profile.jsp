@@ -41,10 +41,10 @@
                 <div class="profile " >
 
                     <span class="tag">Your Name</span>
-                        <span style="background-color: floralwhite"
-                            class="val"><%=user.getFirstName() + " " %><%=user.getLastName()%></span><br/>
-                        <span class="tag">Email</span><span style="background-color: floralwhite" class="val"><%=user.getEmail()%></span><br/>
-                        <span class="tag">Username</span><span style="background-color: floralwhite" class="val"><%=user.getUserName()%></span><br/>
+                    <span style="background-color: floralwhite"
+                          class="val"><%=user.getFirstName() + " " %><%=user.getLastName()%></span><br/>
+                    <span class="tag">Email</span><span style="background-color: floralwhite" class="val"><%=user.getEmail()%></span><br/>
+                    <span class="tag">Username</span><span style="background-color: floralwhite" class="val"><%=user.getUserName()%></span><br/>
                 </div>
                 <%
                     if (user.getType().equals("admin")) {

@@ -15,20 +15,7 @@
            }else{
                %>
 
-        <!-- SIDEBAR -->
-        <div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
-            <div class="sidebar-background">
-                <h2 class="logo-text">
-                    Online Examination System
-                </h2>
-                <div class="left-menu">
-                    <a class="active" href="std-page.jsp?pgprt=0"><h2>Profile</h2></a>
-                    <a href="std-page.jsp?pgprt=1"><h2>Exams</h2></a>
-                    <a href="paging?action=result"><h2>Results</h2></a>
-                </div>
-            </div>
 
-        </div>
         <!-- CONTENT AREA -->
         <div class="content-area">
             <div class="panel" style="float: left;max-width: 600px">
@@ -41,10 +28,10 @@
                 <div class="profile " >
 
                     <span class="tag">Your Name</span>
-                        <span style="background-color: floralwhite"
-                            class="val"><%=user.getFirstName() + " " %><%=user.getLastName()%></span><br/>
-                        <span class="tag">Email</span><span style="background-color: floralwhite" class="val"><%=user.getEmail()%></span><br/>
-                        <span class="tag">Username</span><span style="background-color: floralwhite" class="val"><%=user.getUserName()%></span><br/>
+                    <span style="background-color: floralwhite"
+                          class="val"><%=user.getFirstName() + " " %><%=user.getLastName()%></span><br/>
+                    <span class="tag">Email</span><span style="background-color: floralwhite" class="val"><%=user.getEmail()%></span><br/>
+                    <span class="tag">Username</span><span style="background-color: floralwhite" class="val"><%=user.getUserName()%></span><br/>
                 </div>
                 <%
                     if (user.getType().equals("admin")) {

@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@page import="Models.classes.User" %>
 <%@page import="java.util.ArrayList" %>
 <jsp:useBean id="pDAO" class="Models.DatabaseClass" scope="page"/>
@@ -14,7 +15,6 @@
            }else{
                %>
 
-        <!-- SIDEBAR -->
 
         <!-- CONTENT AREA -->
         <div class="content-area">
@@ -50,20 +50,20 @@
                 } else {
                 %>
 
-                <!-- Start of Edit Form --->
                 <div class="title">Edit Profile</div>
                 <div class="central-div form-style-6" style="position:inherit;margin-top: 70px;">
-                    <form action="user.action">
-                        <input type="hidden" name="page" value="profile">
-                        <input type="hidden" name="utype" value="<%=user.getType()%>">
+                    <form action=<%=session.getAttribute("type").equals("1") ? "updateProfileAdmin.action" :
+                    "updateProfileStudent.action"%> method="post">
+                        <input type="hidden" name="action" value="update">
+                        <input type="hidden" name="userId" value="<%=user.getUserId()%>">
+                        <input type="hidden" name="userName" value="<%=user.getUserName()%>">
                         <table>
-
                             <tr>
                                 <td>
                                     <label>First Name</label>
                                 </td>
                                 <td>
-                                    <input type="text" name="fname" value="<%=user.getFirstName() %>" class="text"
+                                    <input type="text" name="firstName" value="<%=user.getFirstName() %>" class="text"
                                            placeholder="First Name">
                                 </td>
                             </tr>
@@ -72,18 +72,8 @@
                                     <label>Last Name</label>
                                 </td>
                                 <td>
-                                    <input type="text" name="lname" value="<%=user.getLastName() %>" class="text"
+                                    <input type="text" name="lastName" value="<%=user.getLastName() %>" class="text"
                                            placeholder="Last Name">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <label>User Name</label>
-                                </td>
-                                <td>
-                                    <input type="text" name="uname" value="<%=user.getUserName() %>" class="text"
-                                           placeholder="User Name">
                                 </td>
                             </tr>
                             <tr>
@@ -91,6 +81,7 @@
                                     <label>Email</label>
                                 </td>
                                 <td>
+                                    <s:fielderror fieldName="emailValidation" style="color:red"></s:fielderror>
                                     <input type="email" name="email" value="<%=user.getEmail() %>" class="text"
                                            placeholder="Email">
                                 </td>
@@ -101,11 +92,10 @@
                                     <label>Password</label>
                                 </td>
                                 <td>
-                                    <input type="password" value="<%=user.getPassword() %>" name="pass" class="text"
+                                    <input type="password" value="<%=user.getPassword() %>" name="password" class="text"
                                            placeholder="Password">
                                 </td>
                             </tr>
-
                             <tr>
                                 <td>
                                 </td>

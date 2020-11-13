@@ -1,17 +1,25 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@page import="Models.classes.Answers"%>
-<%@page import="Models.classes.Exams"%>
-<%@page import="Models.classes.Questions"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="Models.classes.Answers" %>
+<%@page import="Models.classes.Exams" %>
+<%@page import="java.util.ArrayList" %>
+<%@ page import="Models.DatabaseClass" %>
 <jsp:useBean id="pDAO" class="Models.DatabaseClass" scope="page"/>
-<!-- SIDEBAR -->
+<%
+    int totalPage = new DatabaseClass().totalPageResult();
+    session.setAttribute("totalPageResult",totalPage);
+%>
+<style>
+    .panel {
+        margin-left: 260px!important;
+    }
+</style>
 
 <!-- CONTENT AREA -->
 <div class="content-area">
     <div class="panel" style="float: left;max-width: 900px">
-
         <%
-            if(request.getParameter("eid")==null){
+            if (request.getParameter("eId") == null) {
         %>
         <div class="title">All Results</div>
         <table id="rounded-corner">
@@ -26,54 +34,62 @@
             </thead>
 
             <tbody>
-
-            <%
-                ArrayList list=pDAO.getAllResultsFromExams(Integer.parseInt(session.getAttribute("userId").toString()));
-                for(int i=0;i<list.size();i++){
-                    Exams e=(Exams)list.get(i);
-            %>
-            <tr>
-                <td><%=e.getDate() %></td>
-                <td><%=e.getcName() %></td>
-                <td><%=e.getStartTime()+" - "+e.getEndTime()%></td>
-                <% if(e.getStatus()!=null){
-                    if(e.getStatus().equals("Pass")){%>
-                <td style="background: #00cc33;color:white"><%=e.getStatus()%></td>
-                <% }else{%>
-                <td style="background: #ff3333;color:white"><%=e.getStatus()%></td>
-                <% }
-                }else{%>
-                <td style="background: bisque ;">Terminated</td>
-                <% } %>
-                <td><a href="std-page.jsp?pgprt=2&eid=<%=e.getExamId()%>">Details</a></td>
-            </tr>
-
-            <% }
-            %>
+            <c:forEach items="${sessionScope.pagingItems}" var="item">
+                <tr>
+                    <td>${item.date}</td>
+                    <td>${item.cName}</td>
+                    <td>${item.startTime} - ${item.endTime}</td>
+                    <c:if test="${item.status.equals('Pass')}">
+                        <td style="background: #00cc33;color:white">${item.status}</td>
+                    </c:if>
+                    <c:if test="${item.status.equals('Fail')}">
+                        <td style="background: #ff3333;color:white">${item.status}</td>
+                    </c:if>
+                    <c:if test="${item.status == null}">
+                        <td style="background: bisque ;">Terminated</td>
+                    </c:if>
+                    <td><a href="std-page.jsp?pgprt=2&eId=${item.examId}">Details</a></td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
+        <nav aria-label="Page navigation example" style="margin-left: 2rem">
+            <ul class="pagination">
+                <c:forEach begin="1" end="${sessionScope.totalPageResult}" var="i">
+                    <c:if test="${sessionScope.index.equals(i)}">
+                        <li class="page-item active"><a class="page-link" href="paging.action?action=result&index=${i}">${i}</a></li>
+                    </c:if>
+                    <c:if test="${!sessionScope.index.equals(i)}">
+                        <li class="page-item"><a class="page-link" href="paging.action?action=result&index=${i}">${i}</a></li>
+                    </c:if>
+                </c:forEach>
+            </ul>
+        </nav>
+
         <%
-        }else{
+        } else {
         %>
         <div class="title">Result Details</div>
-        <table id="gradient-style" >
+        <table id="gradient-style">
 
             <%
-                ArrayList list=pDAO.getAllAnswersByExamId(Integer.parseInt(request.getParameter("eid")));
-                for(int i=0;i<list.size();i++){
-                    Answers a=(Answers) list.get(i);
+                ArrayList list = pDAO.getAllAnswersByExamId(Integer.parseInt(request.getParameter("eId")));
+                for (int i = 0; i < list.size(); i++) {
+                    Answers a = (Answers) list.get(i);
 
             %>
-
-
             <tr>
-                <td rowspan="2"><%=i+1 %>)</td>
-                <td colspan="2"><%=a.getQuestion()%></td>
-                <td rowspan="2"><%=a.getStatus() %></td>
+                <td rowspan="2"><%=i + 1 %>)</td>
+                <td colspan="2"><%=a.getQuestion()%>
+                </td>
+                <td rowspan="2"><%=a.getStatus() %>
+                </td>
             </tr>
-            <tr >
-                <td><%="Your Ans: "+a.getAnswer()%></td>
-                <td><%="Correct Ans: "+a.getCorrectAns() %></td>
+            <tr>
+                <td><%="Your Ans: " + a.getAnswer()%>
+                </td>
+                <td><%="Correct Ans: " + a.getCorrectAns() %>
+                </td>
             </tr>
             <tr>
                 <td colspan="3" style="background: white"></td>
@@ -81,7 +97,6 @@
                 }
                 %>
         </table>
-
         <%
             }
         %>
