@@ -33,8 +33,23 @@ public class HomeAction extends ActionSupport {
                 }
                 break;
             case "logout":
-                ActionContext.getContext().getSession().
-
+                ((org.apache.struts2.dispatcher.SessionMap)ActionContext.getContext().getSession()).invalidate();
+                returnText = "home";
+                break;
+            case "home":
+                returnText = "home";
+                break;
+            case "register":
+                returnText = "register";
+                break;
+            case "resetPassword":
+                returnText = "resetPassword";
+                break;
+            case "badRequest":
+                returnText = "badRequest";
+                break;
+            default:
+                return "home";
         }
         return returnText;
     }

@@ -50,11 +50,9 @@ public class LoginAction extends ActionSupport {
                 ActionContext.getContext().getSession().put("userStatus", "1");
                 ActionContext.getContext().getSession().put("userId",pDAO.getUserId(username));
                 ActionContext.getContext().getSession().put("name",username);
-//                response.sendRedirect("LoginController");
                 return "checkLogin";
             }else{
                 ActionContext.getContext().getSession().put("userStatus", "-1");
-//                response.sendRedirect("login.jsp");
                 return "login";
             }
         } catch (SQLException e) {

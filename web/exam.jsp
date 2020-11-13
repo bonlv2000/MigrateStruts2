@@ -28,7 +28,7 @@
         <div class="left-menu">
             <a href="std-page.jsp?pgprt=0"><h2>Profile</h2></a>
             <a class="active" href="std-page.jsp?pgprt=1"><h2>Exams</h2></a>
-            <a href="std-page.jsp?pgprt=2"><h2>Results</h2></a>
+            <a href="paging?action=result"><h2>Results</h2></a>
         </div>
     </div>
 
@@ -37,10 +37,7 @@
 <!-- CONTENT AREA -->
 <div class="content-area">
     <% if (session.getAttribute("examStarted") != null) { %>
-
     <% }%>
-
-
     <%
         if (session.getAttribute("examStarted") != null) {
             if (session.getAttribute("examStarted").equals("1")) {
@@ -50,7 +47,6 @@
         </span>
     <%
         int time = new DatabaseClass().getRemainingTime(Integer.parseInt(session.getAttribute("examId").toString()));
-        System.out.println(time);
     %>
     <script>
         let time,sec;
@@ -62,6 +58,8 @@
             window.localStorage.setItem("sec",sec);
             localStorage.setItem("examId",<%=session.getAttribute("examId").toString()%>)
         }
+
+
         else {
             time = window.localStorage.getItem("time");
             sec = window.localStorage.getItem("sec");
@@ -80,17 +78,30 @@
                 document.getElementById("remainingTime").innerHTML = "00 : 00";
                 document.getElementById("myform").submit();
             }
-            if (sec <= 0) {
+            if (sec < 0) {
                 sec = 59;
                 time--;
                 window.localStorage.setItem("time",time);
             }
             document.getElementById("remainingTime").innerHTML = time + " : " + sec;
         }
+        <c:if test="${sessionScope.examStarted!=null}">
+            window.onbeforeunload = function(e) {
+                <%session.setAttribute("examStarted",null);%>
+                return "Your test wil be failed";
+            }
+
+        </c:if>
+            function validate() {
+                if(!confirm("Do you really want to do this?")) {
+                    return false;
+                }
+                <%session.setAttribute("examStarted",null);%>
+                this.form.submit();
+            }
     </script>
 
-    <form id="myform" action="exam.action" method="post">
-
+    <form id="myform" onsubmit="return validate(this)" name="abc" action="exam.action" method="post">
         <%
             ArrayList<Questions> list = pDAO.getQuestions(request.getParameter("coursename"));
             Questions question;
@@ -102,7 +113,6 @@
             for (int i = 0; i < list.size(); i++) {
                 question = list.get(i);
         %>
-
         <center>
             <div class="question-panel">
                 <div class="question">
@@ -133,8 +143,9 @@
                        
                        %>
             <input type="hidden" name="action" value="submitted">
-            <input type="submit" class="add-btn" value="Done">
+            <input type="submit" class="add-btn" value="Finished"/>
     </form>
+
 
 
     <%

@@ -4,8 +4,6 @@
 <%@page import="java.util.ArrayList" %>
 <%@ page import="Models.classes.Courses" %>
 <%@ page import="Models.DatabaseClass" %>
-<%@ page import="com.opensymphony.xwork2.ActionContext" %>
-<%@ page import="java.util.Timer" %>
 <jsp:useBean id="pDAO" class="Models.DatabaseClass" scope="page"/>
 
 <style>
@@ -51,16 +49,20 @@
           style="position: fixed;top:90px;left: 300px;font-size: 23px;background: rgba(255,0,77,0.38);border-radius: 5px;padding: 10px;box-shadow: 2px -2px 6px 0px;">
         </span>
     <%
-        System.out.println(new DatabaseClass().getRemainingTime(Integer.parseInt(session.getAttribute("examId").toString())));
+        int time = new DatabaseClass().getRemainingTime(Integer.parseInt(session.getAttribute("examId").toString()));
     %>
     <script>
         let time,sec;
-        if(window.localStorage.getItem("time")==null) {
-            time = <%=new DatabaseClass().getRemainingTime(Integer.parseInt(session.getAttribute("examId").toString()))%>;
-            console.log(time)
-            sec = 60;
-            console.log(sec)
+        if(window.localStorage.getItem("time")==null || localStorage.getItem("examId")==null
+        || localStorage.getItem("examId")!=<%=session.getAttribute("examId").toString()%>) {
+            time = <%=time%>;
+            sec = 0;
+            window.localStorage.setItem("time",time);
+            window.localStorage.setItem("sec",sec);
+            localStorage.setItem("examId",<%=session.getAttribute("examId").toString()%>)
         }
+
+
         else {
             time = window.localStorage.getItem("time");
             sec = window.localStorage.getItem("sec");
@@ -79,17 +81,26 @@
                 document.getElementById("remainingTime").innerHTML = "00 : 00";
                 document.getElementById("myform").submit();
             }
-            document.getElementById("remainingTime").innerHTML = time + " : " + sec;
-            if (sec == 0) {
-                sec = 60;
+            if (sec <= 0) {
+                sec = 59;
                 time--;
                 window.localStorage.setItem("time",time);
             }
+            document.getElementById("remainingTime").innerHTML = time + " : " + sec;
         }
+            window.onbeforeunload = function(e) {
+                <%session.setAttribute("examStarted",null);%>
+                <c:if test="${sessionScope.examStarted==null}">
+                    return null;
+                </c:if>
+                <c:if test="${sessionScope.examStarted!=null}">
+                    return "Your test wil be failed";
+                </c:if>
+            }
+
     </script>
 
-    <form id="myform" action="exam.action" method="post">
-
+    <form id="myform" name="abc" action="exam.action" method="post">
         <%
             ArrayList<Questions> list = pDAO.getQuestions(request.getParameter("coursename"));
             Questions question;
@@ -97,13 +108,10 @@
         <input type="hidden" name="size" value="<%=list.size()%>">
         <input type="hidden" name="totalmarks"
                value="<%=pDAO.getTotalMarksByCode(request.getParameter("coursename"))%>">
-
         <%
             for (int i = 0; i < list.size(); i++) {
-                question = (Questions) list.get(i);
+                question = list.get(i);
         %>
-
-
         <center>
             <div class="question-panel">
                 <div class="question">
@@ -134,15 +142,16 @@
                        
                        %>
             <input type="hidden" name="action" value="submitted">
-            <input type="submit" class="add-btn" value="Done">
+            <button class="add-btn" >Submit Exam ></button>
     </form>
+
 
 
     <%
         }
     } else if (request.getParameter("showresult") != null) {
         if (request.getParameter("showresult").equals("1")) {
-            Exams result = new DatabaseClass().getResultByExamId(Integer.parseInt(request.getParameter("eid")));
+            Exams result = new DatabaseClass().getResultByExamId(Integer.parseInt(request.getParameter("eId")));
     %>
     <div class="panel" style="float: left;max-width: 900px">
         <div class="title">Result of Recent Exam</div>

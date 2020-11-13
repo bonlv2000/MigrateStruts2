@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -63,6 +65,7 @@
 </head>
 <body>
 
+
 <div class="fh5co-loader"></div>
 
 <div id="page">
@@ -85,13 +88,26 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-1">
-            <div id="fh5co-logo"><a href="index.html">Learn<span>.</span></a></div>
+            <div id="fh5co-logo"><a href="index.jsp">Learn<span>.</span></a></div>
           </div>
           <div class="col-xs-11 text-right menu-1">
             <ul>
               <li class="active"><a href="index.html">Home</a></li>
               <li><a href="contactus.jsp">Contact</a></li>
-              <li class="btn-cta" ><a href="HomeController?action=login" ><span style="font-size: 120%!important;padding: 4px 4rem!important;">Login</span></a></li>
+              <c:if test="${sessionScope.name!=null}">
+                <c:if test="${sessionScope.type.equals('1')}">
+                  <li class="btn-cta" ><a href="loginGet" ><span style="font-size: 120%!important;padding: 4px 4rem!important;">Admin Panel</span></a></li>
+                </c:if>
+
+                <c:if test="${sessionScope.type.equals('0')}">
+                  <li class="btn-cta" ><a href="loginGet" ><span style="font-size: 120%!important;padding: 4px 4rem!important;">Student Panel</span></a></li>
+                </c:if>
+              </c:if>
+
+              <c:if test="${sessionScope.name==null}">
+                <li class="btn-cta" ><a href="home?action=login" ><span style="font-size: 120%!important;padding: 4px 4rem!important;">Login</span></a></li>
+              </c:if>
+
             </ul>
           </div>
         </div>

@@ -3,7 +3,9 @@ package Actions;
 import Models.DatabaseClass;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.time.LocalTime;
 
@@ -104,16 +106,19 @@ public class ExamAction extends ActionSupport {
         try{
             String time= LocalTime.now().toString();
             int size=Integer.parseInt(this.size);
-            int eId=Integer.parseInt(ActionContext.getContext().getSession().get("examId").toString().trim());
+            int examId=Integer.parseInt(ActionContext.getContext().getSession().get("examId").toString());
             int tMarks=Integer.parseInt(totalmarks);
+            seteId(examId+"");
             ActionContext.getContext().getSession().remove("examId");
             ActionContext.getContext().getSession().remove("examStarted");
+            HttpServletRequest request = ServletActionContext.getRequest();
             for(int i=0;i<size;i++){
-                db.insertAnswer(eId,Integer.parseInt(qid.trim()+i),question+i,ans+i);
+                String question=request.getParameter("question"+i);
+                String ans=request.getParameter("ans"+i) == null ? "Not Answer" :request.getParameter("ans"+i) ;
+                int qid=Integer.parseInt(request.getParameter("qid"+i));
+                db.insertAnswer(examId,qid,question,ans);
             }
-            this.eId = eId+"";
-            db.calculateResult(eId,tMarks,time,size);
-
+            db.calculateResult(examId,tMarks,time,size);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -121,7 +126,6 @@ public class ExamAction extends ActionSupport {
 
     private void startExam() {
         int userId=Integer.parseInt(ActionContext.getContext().getSession().get("userId").toString());
-
         int examId=db.startExam(coursename,userId);
         ActionContext.getContext().getSession().put("examId",examId);
         ActionContext.getContext().getSession().put("examStarted","1");

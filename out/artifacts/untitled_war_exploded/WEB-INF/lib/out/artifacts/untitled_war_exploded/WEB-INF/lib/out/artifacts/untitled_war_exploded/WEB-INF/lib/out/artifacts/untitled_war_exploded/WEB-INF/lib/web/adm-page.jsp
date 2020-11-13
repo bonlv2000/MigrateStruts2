@@ -136,7 +136,7 @@
 <!--sidebar start-->
 <div class="sidebar" style="margin-top: 80px">
     <div class="profile_info">
-        <h4><%=session.getAttribute("userName")%></h4>
+        <h4><%=session.getAttribute("name")%></h4>
     </div>
     <a href="adm-page.jsp?pgprt=0"><i class="fas fa-id-card-alt"></i><span>Profile</span></a>
     <a href="adm-page.jsp?pgprt=2"><i class="fas fa-book"></i><span>Courses</span></a>
@@ -144,6 +144,9 @@
     <a href="adm-page.jsp?pgprt=1"><i class="fas fa-users"></i><span>Accounts</span></a>
 </div>
 <!--sidebar end-->
+<script>
+
+</script>
 
 <div class="content" style="background-color: ghostwhite">
     <%

@@ -16,6 +16,15 @@ import java.util.Random;
 public class UserAction extends ActionSupport {
     private String action="",userId="",firstName="",lastName="",email="",password="",userName="";
     private DatabaseClass db = new DatabaseClass();
+    private String index;
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
+    }
 
     public String getUserName() {
         return userName;
@@ -80,18 +89,23 @@ public class UserAction extends ActionSupport {
     public void validate() {
         if(action==null)
             return;
-        if(action.equals("register") || action.equals("update")) {
+        if(action.equals("register")) {
             try {
                 if(db.isGmailExist(email)) {
-                    addFieldError("email","Your email has already exist, must be unique!");
+                    addFieldError("email","Email has already exist, must be unique!");
                 }
-                if(action.equals("register")) {
                     if(db.getAllUsers().stream().anyMatch(s ->s.getUserName().equals(userName))) {
-                        addFieldError("userName","Your username has already exist, must be unique!");
+                        addFieldError("userName","Username has already exist, must be unique!");
                     }
-                }
-            } catch (SQLException e) {
+
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
+            }
+        }else if(action.equals("update")) {
+            if(db.getAllUsers().stream().anyMatch(s -> !s.getUserName().equals(userName)
+                    && s.getEmail().equals(email))) {
+                addFieldError("emailValidation","Email has already exist, must be unique!");
+                ActionContext.getContext().getSession().put("isUpdate",1);
             }
         }
     }
@@ -107,6 +121,9 @@ public class UserAction extends ActionSupport {
                 result = "resetPage";
                 break;
             case "updateGet":
+                if(ActionContext.getContext().getSession().get("index")!=null) {
+                    this.index = ActionContext.getContext().getSession().get("index").toString();
+                }
                 updateGet();
                 result = "updatePage";
                 break;
@@ -115,10 +132,13 @@ public class UserAction extends ActionSupport {
                 result = "redirectToReset";
                 break;
             case "update":
+                this.index = ActionContext.getContext().getSession().get("index").toString();
                 update();
                 result = "updatePage";
                 break;
             case "delete":
+                db.delUser(Integer.parseInt(userId));
+                result="updatePage";
                 break;
             case "register":
                 try {

@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -92,7 +94,20 @@
             <ul>
               <li class="active"><a href="index.html">Home</a></li>
               <li><a href="contactus.jsp">Contact</a></li>
-              <li class="btn-cta" ><a href="home?action=login" ><span style="font-size: 120%!important;padding: 4px 4rem!important;">Login</span></a></li>
+              <c:if test="${sessionScope.name!=null}">
+                <c:if test="${sessionScope.type.equals('1')}">
+                  <li class="btn-cta" ><a href="loginGet" ><span style="font-size: 120%!important;padding: 4px 4rem!important;">Admin Panel</span></a></li>
+                </c:if>
+
+                <c:if test="${sessionScope.type.equals('0')}">
+                  <li class="btn-cta" ><a href="loginGet" ><span style="font-size: 120%!important;padding: 4px 4rem!important;">Student Panel</span></a></li>
+                </c:if>
+              </c:if>
+
+              <c:if test="${sessionScope.name==null}">
+                <li class="btn-cta" ><a href="home?action=login" ><span style="font-size: 120%!important;padding: 4px 4rem!important;">Login</span></a></li>
+              </c:if>
+
             </ul>
           </div>
         </div>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@page import="Models.classes.User" %>
 <%@page import="java.util.ArrayList" %>
 <jsp:useBean id="pDAO" class="Models.DatabaseClass" scope="page"/>
@@ -6,22 +7,6 @@
     User user = pDAO.getUserDetails(session.getAttribute("userId").toString());
     if (user.getType().endsWith("admin")) {
 %>
-<!-- SIDEBAR -->
-<%--<div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">--%>
-<%--    <div class="sidebar-background">--%>
-<%--        <h2 class="logo-text">--%>
-<%--            Online Examination System--%>
-<%--        </h2>--%>
-
-<%--        <div class="left-menu">--%>
-<%--            <a class="active" href="adm-page.jsp?pgprt=0"><h2>Profile</h2></a>--%>
-<%--            <a href="adm-page.jsp?pgprt=2"><h2>Courses</h2></a>--%>
-<%--            <a href="adm-page.jsp?pgprt=3"><h2>Questions</h2></a>--%>
-<%--            <a href="adm-page.jsp?pgprt=1"><h2>Accounts</h2></a>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-<!-- CONTENT AREA -->
 <div class="content-area">
     <div class="panel" style="float: left;max-width: 600px">
 
@@ -39,7 +24,7 @@
                 <div class="left-menu">
                     <a class="active" href="std-page.jsp?pgprt=0"><h2>Profile</h2></a>
                     <a href="std-page.jsp?pgprt=1"><h2>Exams</h2></a>
-                    <a href="std-page.jsp?pgprt=2"><h2>Results</h2></a>
+                    <a href="paging?action=result"><h2>Results</h2></a>
                 </div>
             </div>
 
@@ -53,13 +38,13 @@
                 %>
                 <div class="title">Profile</div>
                 <h2 style="padding-left: 131px">Your information</h2>
-                <div class="profile " style="background-color: wheat">
+                <div class="profile " >
 
                     <span class="tag">Your Name</span>
-                        <span
+                        <span style="background-color: floralwhite"
                             class="val"><%=user.getFirstName() + " " %><%=user.getLastName()%></span><br/>
-                        <span class="tag">Email</span><span class="val"><%=user.getEmail()%></span><br/>
-                        <span class="tag">Username</span><span class="val"><%=user.getUserName()%></span><br/>
+                        <span class="tag">Email</span><span style="background-color: floralwhite" class="val"><%=user.getEmail()%></span><br/>
+                        <span class="tag">Username</span><span style="background-color: floralwhite" class="val"><%=user.getUserName()%></span><br/>
                 </div>
                 <%
                     if (user.getType().equals("admin")) {
@@ -78,20 +63,20 @@
                 } else {
                 %>
 
-                <!-- Start of Edit Form --->
                 <div class="title">Edit Profile</div>
                 <div class="central-div form-style-6" style="position:inherit;margin-top: 70px;">
-                    <form action="UserController">
-                        <input type="hidden" name="page" value="profile">
-                        <input type="hidden" name="utype" value="<%=user.getType()%>">
+                    <form action=<%=session.getAttribute("type").equals("1") ? "updateProfileAdmin.action" :
+                    "updateProfileStudent.action"%> method="post">
+                        <input type="hidden" name="action" value="update">
+                        <input type="hidden" name="userId" value="<%=user.getUserId()%>">
+                        <input type="hidden" name="userName" value="<%=user.getUserName()%>">
                         <table>
-
                             <tr>
                                 <td>
                                     <label>First Name</label>
                                 </td>
                                 <td>
-                                    <input type="text" name="fname" value="<%=user.getFirstName() %>" class="text"
+                                    <input type="text" name="firstName" value="<%=user.getFirstName() %>" class="text"
                                            placeholder="First Name">
                                 </td>
                             </tr>
@@ -100,18 +85,8 @@
                                     <label>Last Name</label>
                                 </td>
                                 <td>
-                                    <input type="text" name="lname" value="<%=user.getLastName() %>" class="text"
+                                    <input type="text" name="lastName" value="<%=user.getLastName() %>" class="text"
                                            placeholder="Last Name">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <label>User Name</label>
-                                </td>
-                                <td>
-                                    <input type="text" name="uname" value="<%=user.getUserName() %>" class="text"
-                                           placeholder="User Name">
                                 </td>
                             </tr>
                             <tr>
@@ -119,6 +94,7 @@
                                     <label>Email</label>
                                 </td>
                                 <td>
+                                    <s:fielderror fieldName="emailValidation" style="color:red"></s:fielderror>
                                     <input type="email" name="email" value="<%=user.getEmail() %>" class="text"
                                            placeholder="Email">
                                 </td>
@@ -129,35 +105,8 @@
                                     <label>Password</label>
                                 </td>
                                 <td>
-                                    <input type="password" value="<%=user.getPassword() %>" name="pass" class="text"
+                                    <input type="password" value="<%=user.getPassword() %>" name="password" class="text"
                                            placeholder="Password">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Contact No</label>
-                                </td>
-                                <td>
-                                    <input type="text" name="contactno" value="<%=user.getContact() %>" class="text"
-                                           placeholder="Contact No">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>City</label>
-                                </td>
-                                <td>
-                                    <input type="text" name="city" value="<%=user.getCity() %>" class="text"
-                                           placeholder="City">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Address</label>
-                                </td>
-                                <td>
-                                    <input type="text" name="address" value="<%=user.getAddress() %>" class="text"
-                                           placeholder="Address">
                                 </td>
                             </tr>
                             <tr>

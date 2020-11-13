@@ -1,33 +1,21 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="myPackage.classes.Questions" %>
+<%@ page import="Models.classes.Questions" %>
+<%@ page import="Models.DatabaseClass" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="pDAO" class="myPackage.DatabaseClass"/>
+<jsp:useBean id="pDAO" class="Models.DatabaseClass"/>
 
-
-<!-- SIDEBAR -->
-<div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
-    <div class="sidebar-background">
-        <h2 class="logo-text">
-            Online Examination System
-        </h2>
-
-        <div class="left-menu">
-            <a href="adm-page.jsp?pgprt=0"><h2>Profile</h2></a>
-            <a href="adm-page.jsp?pgprt=2"><h2>Courses</h2></a>
-            <a class="active" href="adm-page.jsp?pgprt=3"><h2>Questions</h2></a>
-            <a href="adm-page.jsp?pgprt=1"><h2>Accounts</h2></a>
-        </div>
-    </div>
+<div style="padding: 1rem">
+    <i class="fas fa-arrow-circle-left" style="color: green;font-size: 2rem;">Go Back</i>
 </div>
-<!-- CONTENT AREA -->
-<%
-    ArrayList<Questions> questions = pDAO.getQuestions(request.getParameter("coursename"));
-    session.setAttribute("questions",questions);
-%>
 <div class="content-area">
+    <%
+        int totalPageResult = new DatabaseClass().totalQuestionByCourseCode(request.getParameter("coursename"));
+        session.setAttribute("courseName",request.getParameter("coursename"));
+        session.setAttribute("totalPageResult",totalPageResult);
+    %>
     <center>
-        <c:if test="${sessionScope.questions.size()>0}">
-            <c:forEach items="${sessionScope.questions}" var="item">
+        <c:if test="${sessionScope.pagingItems.size()>0 or sessionScope.pagingItems!=null}">
+            <c:forEach items="${sessionScope.pagingItems}" var="item">
                 <div class="question-panel">
                     <div class="question">
                         ${item.question}
@@ -49,9 +37,21 @@
                     </div>
                 </div>
             </c:forEach>
+            <nav aria-label="Page navigation example" style="margin:1rem 45%">
+                <ul class="pagination" style="padding: 1rem">
+                    <c:forEach begin="1" end="${sessionScope.totalPageResult}" var="i">
+                        <c:if test="${sessionScope.index.equals(i)}">
+                            <li class="page-item active"><a class="page-link" href="paging.action?action=question&coursename=<%=request.getParameter("coursename")%>&index=${i}>">${i}</a></li>
+                        </c:if>
+                        <c:if test="${!sessionScope.index.equals(i)}">
+                            <li class="page-item"><a class="page-link" href="paging.action?action=question&index=${i}&coursename=<%=request.getParameter("coursename")%>">${i}</a></li>
+                        </c:if>
+                    </c:forEach>
+                </ul>
+            </nav>
         </c:if>
-        <c:if test="${sessionScope.questions.size()==0}">
-            <h3>This course don't have any question</h3>
+        <c:if test="${sessionScope.pagingItems.size()==0 or sessionScope.pagingItems==null}">
+            <h3 style="text-align: center">This course doesn't have any question</h3>
         </c:if>
     </center>
 </div>

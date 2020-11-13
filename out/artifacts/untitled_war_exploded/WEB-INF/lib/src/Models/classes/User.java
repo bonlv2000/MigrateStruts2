@@ -4,7 +4,7 @@ package Models.classes;
 
 public class User {
    private int userId;
-   private String firstName,lastName,userName,email,password,type,contact,city,address,isGmail;
+   private String firstName,lastName,userName,email,password,type,isGmail;
 
    public User(){
        
@@ -15,7 +15,7 @@ public class User {
         this.email = email;
     }
 
-    public User(int userId, String firstName, String lastName, String userName, String email, String password, String type, String contact, String city, String address) {
+    public User(int userId, String firstName, String lastName, String userName, String email, String password, String type) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -23,12 +23,9 @@ public class User {
         this.email = email;
         this.password = password;
         this.type = type;
-        this.contact = contact;
-        this.city = city;
-        this.address = address;
     }
 
-    public User(int userId, String firstName, String lastName, String userName, String email, String password, String type, String contact, String city, String address,String isGmail) {
+    public User(int userId, String firstName, String lastName, String userName, String email, String password, String type,String isGmail) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -36,9 +33,6 @@ public class User {
         this.email = email;
         this.password = password;
         this.type = type;
-        this.contact = contact;
-        this.city = city;
-        this.address = address;
         this.isGmail = isGmail;
     }
 
@@ -104,29 +98,7 @@ public class User {
         this.type = type;
     }
 
-    public String getContact() {
-        return contact;
-    }
 
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public String getIsGmail() {
         return isGmail;

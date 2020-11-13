@@ -45,6 +45,9 @@ public class HomeAction extends ActionSupport {
             case "resetPassword":
                 returnText = "resetPassword";
                 break;
+            case "badRequest":
+                returnText = "badRequest";
+                break;
             default:
                 return "home";
         }

@@ -4,11 +4,11 @@
 <%@ page import="Models.DatabaseClass" %>
 
     <div class="panel form-style-6" style="min-width: 300px;max-width: 390px">
-        <form action="adm-page.jsp">
+        <form action="paging.action" method="get">
             <div class="title">Show All Questions for</div>
             <br><br>
             <label>Select Course</label>
-            <input type="hidden" name="pgprt" value="4">
+            <input type="hidden" name="action" value="question">
             <select name="coursename" class="text">
                 <%
                     ArrayList<Courses> list1 = new DatabaseClass().getAllCourses();

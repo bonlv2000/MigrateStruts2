@@ -7,7 +7,7 @@
 <struts>
     <package name="default" extends="struts-default">
 
-        
+
         <global-results>
             <result>index.jsp</result>
         </global-results>
@@ -36,6 +36,7 @@
             <result name="home">index.jsp</result>
             <result name="admin">adm-page.jsp?pgprt=0</result>
             <result name="student">std-page.jsp?pgprt=0</result>
+            <result name="badRequest">badRequest.jsp</result>
         </action>
 
         <action name="course" class="Actions.CourseAction" method="execute">
@@ -79,14 +80,15 @@
                 <param name="location">home?action=home</param>
             </result>
             <result name="resetPage">resetPassword.jsp</result>
-            <result name="updatePage">adm-page.jsp?pgprt=1</result>
+            <result name="updatePage" type="redirectAction">
+                <param name="location">paging?action=account</param>
+            </result>
             <result type="redirect" name="redirectToReset">
                 <param name="location">user?action=resetGet</param>
                 <param name="email">${email}</param>
             </result>
             <result name="input">
                 Register.jsp
-
             </result>
             <result name="success">success.jsp</result>
         </action>
@@ -95,12 +97,36 @@
             <result name="home" type="redirectAction">
                 <param name="location">home?action=home</param>
             </result>
-            <result name="updatePage">adm-page.jsp?pgprt=1</result>
-            <result name="input" type="redirect">
-                <param name="location">user?action=update</param>
-                <param name="userId">${userId}</param>
-                <param name="fieldErrors">${fieldErrors}</param>
+            <result name="updatePage" type="redirect">
+                <param name="location">paging?action=account</param>
+                <param name="index">${index}</param>
             </result>
+            <result name="input">adm-page.jsp?pgprt=1</result>
+        </action>
+
+        <action name="paging" class="Actions.PagingAction" method="execute">
+            <result name="result">std-page.jsp?pgprt=2</result>
+            <result name="account">adm-page.jsp?pgprt=1</result>
+            <result name="question">
+                <param name="location">adm-page.jsp?pgprt=4</param>
+                <param name="coursename">${coursename}</param>
+            </result>
+            <result name="badRequest" type="redirectAction">home?action=badRequest</result>
+        </action>
+        <action name="updateProfileAdmin" class="Actions.UserAction" method="execute">
+            <result name="home" type="redirectAction">
+                <param name="location">home?action=home</param>
+            </result>
+            <result name="updatePage">adm-page.jsp?pgprt=0&amp;pedt=1</result>
+            <result name="input">adm-page.jsp?pgprt=0&amp;pedt=1</result>
+        </action>
+
+        <action name="updateProfileStudent" class="Actions.UserAction" method="execute">
+            <result name="home" type="redirectAction">
+                <param name="location">home?action=home</param>
+            </result>
+            <result name="updatePage">std-page.jsp?pgprt=0&amp;pedt=1</result>
+            <result name="input">std-page.jsp?pgprt=0&amp;pedt=1</result>
         </action>
     </package>
 </struts>
