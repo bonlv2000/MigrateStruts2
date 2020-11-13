@@ -5,7 +5,7 @@
 <jsp:useBean id="pDAO" class="Models.DatabaseClass"/>
 
 <div style="padding: 1rem">
-    <i class="fas fa-arrow-circle-left" style="color: green;font-size: 2rem;">Go Back</i>
+    <a href="adm-page.jsp?pgprt=3"><i class="fas fa-arrow-circle-left" style="color: #80350e;font-size: 2rem;">Go Back</i></a>
 </div>
 <div class="content-area">
     <%
