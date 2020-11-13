@@ -83,8 +83,6 @@ public class UserController extends HttpServlet {
                 request.getSession().setAttribute("email",request.getParameter("email"));
                 request.getRequestDispatcher("resetPassword.jsp").forward(request,response);
                 break;
-//            case "test":
-//                request.s
             case "update":
                 User user = pDAO.getUserDetails(request.getParameter("userId"));
                 request.getSession().setAttribute("isUpdate",1);

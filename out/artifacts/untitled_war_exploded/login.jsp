@@ -137,23 +137,23 @@
                     </a>
 
                 </div>
-                 <h3 class="omb_authTitle" style="text-align: center; margin-top: 1rem">Login or Sign up with</h3>
-                 <div class="row omb_row-sm-offset-3 omb_socialButtons" style="margin: 1rem auto">
-                     <div class="col-5" >
-                         <a href="https://www.facebook.com/dialog/oauth?client_id=1029406370872772&redirect_uri=http://localhost:8080/loginFacebook" class="btn btn-lg btn-block omb_btn-facebook">
-                             <i class="fa fa-facebook visible-xs"></i>
-                             <span class="hidden-xs">Facebook</span>
-                         </a>
-                     </div>
+                <h3 class="omb_authTitle" style="text-align: center; margin-top: 1rem;">Login or Sign up with</h3>
+                <div class="row omb_row-sm-offset-3 omb_socialButtons" style="margin: 1rem auto">
+                    <div class="col-5" style="position: relative;left: -42px;">
+                        <a href="https://www.facebook.com/dialog/oauth?client_id=1029406370872772&redirect_uri=http://localhost:8080/login-facebook" style="position: relative;right: 74px;" class="btn btn-lg btn-block omb_btn-facebook">
+                            <i style="position: relative;left: 36px;top: 1px;color: white;" class="fa fa-facebook visible-xs"></i>
+                            <span style="width: 150px;padding-left: 23px;" class="btn btn-primary">Facebook</span>
+                        </a>
+                    </div>
 
-                     <div class="col-5">
-                         <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/loginGoogle&response_type=code
+                    <div class="col-5" style="position: relative;left: 104px;bottom: 56px;">
+                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/loginGoogle&response_type=code
 		&client_id=208411658054-6f63qudpv6nafjq9qihbog8sgc4dht0e.apps.googleusercontent.com&approval_prompt=force" class="btn btn-lg btn-block omb_btn-google">
-                             <i class="fa fa-google-plus visible-xs"></i>
-                             <span class="hidden-xs">Google+</span>
-                         </a>
-                     </div>
-                 </div>
+                            <i style="position: relative;left: 58px;top: 1px;color: white;" class="fa fa-google-plus visible-xs"></i>
+                            <span style="width: 150px;padding-left: 48px;" class="btn btn-danger">Google+</span>
+                        </a>
+                    </div>
+                </div>
 
                 <p class="alert alert-warning" >
                     <a href="home?action=register" class="btn btn-primary" style="right: -23px; position: relative;">Create New Account!</a>

@@ -28,7 +28,7 @@
          String dbURL = "jdbc:sqlserver://localhost:1433;"
                  + "databaseName=ExaminationOnline;";
          String userName = "sa";
-         String password = "hoaibao0806";
+         String password = "maiyeuem123";
 
          try {
              Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -709,12 +709,13 @@
          }
      }
 
-     public int totalPageAccount() {
+     public int totalPageAccount(String queryString) {
          int total = 0;
          String query = "select count(*)\n"
-                 + "from users where user_type = 'student'";
+                 + "from users where user_type = 'student' and user_name like ?";
          try {
              PreparedStatement ps = conn.prepareStatement(query);
+             ps.setString(1,"%"+queryString+"%");
              ResultSet rs = ps.executeQuery();
              while (rs.next()) {
                  int totalA = rs.getInt(1);
@@ -726,19 +727,42 @@
          } catch (Exception e) {
          }
          return total;
+     }
+
+     public ArrayList<User> pagingAccount(int index,String queryString) {
+         String query = "select * from users where user_type = ? and user_name like ? " +
+                 "order by user_id  OFFSET ? ROWS  FETCH NEXT 3 ROWS ONLY";
+
+         ArrayList<User> list = new ArrayList<>();
+         try {
+             PreparedStatement ps = conn.prepareStatement(query);
+             ps.setString(1,"student");
+             ps.setString(2,"%"+queryString+"%");
+             ps.setInt(3, (index-1)*3);
+             ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                 list.add(new User(rs.getInt(1), rs.getString(2),
+                         rs.getString(3), rs.getString(4),
+                         rs.getString(5), rs.getString(6), rs.getString(7)));
+             }
+             return list;
+         } catch (Exception e) {
+         }
+         return list;
      }
 
      public int totalQuestionByCourseCode(String courseCode) {
          int total = 0;
          String query = "select count(*)\n"
-                 + "from users where ";
+                 + "from questions where course_id=?";
          try {
              PreparedStatement ps = conn.prepareStatement(query);
+             ps.setString(1,courseCode);
              ResultSet rs = ps.executeQuery();
              while (rs.next()) {
                  int totalA = rs.getInt(1);
-                 total = totalA / 3;
-                 if (totalA % 3 != 0) {
+                 total = totalA / 4;
+                 if (totalA % 4 != 0) {
                      total++;
                  }
              }
@@ -747,7 +771,24 @@
          return total;
      }
 
-
+     public ArrayList<Exams> pagingResult(int index) {
+         String query = "select * from exams order by exam_id  OFFSET ? ROWS  FETCH NEXT 7 ROWS ONLY";
+         ArrayList<Exams> list = new ArrayList<>();
+         try {
+             PreparedStatement ps = conn.prepareStatement(query);
+             ps.setInt(1, (index-1)*7);
+             ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                 list.add(new Exams(rs.getInt(1),rs.getString(2),rs.getString(3),
+                         rs.getString(4),rs.getString(5),rs.getString(6),
+                         rs.getString(7),rs.getString(8),rs.getString(9),
+                         rs.getInt(10)));
+             }
+             return list;
+         } catch (Exception e) {
+         }
+         return list;
+     }
 
      public int totalPageResult() {
          int total = 0;
@@ -767,46 +808,29 @@
          }
          return total;
      }
-     public ArrayList<Exams> pagingResult(int index) {
-         String query = "select * from exams order by exam_id  OFFSET ? ROWS  FETCH NEXT 7 ROWS ONLY";
-         ArrayList<Exams> list = new ArrayList<>();
+     public ArrayList<Questions> pagingQuestion(int index,String cCode) {
+         String query = "select * from questions where course_id = ? order by question_id  OFFSET ? ROWS  FETCH NEXT 4 ROWS ONLY";
+         ArrayList<Questions> list = new ArrayList<>();
          try {
              PreparedStatement ps = conn.prepareStatement(query);
-             ps.setInt(1, (index-1)*7);
+             ps.setString(1,cCode);
+             ps.setInt(2, (index-1)*4);
              ResultSet rs = ps.executeQuery();
              while (rs.next()) {
-                 list.add(new Exams(rs.getInt(1),rs.getString(2),rs.getString(3),
-                         rs.getString(4),rs.getString(5),rs.getString(6),
-                         rs.getString(7),rs.getString(8),rs.getString(9),
-                         rs.getInt(10)));
+                 list.add(new Questions(
+                         rs.getInt(1), rs.getString(3),
+                         rs.getString(4), rs.getString(5),
+                         rs.getString(6), rs.getString(7),
+                         rs.getString(8), rs.getString(2)));
              }
              return list;
          } catch (Exception e) {
          }
-         return null;
+         return list;
      }
 
-     public ArrayList<User> pagingAccount(int index) {
-         String query = "select * from users where user_type = ? order by user_id  OFFSET ? ROWS  FETCH NEXT 3 ROWS ONLY";
-
-         ArrayList<User> list = new ArrayList<>();
-         try {
-             PreparedStatement ps = conn.prepareStatement(query);
-             ps.setString(1,"student");
-             ps.setInt(2, (index-1)*3);
-             ResultSet rs = ps.executeQuery();
-             while (rs.next()) {
-                 list.add(new User(rs.getInt(1), rs.getString(2),
-                         rs.getString(3), rs.getString(4),
-                         rs.getString(5), rs.getString(6), rs.getString(7)));
-             }
-             return list;
-         } catch (Exception e) {
-         }
-         return null;
-     }
      public static void main(String[] args) throws SQLException, ClassNotFoundException {
-         System.out.println(new DatabaseClass().totalPageAccount());
+         System.out.println(new DatabaseClass().totalPageAccount("@"));
      }
 
  }

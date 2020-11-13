@@ -1,24 +1,8 @@
 <%@page import="java.util.ArrayList" %>
-<%@ page import="myPackage.classes.Courses" %>
-<jsp:useBean id="pDAO" class="myPackage.DatabaseClass" scope="page"/>
+<%@ page import="Models.classes.Courses" %>
+<jsp:useBean id="pDAO" class="Models.DatabaseClass" scope="page"/>
 
-<!-- SIDEBAR -->
-<div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
-    <div class="sidebar-background">
-        <h2 class="logo-text">
-            Online Examination System
-        </h2>
 
-        <div class="left-menu">
-            <a href="adm-page.jsp?pgprt=0"><h2>Profile</h2></a>
-            <a class="active" href="adm-page.jsp?pgprt=2"><h2>Courses</h2></a>
-            <a href="adm-page.jsp?pgprt=3"><h2>Questions</h2></a>
-            <a href="adm-page.jsp?pgprt=1"><h2>Accounts</h2></a>
-        </div>
-    </div>
-</div>
-<!-- CONTENT AREA -->
-<div class="content-area" style="display: flex">
 
     <div class="panel" style="max-width: 420px;float:right">
         <div class="title">
@@ -48,7 +32,7 @@
                 </td>
                 <td><%=list.get(i).gettMarks()%>
                 </td>
-                <td><a href="CourseController?action=delete&cCode=<%=list.get(i).getcCode()%>"
+                <td><a href="course?action=delete&courseCode=<%=list.get(i).getcCode()%>"
                        onclick="return confirm('Are you sure you want to delete this ?');" class="del">
                     <div class="delete-btn" style="max-width: 40px;font-size: 17px; padding: 3px">X</div>
                 </a></td>
@@ -63,7 +47,7 @@
             Add New Course
         </div>
         <center>
-            <form action="CourseController" method="post">
+            <form action="course.action" method="post">
                 <br>
                 <table>
                     <tr>
@@ -100,5 +84,5 @@
         </center>
 
     </div>
-</div>
+
                        

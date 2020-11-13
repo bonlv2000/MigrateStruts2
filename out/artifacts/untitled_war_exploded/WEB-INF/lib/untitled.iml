@@ -46,6 +46,7 @@
     <orderEntry type="library" name="fluent-hc-4.5.5" level="project" />
     <orderEntry type="library" name="commons-logging-1.2" level="project" />
     <orderEntry type="library" name="fluent-hc-4.5.51" level="application" />
+    <orderEntry type="library" name="restfb-2.3.0" level="project" />
     <orderEntry type="library" name="struts2-core-2.5.25" level="project" />
   </component>
 </module>

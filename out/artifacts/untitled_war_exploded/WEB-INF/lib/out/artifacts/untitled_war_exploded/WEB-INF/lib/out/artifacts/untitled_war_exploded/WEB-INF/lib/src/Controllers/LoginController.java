@@ -1,7 +1,7 @@
 package Controllers;
 
-import myPackage.DatabaseClass;
-import myPackage.classes.User;
+import Models.DatabaseClass;
+import Models.classes.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

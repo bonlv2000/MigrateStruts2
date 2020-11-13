@@ -1,5 +1,8 @@
 package Actions;
 
+import Models.classes.Courses;
+import Models.classes.User;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import Models.DatabaseClass;
 
@@ -7,6 +10,16 @@ import java.sql.SQLException;
 
 public class CourseAction extends ActionSupport {
     private String action,coursename, totalmarks, time,courseCode;
+
+
+
+    public DatabaseClass getDb() {
+        return db;
+    }
+
+    public void setDb(DatabaseClass db) {
+        this.db = db;
+    }
 
     public String getCoursename() {
         return coursename;
@@ -63,13 +76,25 @@ public class CourseAction extends ActionSupport {
         }
 
         switch (action) {
-            case "delete":
-                delete();
-                returnAction = "coursePage";
-                break;
             case "add":
                 add();
                 returnAction = "coursePage";
+                break;
+            case "updateGet":
+                updateGet();
+                returnAction = "updatePage";
+                break;
+            case "update":
+                update();
+                returnAction = "updatePage";
+                break;
+            case "deleteGet":
+                deleteGet();
+                returnAction = "deletePage";
+                break;
+            case "delete":
+                delete();
+                returnAction = "deletePage";
                 break;
         }
 
@@ -81,7 +106,31 @@ public class CourseAction extends ActionSupport {
                 time,courseCode);
     }
 
+
+
+    private void update() {
+        String fCourseID = this.courseCode;
+        db.updateCourse(fCourseID,coursename,Integer.parseInt(totalmarks),time);
+        ActionContext.getContext().getSession().remove("isUpdate");
+        ActionContext.getContext().getSession().remove("courseUpdate");
+    }
+
+    private void updateGet() {
+        Courses courses = db.getCourseIdDetails(courseCode);
+        ActionContext.getContext().getSession().put("isUpdate",1);
+        ActionContext.getContext().getSession().put("courseUpdate",courses);
+    }
+
     private void delete() {
-        db.delCourse(courseCode);
+        String fCourseID = this.courseCode;
+        db.delCourse(fCourseID);
+        ActionContext.getContext().getSession().remove("isDelete");
+        ActionContext.getContext().getSession().remove("courseDelete");
+    }
+
+    private void deleteGet() {
+        Courses courses = db.getCourseIdDetails(courseCode);
+        ActionContext.getContext().getSession().put("isDelete",1);
+        ActionContext.getContext().getSession().put("courseDelete",courses);
     }
 }

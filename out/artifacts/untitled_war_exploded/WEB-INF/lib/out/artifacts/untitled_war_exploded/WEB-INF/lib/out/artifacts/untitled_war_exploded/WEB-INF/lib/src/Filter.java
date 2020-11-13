@@ -15,7 +15,12 @@ public class Filter implements javax.servlet.Filter {
         if(request.getSession().getAttribute("userStatus")==null) {
             response.sendRedirect("HomeController?action=login");
         }
-        chain.doFilter(req, resp);
+        else {
+            if (request.getSession().getAttribute("userStatus").toString().equals("-1")) {
+                response.sendRedirect("HomeController?action=login");
+            }
+            chain.doFilter(req, resp);
+        }
     }
 
     public void init(FilterConfig config) throws ServletException {

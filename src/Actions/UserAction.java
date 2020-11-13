@@ -127,6 +127,10 @@ public class UserAction extends ActionSupport {
                 updateGet();
                 result = "updatePage";
                 break;
+            case "deleteGet":
+                deleteGet();
+                result = "DeletePage";
+                break;
             case "sendMailReset":
                 sendMailReset();
                 result = "redirectToReset";
@@ -137,8 +141,8 @@ public class UserAction extends ActionSupport {
                 result = "updatePage";
                 break;
             case "delete":
-                db.delUser(Integer.parseInt(userId));
-                result="updatePage";
+                delete();
+                result="DeletePage";
                 break;
             case "register":
                 try {
@@ -172,6 +176,19 @@ public class UserAction extends ActionSupport {
         User user = db.getUserDetails(userId);
         ActionContext.getContext().getSession().put("isUpdate",1);
         ActionContext.getContext().getSession().put("userUpdate",user);
+    }
+
+    private void delete() {
+        int userId = Integer.parseInt(this.userId);
+        db.delUser(userId);
+        ActionContext.getContext().getSession().remove("isDelete");
+        ActionContext.getContext().getSession().remove("userDelete");
+    }
+
+    private void deleteGet() {
+        User user = db.getUserDetails(userId);
+        ActionContext.getContext().getSession().put("isDelete",1);
+        ActionContext.getContext().getSession().put("userDelete",user);
     }
 
     private void sendMailReset() {

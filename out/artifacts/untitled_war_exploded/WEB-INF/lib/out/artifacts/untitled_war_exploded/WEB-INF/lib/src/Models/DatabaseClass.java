@@ -28,7 +28,7 @@
          String dbURL = "jdbc:sqlserver://localhost:1433;"
                  + "databaseName=ExaminationOnline;";
          String userName = "sa";
-         String password = "hoaibao0806";
+         String password = "maiyeuem123";
 
          try {
              Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -188,6 +188,25 @@
          return userDetails;
      }
 
+     public Courses getCourseIdDetails(String fCourseID) {
+         Courses courseIdDetails = null;
+
+         try {
+             String sql = "SELECT * from courses where course_id=?";
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             pstm.setString(1, fCourseID);
+             ResultSet rs = pstm.executeQuery();
+             while (rs.next()) {
+                 courseIdDetails = new Courses(rs.getString(4),rs.getString(1), rs.getInt(2), rs.getString(3)
+                 );
+             }
+             pstm.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return courseIdDetails;
+     }
+
      public void addNewGmailLogin(String fName, String lName, String email) {
          try {
              String sql = "INSERT into users (first_name,last_name,user_name,email,password,user_type,socialLogin)"
@@ -265,6 +284,45 @@
          }
      }
 
+     public void updateCourse(String courseuId, String courseName, int fmarks, String ftime) {
+         try {
+             String sql = "Update courses"
+                     + " set course_name=?, total_marks=? , time=?"
+                     + " where course_id=?";
+
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             pstm.setString(1, courseName);
+             pstm.setInt(2, fmarks);
+             pstm.setString(3, ftime);
+             pstm.setString(4, courseuId);
+
+             pstm.executeUpdate();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+     }
+
+     public void updateQuestions(int questionId, String fquestion, String fopt1, String fopt2,String fopt3,String fopt4,String fcorret) {
+         try {
+             String sql = "Update questions"
+                     + "  set question=?,opt1=?, opt2=? , opt3=?, opt4=?,correct=?"
+                     + "  where question_id=?";
+
+             PreparedStatement pstm = conn.prepareStatement(sql);
+
+             pstm.setString(1, fquestion);
+             pstm.setString(2, fopt1);
+             pstm.setString(3, fopt2);
+             pstm.setString(4, fopt3);
+             pstm.setString(5, fopt4);
+             pstm.setString(6, fcorret);
+             pstm.setInt(7,questionId);
+
+             pstm.executeUpdate();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+     }
 
      public User loginValidate(String userName, String userPass) throws SQLException {
          String sql = "SELECT * FROM users\n"
@@ -299,6 +357,8 @@
          }
          return list;
      }
+
+
 
      public void addNewCourse(String courseName, int tMarks, String time,String courseId) {
          try {
@@ -699,6 +759,24 @@
          return exam;
 
      }
+     public Questions getQuestionIdDetails(String fQuesionID) {
+         Questions questionIdDetails = null;
+
+         try {
+             String sql = "SELECT * from questions where question_id=?";
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             pstm.setString(1, fQuesionID);
+             ResultSet rs = pstm.executeQuery();
+             while (rs.next()) {
+                 questionIdDetails = new Questions(rs.getInt(1), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(2)
+                 );
+             }
+             pstm.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return questionIdDetails;
+     }
 
      public void finalize() {
          try {
@@ -730,7 +808,7 @@
      }
 
      public ArrayList<User> pagingAccount(int index,String queryString) {
-         String query = "select * from users where user_type = ?  and user_name like ? " +
+         String query = "select * from users where user_type = ? and user_name like ? " +
                  "order by user_id  OFFSET ? ROWS  FETCH NEXT 3 ROWS ONLY";
 
          ArrayList<User> list = new ArrayList<>();

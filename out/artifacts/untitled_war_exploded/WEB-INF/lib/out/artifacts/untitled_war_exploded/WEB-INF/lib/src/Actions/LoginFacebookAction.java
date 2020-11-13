@@ -32,13 +32,15 @@ public class LoginFacebookAction extends ActionSupport {
         } else {
             String accessToken = RestFB.getToken(code);
             User user = RestFB.getUserInfo(accessToken);
-            System.out.println(user.getName());
             ActionContext.getContext().getSession().put("type", "0");
             ActionContext.getContext().getSession().put("userStatus", "1");
             ActionContext.getContext().getSession().put("userId",db.getUserIdFromIdFacebook(user.getId().trim()));
+            ActionContext.getContext().getSession().put("name",user.getName());
+            int lastSpace = user.getName().lastIndexOf(" ");
             try {
                 if(!db.isIdFacebookExist(user.getId())) {
-                    db.addNewFacebookLogin(user.getName(),user.getName(),"none",user.getId());
+                    db.addNewFacebookLogin(user.getName().substring(0,lastSpace-1).trim(),
+                            user.getName().substring(lastSpace).trim(),"none",user.getId());
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

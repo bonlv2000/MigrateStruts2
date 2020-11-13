@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
 </head>
 <body>
-    <div id="notfound" style="background: wheat!important;">
+    <div id="notfound" style="background: #edf6f9!important;">
         <div class="notfound" >
             <div class="notfound-404">
                 <h1 style="font-size: 55px; width: 600px">Oops! <br><span>Add failed</span></h1>

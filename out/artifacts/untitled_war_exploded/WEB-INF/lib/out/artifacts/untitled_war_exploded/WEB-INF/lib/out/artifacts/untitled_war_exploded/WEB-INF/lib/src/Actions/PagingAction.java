@@ -91,7 +91,8 @@ public class PagingAction extends ActionSupport {
                 ActionContext.getContext().getSession().put("pagingItems",(ArrayList<Questions>)list);
                 returnPage = "question";
                 break;
-
+            default:
+                return returnPage;
         }
         ActionContext.getContext().getSession().put("index",index);
         ActionContext.getContext().getSession().put("query",query);

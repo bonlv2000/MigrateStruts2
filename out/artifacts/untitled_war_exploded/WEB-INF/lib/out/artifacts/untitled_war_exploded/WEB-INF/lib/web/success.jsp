@@ -13,6 +13,7 @@
 </head>
 <body>
     <div class="jumbotron text-center" style="height: 100vh;">
+        <div style="height: 10vh"></div>
         <h1 class="display-3">Thank You!</h1>
         <p class="lead">Your register is <strong>completed</strong></p>
         <hr>

@@ -2,12 +2,9 @@ package Actions;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import myPackage.DatabaseClass;
-import myPackage.classes.Questions;
-import org.apache.struts2.ServletActionContext;
+import Models.DatabaseClass;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class QuestionAction extends ActionSupport {
     private String action,coursename,question,opt1,opt2,opt3,opt4,correct,qid;

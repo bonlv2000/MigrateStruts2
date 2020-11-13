@@ -1,5 +1,7 @@
 package Actions;
 
+import Models.classes.Courses;
+import Models.classes.Questions;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import Models.DatabaseClass;
@@ -96,27 +98,65 @@ public class QuestionAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
+        String questionPage = "";
         if(action == null)
             return "questionPage";
         switch (action) {
             case "add":
                 add();
+                questionPage = "questionPage";
+                break;
+            case "updateGet":
+                updateGet();
+                questionPage = "updatePage";
+                break;
+            case "update":
+                coursename = ActionContext.getContext().getSession().get("courseName").toString();
+                update();
+                questionPage = "updatePage";
+                break;
+            case "deleteGet":
+                deleteGet();
+                questionPage = "deletePage";
                 break;
             case "delete":
-                String courseName = ActionContext.getContext().getSession().get("courseName").toString();
-                coursename = courseName;
+                coursename = ActionContext.getContext().getSession().get("courseName").toString();
                 delete();
+                questionPage = "deletePage";
                 break;
         }
-        return "questionPage";
+        return questionPage;
     }
 
-    private void delete() {
-        db.delQuestion(Integer.parseInt(qid));
-    }
 
     private void add() {
         db.addQuestion(coursename, question, opt1, opt2,opt3,
                 opt4, correct);
+    }
+
+    private void update() {
+        int fqid = Integer.parseInt(this.qid);
+        db.updateQuestions(fqid,question,opt1,opt2,opt3,opt4,correct);
+        ActionContext.getContext().getSession().remove("isUpdate");
+        ActionContext.getContext().getSession().remove("questionUpdate");
+    }
+
+    private void updateGet() {
+        Questions questions = db.getQuestionIdDetails(qid);
+        ActionContext.getContext().getSession().put("isUpdate",1);
+        ActionContext.getContext().getSession().put("questionUpdate",questions);
+    }
+
+    private void delete() {
+        int fqid = Integer.parseInt(this.qid);
+        db.delQuestion(fqid);
+        ActionContext.getContext().getSession().remove("isDelete");
+        ActionContext.getContext().getSession().remove("questionDelete");
+    }
+
+    private void deleteGet() {
+        Questions questions = db.getQuestionIdDetails(qid);
+        ActionContext.getContext().getSession().put("isDelete",1);
+        ActionContext.getContext().getSession().put("questionDelete",questions);
     }
 }
