@@ -17,8 +17,8 @@
           <element id="library" level="project" name="fluent-hc-4.5.5" />
           <element id="library" level="project" name="commons-logging-1.2" />
           <element id="library" level="application" name="fluent-hc-4.5.51" />
-          <element id="library" level="project" name="struts2-core-2.5.25" />
           <element id="library" level="project" name="restfb-2.3.0" />
+          <element id="library" level="project" name="struts2-core-2.5.25" />
         </element>
       </element>
     </root>

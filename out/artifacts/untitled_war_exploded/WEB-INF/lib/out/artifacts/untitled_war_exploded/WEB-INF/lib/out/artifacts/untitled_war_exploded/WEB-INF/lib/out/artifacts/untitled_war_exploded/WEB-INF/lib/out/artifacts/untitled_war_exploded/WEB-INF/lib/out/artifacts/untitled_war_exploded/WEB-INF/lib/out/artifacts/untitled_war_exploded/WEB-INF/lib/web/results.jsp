@@ -11,22 +11,10 @@
 %>
 <style>
     .panel {
-        margin-left: 260px!important;
+        margin: 3rem auto;
     }
 </style>
-<div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
-    <div class="sidebar-background">
-        <h2 class="logo-text">
-            Online Examination System
-        </h2>
-        <div class="left-menu">
-            <a href="std-page.jsp?pgprt=0"><h2>Profile</h2></a>
-            <a href="std-page.jsp?pgprt=1"><h2>Exams</h2></a>
-            <a class="active" href="paging?action=result"><h2>Results</h2></a>
-        </div>
-    </div>
 
-</div>
 <!-- CONTENT AREA -->
 <div class="content-area">
     <div class="panel" style="float: left;max-width: 900px">
@@ -60,7 +48,7 @@
                     <c:if test="${item.status == null}">
                         <td style="background: bisque ;">Terminated</td>
                     </c:if>
-                    <td><a href="std-page.jsp?pgprt=2&eId=${item.examId}">Details</a></td>--%>
+                    <td><a href="std-page.jsp?pgprt=2&eId=${item.examId}">Details</a></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -90,8 +78,6 @@
                     Answers a = (Answers) list.get(i);
 
             %>
-
-
             <tr>
                 <td rowspan="2"><%=i + 1 %>)</td>
                 <td colspan="2"><%=a.getQuestion()%>

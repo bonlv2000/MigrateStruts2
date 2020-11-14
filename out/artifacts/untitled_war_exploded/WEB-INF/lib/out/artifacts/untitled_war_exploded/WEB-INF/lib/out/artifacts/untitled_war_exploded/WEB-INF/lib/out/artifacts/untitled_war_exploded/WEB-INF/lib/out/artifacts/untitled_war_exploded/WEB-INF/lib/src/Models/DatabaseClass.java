@@ -27,8 +27,8 @@
      private void establishConnection() throws ClassNotFoundException, SQLException {
          String dbURL = "jdbc:sqlserver://localhost:1433;"
                  + "databaseName=ExaminationOnline;";
-         String userName = "sa";
-         String password = "hoaibao0806";
+         String userName ="sa";
+         String password ="hoaibao0806";
 
          try {
              Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -88,7 +88,8 @@
              ResultSet rs = pstm.executeQuery();
              while (rs.next()) {
                  user = new User(rs.getInt(1), rs.getString(2),
-                         rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
+                         rs.getString(3), rs.getString(4),
+                         rs.getString(5), rs.getString(6), rs.getString(7));
                  list.add(user);
              }
          } catch (SQLException ex) {
@@ -128,11 +129,8 @@
              String email  = result.getString(5);
              String password  = result.getString(6);
              String type  = result.getString(7);
-             String contact  = result.getString(8);
-             String city  = result.getString(9);
-             String address  = result.getString(10);
              String isGmail  = result.getString(11);
-             courses.add(new User(userId,firstName,lastName,username,email,password,type,contact,city,address,isGmail));
+             courses.add(new User(userId,firstName,lastName,username,email,password,type,isGmail));
          }
          return courses;
      }
@@ -180,14 +178,33 @@
              ResultSet rs = pstm.executeQuery();
              while (rs.next()) {
                  userDetails = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
-                         , rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)
-                         , rs.getString(9), rs.getString(10));
+                         , rs.getString(5), rs.getString(6),
+                         rs.getString(7));
              }
              pstm.close();
          } catch (SQLException ex) {
              Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
          }
          return userDetails;
+     }
+
+     public Courses getCourseIdDetails(String fCourseID) {
+         Courses courseIdDetails = null;
+
+         try {
+             String sql = "SELECT * from courses where course_id=?";
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             pstm.setString(1, fCourseID);
+             ResultSet rs = pstm.executeQuery();
+             while (rs.next()) {
+                 courseIdDetails = new Courses(rs.getString(4),rs.getString(1), rs.getInt(2), rs.getString(3)
+                 );
+             }
+             pstm.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return courseIdDetails;
      }
 
      public void addNewGmailLogin(String fName, String lName, String email) {
@@ -267,6 +284,46 @@
          }
      }
 
+     public void updateCourse(String courseuId, String courseName, int fmarks, String ftime) {
+         try {
+             String sql = "Update courses"
+                     + " set course_name=?, total_marks=? , time=?"
+                     + " where course_id=?";
+
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             pstm.setString(1, courseName);
+             pstm.setInt(2, fmarks);
+             pstm.setString(3, ftime);
+             pstm.setString(4, courseuId);
+
+             pstm.executeUpdate();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+     }
+
+     public void updateQuestions(int questionId, String fquestion, String fopt1, String fopt2,String fopt3,String fopt4,String fcorret) {
+         try {
+             String sql = "Update questions"
+                     + "  set question=?,opt1=?, opt2=? , opt3=?, opt4=?,correct=?"
+                     + "  where question_id=?";
+
+             PreparedStatement pstm = conn.prepareStatement(sql);
+
+             pstm.setString(1, fquestion);
+             pstm.setString(2, fopt1);
+             pstm.setString(3, fopt2);
+             pstm.setString(4, fopt3);
+             pstm.setString(5, fopt4);
+             pstm.setString(6, fcorret);
+             pstm.setInt(7,questionId);
+
+             pstm.executeUpdate();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+     }
+
      public User loginValidate(String userName, String userPass) throws SQLException {
          String sql = "SELECT * FROM users\n"
                  + "WHERE user_name=? ";
@@ -300,6 +357,8 @@
          }
          return list;
      }
+
+
 
      public void addNewCourse(String courseName, int tMarks, String time,String courseId) {
          try {
@@ -399,8 +458,8 @@
      public int startExam(String cName, int sId) {
          int examId = 0;
          try {
-             String sql = "INSERT into exams(course_id,date,start_time,exam_time,user_id,total_Marks) "
-                     + "VALUES(?,?,?,?,?,?)";
+             String sql = "INSERT into exams(course_id,date,start_time,exam_time,user_id,total_Marks,status) "
+                     + "VALUES(?,?,?,?,?,?,?)";
              PreparedStatement pstm = conn.prepareStatement(sql);
              pstm.setString(1, cName);
              pstm.setString(2, getFormatedDate(LocalDate.now().toString()));
@@ -408,6 +467,7 @@
              pstm.setString(4, getCourseTimeByCode(cName));
              pstm.setInt(5, sId);
              pstm.setInt(6, getTotalMarksByCode(cName));
+             pstm.setString(7,"Terminated");
              pstm.executeUpdate();
              pstm.close();
              examId = getLastExamId();
@@ -700,6 +760,24 @@
          return exam;
 
      }
+     public Questions getQuestionIdDetails(String fQuesionID) {
+         Questions questionIdDetails = null;
+
+         try {
+             String sql = "SELECT * from questions where question_id=?";
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             pstm.setString(1, fQuesionID);
+             ResultSet rs = pstm.executeQuery();
+             while (rs.next()) {
+                 questionIdDetails = new Questions(rs.getInt(1), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(2)
+                 );
+             }
+             pstm.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return questionIdDetails;
+     }
 
      public void finalize() {
          try {
@@ -710,12 +788,13 @@
          }
      }
 
-     public int totalPageAccount() {
+     public int totalPageAccount(String queryString) {
          int total = 0;
          String query = "select count(*)\n"
-                 + "from users where user_type = student";
+                 + "from users where user_type = 'student' and user_name like ?";
          try {
              PreparedStatement ps = conn.prepareStatement(query);
+             ps.setString(1,"%"+queryString+"%");
              ResultSet rs = ps.executeQuery();
              while (rs.next()) {
                  int totalA = rs.getInt(1);
@@ -729,14 +808,77 @@
          return total;
      }
 
+     public ArrayList<User> pagingAccount(int index,String queryString) {
+         String query = "select * from users where user_type = ? and user_name like ? " +
+                 "order by user_id  OFFSET ? ROWS  FETCH NEXT 3 ROWS ONLY";
 
-
-     public int totalPageResult() {
-         int total = 0;
-         String query = "select count(*)\n"
-                 + "from exams";
+         ArrayList<User> list = new ArrayList<>();
          try {
              PreparedStatement ps = conn.prepareStatement(query);
+             ps.setString(1,"student");
+             ps.setString(2,"%"+queryString+"%");
+             ps.setInt(3, (index-1)*3);
+             ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                 list.add(new User(rs.getInt(1), rs.getString(2),
+                         rs.getString(3), rs.getString(4),
+                         rs.getString(5), rs.getString(6), rs.getString(7)));
+             }
+             return list;
+         } catch (Exception e) {
+         }
+         return list;
+     }
+
+     public int totalQuestionByCourseCode(String courseCode) {
+         int total = 0;
+         String query = "select count(*)\n"
+                 + "from questions where course_id=?";
+         try {
+             PreparedStatement ps = conn.prepareStatement(query);
+             ps.setString(1,courseCode);
+             ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                 int totalA = rs.getInt(1);
+                 total = totalA / 4;
+                 if (totalA % 4 != 0) {
+                     total++;
+                 }
+             }
+         } catch (Exception e) {
+         }
+         return total;
+     }
+
+     public ArrayList<Exams> pagingResult(int index,String queryString) {
+         String query = "select * from exams where status like ? order by exam_id  OFFSET ? ROWS  FETCH NEXT 7 ROWS ONLY";
+
+
+         ArrayList<Exams> list = new ArrayList<>();
+         try {
+             PreparedStatement ps = conn.prepareStatement(query);
+             ps.setString(1,"%"+queryString+"%");
+             ps.setInt(2, (index-1)*7);
+             ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                 list.add(new Exams(rs.getInt(1),rs.getString(2),rs.getString(3),
+                         rs.getString(4),rs.getString(5),rs.getString(6),
+                         rs.getString(7),rs.getString(8),rs.getString(9),
+                         rs.getInt(10)));
+             }
+             return list;
+         } catch (Exception e) {
+         }
+         return list;
+     }
+
+     public int totalPageResult(String queryString) {
+         int total = 0;
+         String query = "select count(*)\n"
+                     + "from exams where status like ?";
+         try {
+             PreparedStatement ps = conn.prepareStatement(query);
+             ps.setString(1,"%"+queryString+"%");
              ResultSet rs = ps.executeQuery();
              while (rs.next()) {
                  int totalA = rs.getInt(1);
@@ -749,45 +891,29 @@
          }
          return total;
      }
-     public ArrayList<Exams> pagingResult(int index) {
-         String query = "select * from exams order by exam_id  OFFSET ? ROWS  FETCH NEXT 7 ROWS ONLY";
-         ArrayList<Exams> list = new ArrayList<>();
+     public ArrayList<Questions> pagingQuestion(int index,String cCode) {
+         String query = "select * from questions where course_id = ? order by question_id  OFFSET ? ROWS  FETCH NEXT 4 ROWS ONLY";
+         ArrayList<Questions> list = new ArrayList<>();
          try {
              PreparedStatement ps = conn.prepareStatement(query);
-             ps.setInt(1, (index-1)*7);
+             ps.setString(1,cCode);
+             ps.setInt(2, (index-1)*4);
              ResultSet rs = ps.executeQuery();
              while (rs.next()) {
-                 list.add(new Exams(rs.getInt(1),rs.getString(2),rs.getString(3),
-                         rs.getString(4),rs.getString(5),rs.getString(6),
-                         rs.getString(7),rs.getString(8),rs.getString(9),
-                         rs.getInt(10)));
+                 list.add(new Questions(
+                         rs.getInt(1), rs.getString(3),
+                         rs.getString(4), rs.getString(5),
+                         rs.getString(6), rs.getString(7),
+                         rs.getString(8), rs.getString(2)));
              }
              return list;
          } catch (Exception e) {
          }
-         return null;
+         return list;
      }
 
-     public ArrayList<Exams> pagingAccount(int index) {
-         String query = "select * from exams order by user_name  OFFSET ? ROWS  FETCH NEXT 7 ROWS ONLY";
-         ArrayList<Exams> list = new ArrayList<>();
-         try {
-             PreparedStatement ps = conn.prepareStatement(query);
-             ps.setInt(1, (index-1)*7);
-             ResultSet rs = ps.executeQuery();
-             while (rs.next()) {
-                 list.add(new Exams(rs.getInt(1),rs.getString(2),rs.getString(3),
-                         rs.getString(4),rs.getString(5),rs.getString(6),
-                         rs.getString(7),rs.getString(8),rs.getString(9),
-                         rs.getInt(10)));
-             }
-             return list;
-         } catch (Exception e) {
-         }
-         return null;
-     }
      public static void main(String[] args) throws SQLException, ClassNotFoundException {
-         System.out.println(new DatabaseClass().totalPageResult());
+         System.out.println(new DatabaseClass().totalPageAccount("@"));
      }
 
  }

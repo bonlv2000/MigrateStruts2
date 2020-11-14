@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,7 +102,7 @@
 						<img src="Common/login/IMG/login.png" height="70" width="70" style="margin-bottom: .5rem"><br>
                         Login
 					</span>
-
+                <s:actionerror style="color:red;margin-bottom:10px"></s:actionerror>
                 <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                     <input class="input100" type="text" name="username" placeholder="username">
                     <span class="focus-input100"></span>
@@ -140,7 +141,7 @@
                 <h3 class="omb_authTitle" style="text-align: center; margin-top: 1rem;">Login or Sign up with</h3>
                 <div class="row omb_row-sm-offset-3 omb_socialButtons" style="margin: 1rem auto">
                     <div class="col-5" style="position: relative;left: -42px;">
-                        <a href="https://www.facebook.com/dialog/oauth?client_id=1029406370872772&redirect_uri=http://localhost:8080/login-facebook" style="position: relative;right: 74px;" class="btn btn-lg btn-block omb_btn-facebook">
+                        <a href="https://www.facebook.com/dialog/oauth?client_id=1029406370872772&redirect_uri=http://localhost:8080/loginFacebook" style="position: relative;right: 74px;" class="btn btn-lg btn-block omb_btn-facebook">
                             <i style="position: relative;left: 36px;top: 1px;color: white;" class="fa fa-facebook visible-xs"></i>
                             <span style="width: 150px;padding-left: 23px;" class="btn btn-primary">Facebook</span>
                         </a>

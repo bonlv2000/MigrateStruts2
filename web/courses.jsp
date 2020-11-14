@@ -97,11 +97,6 @@
 
 
                 <td style="padding: 12px 15px;">
-                        <%--                        <a type="submit" class="btn btn-danger" href="course?action=delete&courseCode=${item.cCode}"--%>
-                        <%--                           onclick="return confirm('Are you sure you want to delete this ?');">--%>
-                        <%--                            <i class="fas fa-trash-alt"></i>--%>
-                        <%--                        </a>--%>
-
                     <a href="deleteCourse?action=deleteGet&courseCode=${item.cCode}"
                        type="submit" class="btn btn-danger"
                        id="DeleteBtn"><i class="fas fa-trash-alt"></i>
@@ -109,10 +104,6 @@
                 </td>
             </tr>
         </c:forEach>
-
-
-
-
 
 
         <div id="myModal" class="modal">
@@ -205,8 +196,6 @@
                 </table>
 
             </form>
-
-
         </center>
 
     </div>

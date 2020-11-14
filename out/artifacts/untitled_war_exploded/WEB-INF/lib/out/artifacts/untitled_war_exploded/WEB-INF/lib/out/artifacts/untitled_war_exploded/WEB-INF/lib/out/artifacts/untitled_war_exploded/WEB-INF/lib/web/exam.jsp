@@ -28,7 +28,7 @@
         <div class="left-menu">
             <a href="std-page.jsp?pgprt=0"><h2>Profile</h2></a>
             <a class="active" href="std-page.jsp?pgprt=1"><h2>Exams</h2></a>
-            <a href="std-page.jsp?pgprt=2"><h2>Results</h2></a>
+            <a href="paging?action=result"><h2>Results</h2></a>
         </div>
     </div>
 
@@ -37,10 +37,7 @@
 <!-- CONTENT AREA -->
 <div class="content-area">
     <% if (session.getAttribute("examStarted") != null) { %>
-
     <% }%>
-
-
     <%
         if (session.getAttribute("examStarted") != null) {
             if (session.getAttribute("examStarted").equals("1")) {
@@ -54,7 +51,7 @@
     <script>
         let time,sec;
         if(window.localStorage.getItem("time")==null || localStorage.getItem("examId")==null
-        || localStorage.getItem("examId")!=<%=session.getAttribute("examId").toString()%>) {
+            || localStorage.getItem("examId")!=<%=session.getAttribute("examId").toString()%>) {
             time = <%=time%>;
             sec = 0;
             window.localStorage.setItem("time",time);
@@ -81,26 +78,30 @@
                 document.getElementById("remainingTime").innerHTML = "00 : 00";
                 document.getElementById("myform").submit();
             }
-            if (sec <= 0) {
+            if (sec < 0) {
                 sec = 59;
                 time--;
                 window.localStorage.setItem("time",time);
             }
             document.getElementById("remainingTime").innerHTML = time + " : " + sec;
         }
-            window.onbeforeunload = function(e) {
-                <%session.setAttribute("examStarted",null);%>
-                <c:if test="${sessionScope.examStarted==null}">
-                    return null;
-                </c:if>
-                <c:if test="${sessionScope.examStarted!=null}">
-                    return "Your test wil be failed";
-                </c:if>
-            }
+        <c:if test="${sessionScope.examStarted!=null}">
+        window.onbeforeunload = function(e) {
+            <%session.setAttribute("examStarted",null);%>
+            return "Your test wil be failed";
+        }
 
+        </c:if>
+        function validate() {
+            if(!confirm("Do you really want to do this?")) {
+                return false;
+            }
+            <%session.setAttribute("examStarted",null);%>
+            this.form.submit();
+        }
     </script>
 
-    <form id="myform" name="abc" action="exam.action" method="post">
+    <form id="myform" onsubmit="return validate(this)" name="abc" action="exam.action" method="post">
         <%
             ArrayList<Questions> list = pDAO.getQuestions(request.getParameter("coursename"));
             Questions question;
@@ -139,10 +140,10 @@
             <input type="hidden" name="qid<%=i%>" value="<%=question.getQuestionId()%>">
                 <%
                        }
-                       
+
                        %>
             <input type="hidden" name="action" value="submitted">
-            <button class="add-btn" >Submit Exam ></button>
+            <input type="submit" class="add-btn" value="Finished"/>
     </form>
 
 

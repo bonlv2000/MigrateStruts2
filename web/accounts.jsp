@@ -64,7 +64,7 @@
     int totalPageResult = new DatabaseClass().totalPageAccount(session.getAttribute("query").toString());
     session.setAttribute("totalPageResult",totalPageResult);
 %>
-<div class="inner" style="margin-top: 50px;background-color: whitesmoke!important;width: 887px;margin-left: 100px;">
+<div class="inner" style="margin-top: 50px;background-color: whitesmoke!important;width: 1100px;margin-left: 100px;">
     <div class="title" style="margin-top: -30px; height: 60px!important;">List of All Registered Persons</div>
     <a id="myBtnReg" class="button" style="text-decoration: none!important;"><span class="add-btn" style="margin-left: 80px;">Add New Person</span></a>
     <form method="get" action="paging" class="container" style="margin-top: 1rem">

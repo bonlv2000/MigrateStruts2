@@ -5,6 +5,16 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+    <package extends="struts-default" namespace="" name="serveAll">
+
+
+    <action name="*">
+
+    <result>/badRequest.jsp</result>
+
+</action>
+
+</package>
     <package name="default" extends="struts-default">
 
 
@@ -153,6 +163,10 @@
                 <param name="coursename">${coursename}</param>
             </result>
             <result name="badRequest" type="redirectAction">home?action=badRequest</result>
+            <result name="resultDetail">
+                <param name="location">std-page.jsp?pgprt=2</param>
+                <param name="eId">${eId}</param>
+            </result>
         </action>
         <action name="updateProfileAdmin" class="Actions.UserAction" method="execute">
             <result name="home" type="redirectAction">

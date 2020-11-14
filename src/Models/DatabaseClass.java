@@ -27,8 +27,8 @@
      private void establishConnection() throws ClassNotFoundException, SQLException {
          String dbURL = "jdbc:sqlserver://localhost:1433;"
                  + "databaseName=ExaminationOnline;";
-         String userName = "sa";
-         String password = "maiyeuem123";
+         String userName ="sa";
+         String password ="hoaibao0806";
 
          try {
              Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -458,8 +458,8 @@
      public int startExam(String cName, int sId) {
          int examId = 0;
          try {
-             String sql = "INSERT into exams(course_id,date,start_time,exam_time,user_id,total_Marks) "
-                     + "VALUES(?,?,?,?,?,?)";
+             String sql = "INSERT into exams(course_id,date,start_time,exam_time,user_id,total_Marks,status) "
+                     + "VALUES(?,?,?,?,?,?,?)";
              PreparedStatement pstm = conn.prepareStatement(sql);
              pstm.setString(1, cName);
              pstm.setString(2, getFormatedDate(LocalDate.now().toString()));
@@ -467,6 +467,7 @@
              pstm.setString(4, getCourseTimeByCode(cName));
              pstm.setInt(5, sId);
              pstm.setInt(6, getTotalMarksByCode(cName));
+             pstm.setString(7,"Terminated");
              pstm.executeUpdate();
              pstm.close();
              examId = getLastExamId();
@@ -570,27 +571,7 @@
          return list;
      }
 
-     public ArrayList getAllAnswersByExamId(int examId) {
-         ArrayList list = new ArrayList();
-         try {
 
-             String sql = "Select * from answers where exam_id=?";
-             PreparedStatement pstm = conn.prepareStatement(sql);
-             pstm.setInt(1, examId);
-             ResultSet rs = pstm.executeQuery();
-             Answers a;
-             while (rs.next()) {
-                 a = new Answers(
-                         rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)
-                 );
-                 list.add(a);
-             }
-             pstm.close();
-         } catch (SQLException ex) {
-             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         return list;
-     }
 
      private String getFormatedDate(String date) {
          LocalDate localDate = LocalDate.parse(date);
@@ -849,12 +830,15 @@
          return total;
      }
 
-     public ArrayList<Exams> pagingResult(int index) {
-         String query = "select * from exams order by exam_id  OFFSET ? ROWS  FETCH NEXT 7 ROWS ONLY";
+     public ArrayList<Exams> pagingResult(int index,String queryString) {
+         String query = "select * from exams where status like ? order by exam_id  OFFSET ? ROWS  FETCH NEXT 7 ROWS ONLY";
+
+
          ArrayList<Exams> list = new ArrayList<>();
          try {
              PreparedStatement ps = conn.prepareStatement(query);
-             ps.setInt(1, (index-1)*7);
+             ps.setString(1,"%"+queryString+"%");
+             ps.setInt(2, (index-1)*7);
              ResultSet rs = ps.executeQuery();
              while (rs.next()) {
                  list.add(new Exams(rs.getInt(1),rs.getString(2),rs.getString(3),
@@ -868,12 +852,13 @@
          return list;
      }
 
-     public int totalPageResult() {
+     public int totalPageResult(String queryString) {
          int total = 0;
          String query = "select count(*)\n"
-                 + "from exams";
+                     + "from exams where status like ?";
          try {
              PreparedStatement ps = conn.prepareStatement(query);
+             ps.setString(1,"%"+queryString+"%");
              ResultSet rs = ps.executeQuery();
              while (rs.next()) {
                  int totalA = rs.getInt(1);
@@ -907,8 +892,53 @@
          return list;
      }
 
+     public ArrayList<Answers> getAllAnswersByExamId(int examId,int index, String query) {
+         ArrayList<Answers> list = new ArrayList<>();
+         try {
+
+             String sql = "Select * from answers where exam_id=? and question like ? order by answer_id  OFFSET ? ROWS  FETCH NEXT 4 ROWS ONLY";
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             pstm.setInt(1, examId);
+             pstm.setInt(3,(index-1)*4);
+             pstm.setString(2,"%"+query+"%");
+             ResultSet rs = pstm.executeQuery();
+             Answers a;
+             while (rs.next()) {
+                 a = new Answers(
+                         rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)
+                 );
+                 list.add(a);
+             }
+             pstm.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return list;
+     }
+     public int totalPageAnswer(int examId, String queryString) {
+         int total = 0;
+         String query = "select count(*)\n"
+                 + "from answers where exam_id = ? and question like ?";
+         try {
+             PreparedStatement ps = conn.prepareStatement(query);
+             ps.setInt(1,examId);
+             ps.setString(2,"%"+queryString+"%");
+             ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                 int totalA = rs.getInt(1);
+                 total = totalA / 4;
+                 if (totalA % 4 != 0) {
+                     total++;
+                 }
+             }
+         } catch (Exception e) {
+         }
+         return total;
+     }
+
+
      public static void main(String[] args) throws SQLException, ClassNotFoundException {
-         System.out.println(new DatabaseClass().totalPageAccount("@"));
+         System.out.println("23424524a".matches("[0-9]+"));
      }
 
  }

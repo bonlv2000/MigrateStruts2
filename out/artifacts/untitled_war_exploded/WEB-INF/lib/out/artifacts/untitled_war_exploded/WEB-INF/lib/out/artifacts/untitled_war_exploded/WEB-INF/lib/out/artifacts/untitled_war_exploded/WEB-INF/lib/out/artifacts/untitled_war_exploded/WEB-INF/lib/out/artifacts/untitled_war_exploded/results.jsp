@@ -6,27 +6,15 @@
 <%@ page import="Models.DatabaseClass" %>
 <jsp:useBean id="pDAO" class="Models.DatabaseClass" scope="page"/>
 <%
-    int totalPage = new DatabaseClass().totalPageResult();
+    int totalPage = new DatabaseClass().totalPageResult(session.getAttribute("query").toString());
     session.setAttribute("totalPageResult",totalPage);
 %>
 <style>
     .panel {
-        margin-left: 260px!important;
+        margin: 3rem auto;
     }
 </style>
-<div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
-    <div class="sidebar-background">
-        <h2 class="logo-text">
-            Online Examination System
-        </h2>
-        <div class="left-menu">
-            <a href="std-page.jsp?pgprt=0"><h2>Profile</h2></a>
-            <a href="std-page.jsp?pgprt=1"><h2>Exams</h2></a>
-            <a class="active" href="paging?action=result"><h2>Results</h2></a>
-        </div>
-    </div>
 
-</div>
 <!-- CONTENT AREA -->
 <div class="content-area">
     <div class="panel" style="float: left;max-width: 900px">
@@ -34,6 +22,18 @@
             if (request.getParameter("eId") == null) {
         %>
         <div class="title">All Results</div>
+        <div class="dropdown show" style="text-align: center">
+            <a style="margin-right: 5rem" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Search By Result
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="paging?action=result">All</a>
+                <a class="dropdown-item" href="paging?action=result&query=Pass">Pass</a>
+                <a class="dropdown-item" href="paging?action=result&query=Fail">Fail</a>
+                <a class="dropdown-item" href="paging?action=result&query=Terminated">Terminated</a>
+            </div>
+        </div>
         <table id="rounded-corner">
             <thead>
             <tr>
@@ -57,10 +57,10 @@
                     <c:if test="${item.status.equals('Fail')}">
                         <td style="background: #ff3333;color:white">${item.status}</td>
                     </c:if>
-                    <c:if test="${item.status == null}">
+                    <c:if test="${item.status.equals('Terminated')}">
                         <td style="background: bisque ;">Terminated</td>
                     </c:if>
-                    <td><a href="std-page.jsp?pgprt=2&eId=${item.examId}">Details</a></td>--%>
+                    <td><a href="paging?action=resultDetail&eId=${item.examId}">Details</a></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -69,10 +69,10 @@
             <ul class="pagination">
                 <c:forEach begin="1" end="${sessionScope.totalPageResult}" var="i">
                     <c:if test="${sessionScope.index.equals(i)}">
-                        <li class="page-item active"><a class="page-link" href="paging.action?action=result&index=${i}">${i}</a></li>
+                        <li class="page-item active"><a class="page-link" href="paging.action?action=result&index=${i}&query=${sessionScope.query}">${i}</a></li>
                     </c:if>
                     <c:if test="${!sessionScope.index.equals(i)}">
-                        <li class="page-item"><a class="page-link" href="paging.action?action=result&index=${i}">${i}</a></li>
+                        <li class="page-item"><a class="page-link" href="paging.action?action=result&index=${i}&query=${sessionScope.query}">${i}</a></li>
                     </c:if>
                 </c:forEach>
             </ul>
@@ -81,36 +81,53 @@
         <%
         } else {
         %>
+        <%
+            totalPage = new DatabaseClass().totalPageAnswer(Integer.parseInt(session.getAttribute("eId").toString()),session.getAttribute("query").toString());
+            session.setAttribute("totalPageResult",totalPage);
+        %>
         <div class="title">Result Details</div>
+        <form action="paging.action" class="row" method="post">
+            <input type="hidden" name="action" value="resultDetail">
+            <input type="hidden" name="eId" value=<%=request.getParameter("eId")%>>
+            <div class="form-group col-6" style="margin-left: 2rem">
+                <input name="query" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter question search">
+            </div>
+            <button type="submit" class="btn btn-primary " style="height: 40px">Search</button>
+            <a href="paging?action=result" class="btn btn-danger" style="height: 40px; margin-left: 10px">Back to result</a>
+        </form>
         <table id="gradient-style">
+            <c:forEach items="${sessionScope.pagingItems}" var="item">
+                <tr>
+                    <td rowspan="2">Detail)</td>
+                    <td colspan="2">${item.question}
+                    </td>
+                    <td style="color: red" rowspan="3">${item.status}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: red">${item.answer}
+                    </td>
+                    <td >Corect Answer: ${item.correctAns}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background: white"></td>
 
-            <%
-                ArrayList list = pDAO.getAllAnswersByExamId(Integer.parseInt(request.getParameter("eId")));
-                for (int i = 0; i < list.size(); i++) {
-                    Answers a = (Answers) list.get(i);
+                </c:forEach>
 
-            %>
-
-
-            <tr>
-                <td rowspan="2"><%=i + 1 %>)</td>
-                <td colspan="2"><%=a.getQuestion()%>
-                </td>
-                <td rowspan="2"><%=a.getStatus() %>
-                </td>
-            </tr>
-            <tr>
-                <td><%="Your Ans: " + a.getAnswer()%>
-                </td>
-                <td><%="Correct Ans: " + a.getCorrectAns() %>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3" style="background: white"></td>
-                    <%
-                }
-                %>
         </table>
+        <nav aria-label="Page navigation example" style="margin-left: 2rem">
+            <ul class="pagination">
+                <c:forEach begin="1" end="${sessionScope.totalPageResult}" var="i">
+                    <c:if test="${sessionScope.index.equals(i)}">
+                        <li class="page-item active"><a class="page-link" href="paging.action?action=resultDetail&index=${i}&query=${sessionScope.query}&eId=${sessionScope.eId}">${i}</a></li>
+                    </c:if>
+                    <c:if test="${!sessionScope.index.equals(i)}">
+                        <li class="page-item"><a class="page-link" href="paging.action?action=resultDetail&index=${i}&query=${sessionScope.query}&eId=${sessionScope.eId}">${i}</a></li>
+                    </c:if>
+                </c:forEach>
+            </ul>
+        </nav>
         <%
             }
         %>

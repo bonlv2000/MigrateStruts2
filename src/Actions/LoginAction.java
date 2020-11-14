@@ -9,7 +9,15 @@ import java.sql.SQLException;
 
 public class LoginAction extends ActionSupport {
 
-    private String username,password;
+    private String username,password,action;
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
 
     public String getUsername() {
         return username;
@@ -32,7 +40,20 @@ public class LoginAction extends ActionSupport {
         return "success";
     }
 
-
+    @Override
+    public void validate() {
+        if(action==null)
+            return;
+        try {
+            if(new DatabaseClass().loginValidate(username,password)==null) {
+                addActionError("Your username or password is wrong!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     public String loginPost() {
         DatabaseClass pDAO = null;
