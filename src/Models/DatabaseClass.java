@@ -810,25 +810,7 @@
          return list;
      }
 
-     public int totalQuestionByCourseCode(String courseCode) {
-         int total = 0;
-         String query = "select count(*)\n"
-                 + "from questions where course_id=?";
-         try {
-             PreparedStatement ps = conn.prepareStatement(query);
-             ps.setString(1,courseCode);
-             ResultSet rs = ps.executeQuery();
-             while (rs.next()) {
-                 int totalA = rs.getInt(1);
-                 total = totalA / 4;
-                 if (totalA % 4 != 0) {
-                     total++;
-                 }
-             }
-         } catch (Exception e) {
-         }
-         return total;
-     }
+
 
      public ArrayList<Exams> pagingResult(int index,String queryString) {
          String query = "select * from exams where status like ? order by exam_id  OFFSET ? ROWS  FETCH NEXT 7 ROWS ONLY";
@@ -871,13 +853,15 @@
          }
          return total;
      }
-     public ArrayList<Questions> pagingQuestion(int index,String cCode) {
-         String query = "select * from questions where course_id = ? order by question_id  OFFSET ? ROWS  FETCH NEXT 4 ROWS ONLY";
+     public ArrayList<Questions> pagingQuestion(int index,String cCode,String queryString) {
+         String query = "select * from questions where course_id = ? and question like ?" +
+                 " order by question_id  OFFSET ? ROWS  FETCH NEXT 4 ROWS ONLY";
          ArrayList<Questions> list = new ArrayList<>();
          try {
              PreparedStatement ps = conn.prepareStatement(query);
              ps.setString(1,cCode);
-             ps.setInt(2, (index-1)*4);
+             ps.setInt(3, (index-1)*4);
+             ps.setString(2,"%"+queryString+"%");
              ResultSet rs = ps.executeQuery();
              while (rs.next()) {
                  list.add(new Questions(
@@ -892,6 +876,26 @@
          return list;
      }
 
+     public int totalQuestionByCourseCode(String courseCode,String queryString) {
+         int total = 0;
+         String query = "select count(*)\n"
+                 + "from questions where course_id=? and question like ?";
+         try {
+             PreparedStatement ps = conn.prepareStatement(query);
+             ps.setString(1,courseCode);
+             ps.setString(2,"%"+queryString+"%");
+             ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                 int totalA = rs.getInt(1);
+                 total = totalA / 4;
+                 if (totalA % 4 != 0) {
+                     total++;
+                 }
+             }
+         } catch (Exception e) {
+         }
+         return total;
+     }
      public ArrayList<Answers> getAllAnswersByExamId(int examId,int index, String query) {
          ArrayList<Answers> list = new ArrayList<>();
          try {
@@ -936,6 +940,46 @@
          return total;
      }
 
+     public int totalPageCourse(String queryString) {
+         int total = 0;
+         String query = "select count(*)\n"
+                 + "from courses where course_name like ?";
+         try {
+             PreparedStatement ps = conn.prepareStatement(query);
+             ps.setString(1,"%"+queryString+"%");
+             ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                 int totalA = rs.getInt(1);
+                 total = totalA / 4;
+                 if (totalA % 4 != 0) {
+                     total++;
+                 }
+             }
+         } catch (Exception e) {
+         }
+         return total;
+     }
+
+     public ArrayList<Courses> getAllCoursesPaging(int index, String query) {
+         ArrayList<Courses> list = new ArrayList<>();
+         try {
+             String sql = "Select * from courses where course_name like ? order by total_marks  OFFSET ? ROWS FETCH NEXT 4 ROWS ONLY";
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             pstm.setInt(2,(index-1)*4);
+             pstm.setString(1,"%"+query+"%");
+             ResultSet rs = pstm.executeQuery();
+
+             while (rs.next()) {
+                 Courses a =  new Courses(rs.getString(4),rs.getString(1), rs.getInt(2), rs.getString(3)
+                 );
+                 list.add(a);
+             }
+             pstm.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return list;
+     }
 
      public static void main(String[] args) throws SQLException, ClassNotFoundException {
          System.out.println("23424524a".matches("[0-9]+"));

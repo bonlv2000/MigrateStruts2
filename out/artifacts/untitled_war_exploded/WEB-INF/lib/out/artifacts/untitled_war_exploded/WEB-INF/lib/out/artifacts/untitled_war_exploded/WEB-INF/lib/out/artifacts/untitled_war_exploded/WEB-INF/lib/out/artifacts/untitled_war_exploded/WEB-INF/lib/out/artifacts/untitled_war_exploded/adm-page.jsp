@@ -1,97 +1,3 @@
-<%--<%@page contentType="text/html" pageEncoding="UTF-8" %>--%>
-
-<%--<!DOCTYPE html>--%>
-<%--<html>--%>
-<%--<head>--%>
-<%--    <title></title>--%>
-<%--    <link rel="stylesheet" type="text/css" href="Common/Manual/style-backend.css">--%>
-<%--    <link rel="stylesheet" href="/Common/login/css/bootstrap.min.css" type="text/css">--%>
-<%--    <style>--%>
-<%--        body {--%>
-<%--            background-color: whitesmoke;--%>
-<%--        }--%>
-
-<%--        .title {--%>
-<%--            height: 60px;--%>
-<%--        }--%>
-
-<%--        .content-area {--%>
-<%--            display: block !important;--%>
-<%--            margin-top: 4rem;--%>
-<%--            margin-left: 20rem;--%>
-<%--            padding: 20px;--%>
-<%--            padding-left: 30px;--%>
-<%--        }--%>
-
-<%--        .question-label {--%>
-<%--            height: 65px !important;--%>
-<%--        }--%>
-<%--    </style>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<div class="top-area">--%>
-<%--    <<h2 class="text-center text-dark">Admin Panel</h2>--%>
-<%--    <a href="home?action=logout" class="button btn btn-danger"--%>
-<%--       style="float: right;background:crimson;color:white;margin-right: 1rem"--%>
-<%--    >Logout</a>--%>
-
-<%--</div>--%>
-
-<%--<%--%>
-<%--    if (session.getAttribute("userStatus") != null) {--%>
-<%--        if (session.getAttribute("userStatus").equals("1") && session.getAttribute("type").equals("1")) {--%>
-
-<%--%>--%>
-
-
-<%--<%--%>
-<%--    if (request.getParameter("pgprt").equals("1")) {--%>
-
-<%--%>--%>
-
-<%--<jsp:include page="accounts.jsp"/>--%>
-
-<%--<%--%>
-
-<%--} else if (request.getParameter("pgprt").equals("2")) {--%>
-
-<%--%>--%>
-
-<%--<jsp:include page="courses.jsp"/>--%>
-
-<%--<%--%>
-
-<%--} else if (request.getParameter("pgprt").equals("3")) {--%>
-<%--%>--%>
-
-<%--<jsp:include page="questions.jsp"/>--%>
-<%--<%--%>
-<%--} else if (request.getParameter("pgprt").equals("4")) {--%>
-<%--        session.setAttribute("courseName",request.getParameter("coursename"));--%>
-<%--%>--%>
-
-<%--<jsp:include page="showall.jsp"/>--%>
-<%--<%--%>
-<%--} else {--%>
-<%--%>--%>
-
-<%--<jsp:include page="profile.jsp"/>--%>
-
-<%--<%--%>
-<%--    }--%>
-<%--%>--%>
-
-<%--<%--%>
-<%--        } else {--%>
-
-<%--            response.sendRedirect("std-page.jsp?pgprt=0");--%>
-<%--        }--%>
-<%--    } else response.sendRedirect("login.jsp");--%>
-<%--%>--%>
-
-
-<%--</body>--%>
-<%--</html>--%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -103,6 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="Common/Manual/style-backend.css">
     <link rel="stylesheet" href="/Common/login/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 
@@ -113,10 +21,13 @@
         <i class="fas fa-bars" id="sidebar_btn"></i>
     </label>
     <div class="left_area">
-        <h3>Coding <span>Snow</span></h3>
+        <h3>Admin <span>Panel</span></h3>
     </div>
     <div class="right_area">
-        <a href="#" class="logout_btn">Logout</a>
+        <a href="home?action=logout" style="padding: 1rem; font-size: 1.2rem" class="logout_btn bg-info">Log Out</a>
+    </div>
+    <div class="right_area">
+        <a href="home?action=logout" style="padding: 1rem; font-size: 1.2rem" class="logout_btn">Back To HomePage</a>
     </div>
 </header>
 <!--header area end-->
@@ -126,24 +37,27 @@
         <i class="fa fa-bars nav_btn"></i>
     </div>
     <div class="mobile_nav_items">
-        <a href="#"><i class="fas fa-id-card-alt"></i><span>Profile</span></a>
-        <a href="#"><i class="fas fa-book"></i><span>Courses</span></a>
-        <a href="#"><i class="far fa-question-circle"></i><span>Questions</span></a>
-        <a href="#"><i class="fas fa-th"></i><span>Accounts</span></a>
+        <a href="adm-page.jsp?pgprt=0"><i class="fas fa-id-card-alt"></i><span>Profile</span></a>
+        <a href="paging?action=course"><i class="fas fa-book"></i><span>Courses</span></a>
+        <a href="adm-page.jsp?pgprt=3"><i class="far fa-question-circle"></i><span>Questions</span></a>
+        <a href="paging?action=account"><i class="fas fa-users"></i><span>Accounts</span></a>
     </div>
 </div>
 <!--mobile navigation bar end-->
 <!--sidebar start-->
 <div class="sidebar" style="margin-top: 80px">
     <div class="profile_info">
-        <h4><%=session.getAttribute("userName")%></h4>
+        <h4><%=session.getAttribute("name")%></h4>
     </div>
-    <a href="#"><i class="fas fa-id-card-alt"></i><span>Profile</span></a>
-    <a href="#"><i class="fas fa-book"></i><span>Courses</span></a>
-    <a href="#"><i class="far fa-question-circle"></i><span>Questions</span></a>
-    <a href="#"><i class="fas fa-th"></i><span>Accounts</span></a>
+    <a href="adm-page.jsp?pgprt=0"><i class="fas fa-id-card-alt"></i><span>Profile</span></a>
+    <a href="paging?action=course"><i class="fas fa-book"></i><span>Courses</span></a>
+    <a href="adm-page.jsp?pgprt=3"><i class="far fa-question-circle"></i><span>Questions</span></a>
+    <a href="paging?action=account"><i class="fas fa-users"></i><span>Accounts</span></a>
 </div>
 <!--sidebar end-->
+<script>
+
+</script>
 
 <div class="content" style="background-color: ghostwhite">
     <%
@@ -151,13 +65,10 @@
             if (session.getAttribute("userStatus").equals("1") && session.getAttribute("type").equals("1")) {
 
     %>
-
-
     <%
         if (request.getParameter("pgprt").equals("1")) {
 
     %>
-
     <jsp:include page="accounts.jsp"/>
 
     <%
@@ -206,6 +117,8 @@
         });
     });
 </script>
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

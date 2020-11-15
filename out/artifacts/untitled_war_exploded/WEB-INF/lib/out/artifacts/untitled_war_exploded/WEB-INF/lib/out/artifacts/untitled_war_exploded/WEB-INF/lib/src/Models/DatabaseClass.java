@@ -571,27 +571,7 @@
          return list;
      }
 
-     public ArrayList getAllAnswersByExamId(int examId) {
-         ArrayList list = new ArrayList();
-         try {
 
-             String sql = "Select * from answers where exam_id=?";
-             PreparedStatement pstm = conn.prepareStatement(sql);
-             pstm.setInt(1, examId);
-             ResultSet rs = pstm.executeQuery();
-             Answers a;
-             while (rs.next()) {
-                 a = new Answers(
-                         rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)
-                 );
-                 list.add(a);
-             }
-             pstm.close();
-         } catch (SQLException ex) {
-             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         return list;
-     }
 
      private String getFormatedDate(String date) {
          LocalDate localDate = LocalDate.parse(date);
@@ -912,8 +892,94 @@
          return list;
      }
 
+     public ArrayList<Answers> getAllAnswersByExamId(int examId,int index, String query) {
+         ArrayList<Answers> list = new ArrayList<>();
+         try {
+
+             String sql = "Select * from answers where exam_id=? and question like ? order by answer_id  OFFSET ? ROWS  FETCH NEXT 4 ROWS ONLY";
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             pstm.setInt(1, examId);
+             pstm.setInt(3,(index-1)*4);
+             pstm.setString(2,"%"+query+"%");
+             ResultSet rs = pstm.executeQuery();
+             Answers a;
+             while (rs.next()) {
+                 a = new Answers(
+                         rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)
+                 );
+                 list.add(a);
+             }
+             pstm.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return list;
+     }
+     public int totalPageAnswer(int examId, String queryString) {
+         int total = 0;
+         String query = "select count(*)\n"
+                 + "from answers where exam_id = ? and question like ?";
+         try {
+             PreparedStatement ps = conn.prepareStatement(query);
+             ps.setInt(1,examId);
+             ps.setString(2,"%"+queryString+"%");
+             ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                 int totalA = rs.getInt(1);
+                 total = totalA / 4;
+                 if (totalA % 4 != 0) {
+                     total++;
+                 }
+             }
+         } catch (Exception e) {
+         }
+         return total;
+     }
+
+     public int totalPageCourse(String queryString) {
+         int total = 0;
+         String query = "select count(*)\n"
+                 + "from courses where course_name like ?";
+         try {
+             PreparedStatement ps = conn.prepareStatement(query);
+             ps.setString(1,"%"+queryString+"%");
+             ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                 int totalA = rs.getInt(1);
+                 total = totalA / 5;
+                 if (totalA % 5 != 0) {
+                     total++;
+                 }
+             }
+         } catch (Exception e) {
+         }
+         return total;
+     }
+
+     public ArrayList<Courses> getAllCoursesPaging(int index, String query) {
+         ArrayList<Courses> list = new ArrayList<>();
+         try {
+
+             String sql = "Select * from courses where course_name like ? order by answer_id  OFFSET ? ROWS  FETCH NEXT 5  ROWS ONLY";
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             pstm.setInt(2,(index-1)*5);
+             pstm.setString(1,"%"+query+"%");
+             ResultSet rs = pstm.executeQuery();
+
+             while (rs.next()) {
+                 Courses a =  new Courses(rs.getString(4),rs.getString(1), rs.getInt(2), rs.getString(3)
+                 );
+                 list.add(a);
+             }
+             pstm.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return list;
+     }
+
      public static void main(String[] args) throws SQLException, ClassNotFoundException {
-         System.out.println(new DatabaseClass().totalPageAccount("@"));
+         System.out.println("23424524a".matches("[0-9]+"));
      }
 
  }

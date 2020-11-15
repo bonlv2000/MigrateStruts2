@@ -50,9 +50,16 @@
         cursor: pointer;
     }
 </style>
-<div class="panel form-style-6" style="min-width: 300px;max-width: 390px">
+<div class="panel form-style-6" style="min-width: 300px;max-width: 390px;margin-top: 10rem">
     <form action="paging.action" method="get">
         <div class="title">Show All Questions for</div>
+        <a id="myBtn" class="button" style="text-decoration: none!important;">
+            <br>
+            <br>
+            <span class="add-btn" style="margin-left: 80px;">Add New Question</span>
+            <br>
+
+        </a>
         <br><br>
         <label>Select Course</label>
         <input type="hidden" name="action" value="question">
@@ -88,7 +95,6 @@
                         <select name="coursename" class="text">
                             <%
                                 ArrayList<Courses> list = new DatabaseClass().getAllCourses();
-
                                 for (int i = 0; i < list.size(); i ++) {
                             %>
                             <option value="<%=list.get(i).getcCode()%>"><%=list.get(i).getcName()%>
@@ -123,8 +129,6 @@
                                        style="width: 130px;"></center>
                     </td>
                 <tr>
-
-
                     <input type="hidden" name="action" value="add">
                 </tr>
             </table>

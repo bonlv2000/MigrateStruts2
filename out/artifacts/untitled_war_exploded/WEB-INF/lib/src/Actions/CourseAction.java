@@ -9,9 +9,23 @@ import Models.DatabaseClass;
 import java.sql.SQLException;
 
 public class CourseAction extends ActionSupport {
-    private String action,coursename, totalmarks, time,courseCode;
+    private String action,coursename, totalmarks, time,courseCode,index,query;
 
+    public String getIndex() {
+        return index;
+    }
 
+    public void setIndex(String index) {
+        this.index = index;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+    }
 
     public DatabaseClass getDb() {
         return db;
@@ -74,26 +88,50 @@ public class CourseAction extends ActionSupport {
         if(action==null) {
             return "coursePage";
         }
-
         switch (action) {
             case "add":
                 add();
                 returnAction = "coursePage";
                 break;
             case "updateGet":
+                if(ActionContext.getContext().getSession().get("index")!=null) {
+                    this.index = ActionContext.getContext().getSession().get("index").toString();
+                }
+                if(ActionContext.getContext().getSession().get("query")!=null) {
+                    this.query = ActionContext.getContext().getSession().get("query").toString();
+                }
                 updateGet();
                 returnAction = "updatePage";
                 break;
             case "update":
+                this.index = ActionContext.getContext().getSession().get("index").toString();
+                this.query = ActionContext.getContext().getSession().get("query").toString();
                 update();
                 returnAction = "updatePage";
                 break;
             case "deleteGet":
+                if(ActionContext.getContext().getSession().get("query")!=null) {
+                    this.query = ActionContext.getContext().getSession().get("query").toString();
+                }
+                if(ActionContext.getContext().getSession().get("index")!=null) {
+                    this.index = ActionContext.getContext().getSession().get("index").toString();
+                }
                 deleteGet();
                 returnAction = "deletePage";
                 break;
             case "delete":
                 delete();
+                this.query = ActionContext.getContext().getSession().get("query").toString();
+                int indexTemp = Integer.parseInt(ActionContext.getContext().getSession().get("index").toString());
+                int totalPage = db.totalPageCourse(this.query);
+                if(indexTemp>totalPage) {
+                    indexTemp--;
+                    this.index = indexTemp+"";
+                    ActionContext.getContext().getSession().put("index",indexTemp);
+                }
+                else {
+                    this.index = indexTemp+"";
+                }
                 returnAction = "deletePage";
                 break;
         }

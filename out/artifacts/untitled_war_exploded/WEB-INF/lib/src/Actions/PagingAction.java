@@ -1,10 +1,7 @@
 package Actions;
 
 import Models.DatabaseClass;
-import Models.classes.Answers;
-import Models.classes.Exams;
-import Models.classes.Questions;
-import Models.classes.User;
+import Models.classes.*;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -104,9 +101,14 @@ public class PagingAction extends ActionSupport {
                 if(coursename==null) {
                     return returnPage;
                 }
-                list = db.pagingQuestion(index,coursename);
+                list = db.pagingQuestion(index,coursename,query);
                 ActionContext.getContext().getSession().put("pagingItems",(ArrayList<Questions>)list);
                 returnPage = "question";
+                break;
+            case "course":
+                list = db.getAllCoursesPaging(index,query);
+                ActionContext.getContext().getSession().put("pagingItems",(ArrayList<Courses>)list);
+                returnPage = "course";
                 break;
             default:
                 return returnPage;

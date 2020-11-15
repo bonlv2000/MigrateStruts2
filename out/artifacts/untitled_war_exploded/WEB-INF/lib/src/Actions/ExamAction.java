@@ -96,11 +96,8 @@ public class ExamAction extends ActionSupport {
                 submitted();
                 return "result";
         }
-
         return "examPage";
     }
-
-
 
     private void submitted() {
         try{

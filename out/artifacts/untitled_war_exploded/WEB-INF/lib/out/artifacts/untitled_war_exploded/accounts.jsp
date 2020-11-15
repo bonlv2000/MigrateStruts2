@@ -64,18 +64,18 @@
     int totalPageResult = new DatabaseClass().totalPageAccount(session.getAttribute("query").toString());
     session.setAttribute("totalPageResult",totalPageResult);
 %>
-<div class="inner" style="margin-top: 50px;background-color: whitesmoke!important;width: 887px;margin-left: 100px;">
+<div class="inner" style="margin-top: 50px;background-color: whitesmoke!important;width: 1100px;margin-left: 100px;">
     <div class="title" style="margin-top: -30px; height: 60px!important;">List of All Registered Persons</div>
     <a id="myBtnReg" class="button" style="text-decoration: none!important;"><span class="add-btn" style="margin-left: 80px;">Add New Person</span></a>
     <form method="get" action="paging" class="container" style="margin-top: 1rem">
         <input type="hidden" name="action" value="account">
         <div class="row justify-content-center">
-            <div class="form-group col-4 ">
+            <div class="form-group col-4" style="display: flex">
                 <input name="query" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                        placeholder="Search by username">
+                <input class="btn btn-info" type="submit" value="Search">
             </div>
         </div>
-
     </form>
     <br>
 
@@ -124,10 +124,10 @@
         <ul class="pagination" style="padding: 1rem">
             <c:forEach begin="1" end="${sessionScope.totalPageResult}" var="i">
                 <c:if test="${sessionScope.index.equals(i)}">
-                    <li class="page-item active"><a class="page-link" href="paging.action?action=account&index=${i}">${i}</a></li>
+                    <li class="page-item active"><a class="page-link" href="paging.action?action=account&index=${i}&query=${sessionScope.query}">${i}</a></li>
                 </c:if>
                 <c:if test="${!sessionScope.index.equals(i)}">
-                    <li class="page-item"><a class="page-link" href="paging.action?action=account&index=${i}">${i}</a></li>
+                    <li class="page-item"><a class="page-link" href="paging.action?action=account&index=${i}&query=${sessionScope.query}">${i}</a></li>
                 </c:if>
             </c:forEach>
         </ul>
@@ -160,7 +160,7 @@
                     <div class="form-group">
                         <label>Pass</label>
                         <input type="password" name="password" id="edit_password" class="form-control"
-                               value="" >
+                               value="${sessionScope.userUpdate==null ? "":sessionScope.userUpdate.password}" >
                         <i class="far fa-eye" style="position: relative;left: 95%;bottom: 30px;" id="togglePassword" onClick="hideAndShow()"></i>
 
                     </div>
@@ -187,7 +187,6 @@
                 <p style="margin: auto;">Are you sure you want to delete your account?</p>
                 <input type="hidden" name="userId" id="edit_uid" value="${sessionScope.userDelete.userId}">
                 <div class="modal-footer">
-
                     <input type="hidden" name="action" value="delete">
                     <input type="submit" style="position: relative;right:130px;" name="Delete_student" class="alert alert-danger" value="Delete">
                     <button type="button" style="position: relative;right: 130px;" class="alert alert-info" data-dismiss="modal" onclick="closeFormDelete()">
@@ -198,17 +197,13 @@
         </div>
 
     </div>
-
-
     <div id="myModalReg" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
             <span class="closeReg">&times;</span>
-            <form action="user.action" method="POST">
+            <form action="addUserFromAdmin.action" method="POST">
                 <div class="modal-body">
                     <h2>Reg Account</h2>
-
                     <div class="form-group">
                         <label>First Name</label>
                         <input type="text" class="form-control" name="firstName" id="fname" placeholder="First Name"/>
@@ -242,10 +237,7 @@
                 </div>
             </form>
         </div>
-
     </div>
-
-
     <%
         if(session.getAttribute("isDelete")!=null) {
             out.println("<script>var modal = document.getElementById(\"Delete\");" +

@@ -24,7 +24,10 @@
         <h3>Admin <span>Panel</span></h3>
     </div>
     <div class="right_area">
-        <a href="home?action=logout" style="padding: 1rem; font-size: 1.2rem" class="logout_btn">Log out</a>
+        <a href="home?action=logout" style="padding: 1rem; font-size: 1.2rem;" class="logout_btn">Log Out</a>
+    </div>
+    <div class="right_area">
+        <a href="home?action=home" style="padding: 1rem; font-size: 1.2rem;background-color: #238052" class="logout_btn">Back To HomePage</a>
     </div>
 </header>
 <!--header area end-->
@@ -35,9 +38,9 @@
     </div>
     <div class="mobile_nav_items">
         <a href="adm-page.jsp?pgprt=0"><i class="fas fa-id-card-alt"></i><span>Profile</span></a>
-        <a href="adm-page.jsp?pgprt=2"><i class="fas fa-book"></i><span>Courses</span></a>
+        <a href="paging?action=course"><i class="fas fa-book"></i><span>Courses</span></a>
         <a href="adm-page.jsp?pgprt=3"><i class="far fa-question-circle"></i><span>Questions</span></a>
-        <a href="adm-page.jsp?pgprt=1"><i class="fas fa-users"></i><span>Accounts</span></a>
+        <a href="paging?action=account"><i class="fas fa-users"></i><span>Accounts</span></a>
     </div>
 </div>
 <!--mobile navigation bar end-->
@@ -47,7 +50,7 @@
         <h4><%=session.getAttribute("name")%></h4>
     </div>
     <a href="adm-page.jsp?pgprt=0"><i class="fas fa-id-card-alt"></i><span>Profile</span></a>
-    <a href="adm-page.jsp?pgprt=2"><i class="fas fa-book"></i><span>Courses</span></a>
+    <a href="paging?action=course"><i class="fas fa-book"></i><span>Courses</span></a>
     <a href="adm-page.jsp?pgprt=3"><i class="far fa-question-circle"></i><span>Questions</span></a>
     <a href="paging?action=account"><i class="fas fa-users"></i><span>Accounts</span></a>
 </div>
@@ -62,13 +65,10 @@
             if (session.getAttribute("userStatus").equals("1") && session.getAttribute("type").equals("1")) {
 
     %>
-
-
     <%
         if (request.getParameter("pgprt").equals("1")) {
 
     %>
-
     <jsp:include page="accounts.jsp"/>
 
     <%

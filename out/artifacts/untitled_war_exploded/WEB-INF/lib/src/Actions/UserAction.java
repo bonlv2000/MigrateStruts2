@@ -14,9 +14,17 @@ import java.sql.SQLException;
 import java.util.Random;
 
 public class UserAction extends ActionSupport {
-    private String action="",userId="",firstName="",lastName="",email="",password="",userName="";
+    private String action="",userId="",firstName="",lastName="",email="",password="",userName="",query="";
     private DatabaseClass db = new DatabaseClass();
     private String index;
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+    }
 
     public String getIndex() {
         return index;
@@ -97,7 +105,6 @@ public class UserAction extends ActionSupport {
                     if(db.getAllUsers().stream().anyMatch(s ->s.getUserName().equals(userName))) {
                         addFieldError("userName","Username has already exist, must be unique!");
                     }
-
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -114,7 +121,7 @@ public class UserAction extends ActionSupport {
     public String execute() throws Exception {
         String result = "";
         if(action==null)
-            return "home";
+            return "badRequest";
         switch (action) {
             case "resetGet":
                 ActionContext.getContext().getSession().put("email",email);
@@ -124,10 +131,19 @@ public class UserAction extends ActionSupport {
                 if(ActionContext.getContext().getSession().get("index")!=null) {
                     this.index = ActionContext.getContext().getSession().get("index").toString();
                 }
+                if(ActionContext.getContext().getSession().get("query")!=null) {
+                    this.query = ActionContext.getContext().getSession().get("query").toString();
+                }
                 updateGet();
                 result = "updatePage";
                 break;
             case "deleteGet":
+                if(ActionContext.getContext().getSession().get("query")!=null) {
+                    this.query = ActionContext.getContext().getSession().get("query").toString();
+                }
+                if(ActionContext.getContext().getSession().get("index")!=null) {
+                    this.index = ActionContext.getContext().getSession().get("index").toString();
+                }
                 deleteGet();
                 result = "DeletePage";
                 break;
@@ -137,11 +153,23 @@ public class UserAction extends ActionSupport {
                 break;
             case "update":
                 this.index = ActionContext.getContext().getSession().get("index").toString();
+                this.query = ActionContext.getContext().getSession().get("query").toString();
                 update();
                 result = "updatePage";
                 break;
             case "delete":
                 delete();
+                this.query = ActionContext.getContext().getSession().get("query").toString();
+                int indexTemp = Integer.parseInt(ActionContext.getContext().getSession().get("index").toString());
+                int totalPage = db.totalPageAccount(this.query);
+                if(indexTemp>totalPage) {
+                    indexTemp--;
+                    this.index = indexTemp+"";
+                    ActionContext.getContext().getSession().put("index",indexTemp);
+                }
+                else {
+                    this.index = indexTemp+"";
+                }
                 result="DeletePage";
                 break;
             case "register":
@@ -158,10 +186,13 @@ public class UserAction extends ActionSupport {
     private String register() throws SQLException {
 
         String pass= EncryptPassword.generateHash(password);
-        if(db.isGmailExist(email)) {
-            return "input";
+        try {
+            db.addNewStudent(firstName,lastName,userName,email,pass);
         }
-        db.addNewStudent(firstName,lastName,userName,email,pass);
+        catch (Exception e) {
+            return "failed";
+        }
+
         return "success";
     }
 

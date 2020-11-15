@@ -14,9 +14,17 @@ import java.sql.SQLException;
 import java.util.Random;
 
 public class UserAction extends ActionSupport {
-    private String action="",userId="",firstName="",lastName="",email="",password="",userName="";
+    private String action="",userId="",firstName="",lastName="",email="",password="",userName="",query="";
     private DatabaseClass db = new DatabaseClass();
     private String index;
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+    }
 
     public String getIndex() {
         return index;
@@ -114,7 +122,7 @@ public class UserAction extends ActionSupport {
     public String execute() throws Exception {
         String result = "";
         if(action==null)
-            return "home";
+            return "badRequest";
         switch (action) {
             case "resetGet":
                 ActionContext.getContext().getSession().put("email",email);
@@ -124,8 +132,21 @@ public class UserAction extends ActionSupport {
                 if(ActionContext.getContext().getSession().get("index")!=null) {
                     this.index = ActionContext.getContext().getSession().get("index").toString();
                 }
+                if(ActionContext.getContext().getSession().get("query")!=null) {
+                    this.query = ActionContext.getContext().getSession().get("query").toString();
+                }
                 updateGet();
                 result = "updatePage";
+                break;
+            case "deleteGet":
+                if(ActionContext.getContext().getSession().get("query")!=null) {
+                    this.query = ActionContext.getContext().getSession().get("query").toString();
+                }
+                if(ActionContext.getContext().getSession().get("index")!=null) {
+                    this.index = ActionContext.getContext().getSession().get("index").toString();
+                }
+                deleteGet();
+                result = "DeletePage";
                 break;
             case "sendMailReset":
                 sendMailReset();
@@ -133,12 +154,24 @@ public class UserAction extends ActionSupport {
                 break;
             case "update":
                 this.index = ActionContext.getContext().getSession().get("index").toString();
+                this.query = ActionContext.getContext().getSession().get("query").toString();
                 update();
                 result = "updatePage";
                 break;
             case "delete":
-                db.delUser(Integer.parseInt(userId));
-                result="updatePage";
+                this.query = ActionContext.getContext().getSession().get("query").toString();
+                int indexTemp = Integer.parseInt(ActionContext.getContext().getSession().get("index").toString());
+                int totalPage = db.totalPageAccount(this.query);
+                if(indexTemp>totalPage) {
+                    indexTemp--;
+                    this.index = indexTemp+"";
+                    ActionContext.getContext().getSession().put("index",indexTemp);
+                }
+                else {
+                    this.index = indexTemp+"";
+                }
+                delete();
+                result="DeletePage";
                 break;
             case "register":
                 try {
@@ -172,6 +205,19 @@ public class UserAction extends ActionSupport {
         User user = db.getUserDetails(userId);
         ActionContext.getContext().getSession().put("isUpdate",1);
         ActionContext.getContext().getSession().put("userUpdate",user);
+    }
+
+    private void delete() {
+        int userId = Integer.parseInt(this.userId);
+        db.delUser(userId);
+        ActionContext.getContext().getSession().remove("isDelete");
+        ActionContext.getContext().getSession().remove("userDelete");
+    }
+
+    private void deleteGet() {
+        User user = db.getUserDetails(userId);
+        ActionContext.getContext().getSession().put("isDelete",1);
+        ActionContext.getContext().getSession().put("userDelete",user);
     }
 
     private void sendMailReset() {

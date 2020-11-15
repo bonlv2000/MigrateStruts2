@@ -52,11 +52,8 @@
     }
 </style>
 <%
-    ArrayList<Courses> courses;
-    courses = new DatabaseClass().getAllCourses();
-    session.setAttribute("listcourses", courses);
-
-
+    int totalPage = new DatabaseClass().totalPageCourse(session.getAttribute("query").toString());
+    session.setAttribute("totalPageResult",totalPage);
 %>
 
 <div class="panel" style="max-width: 640px;float:right;right: 30%;">
@@ -64,6 +61,18 @@
         All Courses
     </div>
     <a id="myBtnReg" class="button" style="text-decoration: none!important;"><span class="add-btn" style="margin-left: 80px;margin-left: 43px;">Add New Course</span></a>
+    <form method="get" action="paging" class="container" style="margin-top: 1rem">
+        <input type="hidden" name="action" value="course">
+        <div class="row justify-content-center">
+            <div class="form-group col-4 " style="display: flex">
+                <input name="query" type="text" style="width: 200px" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                       placeholder="Search by course name">
+                <input class="btn btn-info" type="submit" value="Search">
+            </div>
+
+        </div>
+
+    </form>
     <table id="one-column-emphasis" style="min-width: 400px;margin: 5px; margin-top: 35px">
         <colgroup>
             <col class="oce-first"/>
@@ -80,22 +89,18 @@
         </tr>
         </thead>
 
-        <c:forEach var="item" items="${sessionScope.listcourses}">
+        <c:forEach var="item" items="${sessionScope.pagingItems}">
 
             <tr>
                 <td style="padding: 12px 15px;">${item.cCode}</td>
                 <td style="padding: 12px 15px;">${item.cName}</td>
                 <td style="padding: 12px 15px;">${item.tMarks}</td>
                 <td style="padding: 12px 15px;">${item.time}</td>
-
-
                 <td style="padding: 20px 15px;">
                     <a href="updateCourse?action=updateGet&courseCode=${item.cCode}"
                        type="submit" class="btn btn-primary" id="myBtn"><i class="fas fa-edit"></i>
                     </a>
                 </td>
-
-
                 <td style="padding: 12px 15px;">
                     <a href="deleteCourse?action=deleteGet&courseCode=${item.cCode}"
                        type="submit" class="btn btn-danger"
@@ -105,8 +110,7 @@
             </tr>
         </c:forEach>
 
-
-        <div id="myModal" class="modal">
+        <div id="myModal" class="modal" style="z-index: 10000">
 
             <!-- Modal content -->
             <div class="modal-content">
@@ -130,8 +134,6 @@
                             <input type="text" name="time" id="edit_coursetime" class="form-control"
                                    value="${sessionScope.courseUpdate==null ? "":sessionScope.courseUpdate.time}">
                         </div>
-
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeForm()">
@@ -147,6 +149,18 @@
 
 
     </table>
+    <nav aria-label="Page navigation example" style="margin-left: 10rem; margin-top: 2rem">
+        <ul class="pagination">
+            <c:forEach begin="1" end="${sessionScope.totalPageResult}" var="i">
+                <c:if test="${sessionScope.index.equals(i)}">
+                    <li class="page-item active"><a class="page-link" href="paging?action=course&index=${i}&query=${sessionScope.query}">${i}</a></li>
+                </c:if>
+                <c:if test="${!sessionScope.index.equals(i)}">
+                    <li class="page-item"><a class="page-link" href="paging?action=course&index=${i}&query=${sessionScope.query}">${i}</a></li>
+                </c:if>
+            </c:forEach>
+        </ul>
+    </nav>
 </div>
 
 <!-- The Modal -->
@@ -343,15 +357,7 @@
         %>
     }
 </script>
-
-
 </div>
-
-
-
-
-
-
 </div>
 
                        

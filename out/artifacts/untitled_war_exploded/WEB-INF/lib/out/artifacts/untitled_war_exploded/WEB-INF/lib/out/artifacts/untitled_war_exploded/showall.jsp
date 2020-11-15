@@ -65,36 +65,47 @@
 <div style="padding: 1rem">
     <a href="adm-page.jsp?pgprt=3"><i class="fas fa-arrow-circle-left" style="color: #80350e;font-size: 2rem;">Go Back</i></a>
 </div>
+<form method="get" action="paging" class="container" style="margin-top: 1rem">
+    <input type="hidden" name="action" value="question">
+    <div class="row justify-content-center">
+        <input type="hidden" name="coursename" value=<%=request.getParameter("coursename")%>>
+        <div class="form-group col-4 " style="display:flex;">
+            <input name="query" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                   placeholder="Search by question">
+            <input class="btn btn-info" type="submit" value="Search">
+        </div>
+    </div>
+    
+</form>
+
+</form>
 <div class="content-area">
     <%
-        int totalPageResult = new DatabaseClass().totalQuestionByCourseCode(request.getParameter("coursename"));
+        int totalPageResult = new DatabaseClass().totalQuestionByCourseCode(request.getParameter("coursename")
+        ,session.getAttribute("query").toString());
         session.setAttribute("courseName",request.getParameter("coursename"));
         session.setAttribute("totalPageResult",totalPageResult);
     %>
     <center>
         <c:if test="${sessionScope.pagingItems.size()>0 or sessionScope.pagingItems!=null}">
-            <c:forEach items="${sessionScope.pagingItems}" var="item">
+            <c:forEach items="${sessionScope.pagingItems}" var="item" >
                 <div class="question-panel">
-                    <div style="width: 190%;left: 200px;" class="question">
-                        <label style="height: 65px !important;" class="question-label">${items + 1}
+                    <div style="width: 900px;" class="question">
+                        <label style="height: 65px !important;" class="question-label"><i class="fas fa-question-circle"></i>
                         </label>
                             ${item.question}
-
                         <a href="updateQuestion?action=updateGet&qid=${item.questionId}&coursename=<%=
                 request.getParameter("coursename")%>"
                            type="submit">
                             <div class="btn btn-primary" id="myBtn" style="position: absolute;right: 103px;top: -20px;padding: 10px;">Update</div>
                         </a>
-
-
-
                         <a href="deleteQuestion?action=deleteGet&qid=${item.questionId}&coursename=<%=
                 request.getParameter("coursename")%>"
                         >
                             <div class="delete-btn" id="DeleteBtn" style="position: absolute;right: 10px;top: -20px;">delete</div>
                         </a>
                     </div>
-                    <div style="width: 190%;left: 200px;" class="answer">
+                    <div style="width: 900px;" class="answer">
                         <label class="show">${item.opt1}</label>
                         <label class="show">${item.opt2}
                         </label>
@@ -111,10 +122,10 @@
                 <ul class="pagination" style="padding: 1rem">
                     <c:forEach begin="1" end="${sessionScope.totalPageResult}" var="i">
                         <c:if test="${sessionScope.index.equals(i)}">
-                            <li class="page-item active"><a class="page-link" href="paging.action?action=question&coursename=<%=request.getParameter("coursename")%>&index=${i}>">${i}</a></li>
+                            <li class="page-item active"><a class="page-link" href="paging.action?action=question&query=${sessionScope.query}&coursename=<%=request.getParameter("coursename")%>&index=${i}>">${i}</a></li>
                         </c:if>
                         <c:if test="${!sessionScope.index.equals(i)}">
-                            <li class="page-item"><a class="page-link" href="paging.action?action=question&index=${i}&coursename=<%=request.getParameter("coursename")%>">${i}</a></li>
+                            <li class="page-item"><a class="page-link" href="paging.action?action=question&query=${sessionScope.query}&index=${i}&coursename=<%=request.getParameter("coursename")%>">${i}</a></li>
                         </c:if>
                     </c:forEach>
                 </ul>

@@ -1,9 +1,7 @@
 package Actions;
 
 import Models.DatabaseClass;
-import Models.classes.Exams;
-import Models.classes.Questions;
-import Models.classes.User;
+import Models.classes.*;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -12,9 +10,17 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class PagingAction extends ActionSupport {
-    private String action,index,coursename,query="";
+    private String action,index,coursename,query="",eId="";
     private ArrayList list;
     private DatabaseClass db = new DatabaseClass();
+
+    public String geteId() {
+        return eId;
+    }
+
+    public void seteId(String eId) {
+        this.eId = eId;
+    }
 
     public String getQuery() {
         return query;
@@ -74,9 +80,17 @@ public class PagingAction extends ActionSupport {
         }
         switch (action) {
             case "result":
-                list = db.pagingResult(index);
+                list = db.pagingResult(index,query);
                 ActionContext.getContext().getSession().put("pagingItems",(ArrayList<Exams>)list);
                 returnPage = "result";
+                break;
+            case "resultDetail":
+                if(!eId.matches("[0-9]+"))
+                    return returnPage;
+                list = db.getAllAnswersByExamId(Integer.parseInt(eId),index,query);
+                ActionContext.getContext().getSession().put("pagingItems",(ArrayList<Answers>)list);
+                ActionContext.getContext().getSession().put("eId",eId);
+                returnPage = "resultDetail";
                 break;
             case "account":
                 list = db.pagingAccount(index,query);
@@ -90,6 +104,14 @@ public class PagingAction extends ActionSupport {
                 list = db.pagingQuestion(index,coursename);
                 ActionContext.getContext().getSession().put("pagingItems",(ArrayList<Questions>)list);
                 returnPage = "question";
+                break;
+            case "course":
+                if(coursename==null) {
+                    return returnPage;
+                }
+                list = db.getAllCoursesPaging(index,query);
+                ActionContext.getContext().getSession().put("pagingItems",(ArrayList<Courses>)list);
+                returnPage = "course";
                 break;
             default:
                 return returnPage;
