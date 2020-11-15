@@ -23,6 +23,10 @@
         <p class="lead">
             <a class="btn btn-primary btn-sm" href="home?action=home" role="button">Continue to homepage</a>
         </p>
+        <p class="lead">
+            <a class="btn btn-info btn-sm" href="home?action=login" role="button">Go to your panel</a>
+        </p>
+
     </div>
 </body>
 </html>

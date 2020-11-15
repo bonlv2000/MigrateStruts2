@@ -5,6 +5,54 @@
 <%@ page import="Models.classes.Courses" %>
 <%@ page import="Models.DatabaseClass" %>
 <jsp:useBean id="pDAO" class="Models.DatabaseClass" scope="page"/>
+<style>
+
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 163px;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+
+        font-size: 28px;
+        float: right;
+        font-weight: bold;
+        position: relative;
+        left: 210px;
+        top: -10px;
+    }
+
+
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
 
 <style>
     .content-area {
@@ -131,8 +179,27 @@
                        }
 
                        %>
-            <input type="hidden" name="action" value="submitted">
-            <input type="submit" class="add-btn" value="Finished"/>
+
+            <div id="SubmitExams" class="modal">
+                <!-- Modal content -->
+                <div style="margin-top: 90px;width: 32%;" class="modal-content">
+                    <span class="close">&times;</span>
+
+                        <h1 style="margin: auto">Submit Exams</h1>
+                        <p style="margin: auto">Are you sure you want to Submit Exams?</p>
+                        <div class="modal-footer">
+                            <input type="hidden" name="action" value="submitted">
+                            <input type="submit" class="add-btn" style="position: relative;right: 117px;" value="Finished"/>
+                            <button type="button" style="position: relative;right: 101px;top: 9px;" class="alert alert-info" data-dismiss="modal" onclick="closeFormDelete()">
+                                Close
+                            </button>
+                        </div>
+
+                </div>
+
+            </div>
+            <br>
+            <a id="SubmitBtn" class="button" style="text-decoration: none!important;"><span class="add-btn" style="margin-left: 43px;background-color: white;color: black;border: 2px solid #1e1c1c;">Finished</span></a>
     </form>
 
 
@@ -185,6 +252,45 @@
             <input type="submit" value="Take Exam" class="form-button">
         </form>
     </div>
+    <%
+        if(session.getAttribute("isDelete")!=null) {
+            out.println("<script>var modal = document.getElementById(\"Delete\");" +
+                    "modal.style.display = \"block\";</script>");
+        }
+    %>
     <% }%>
+    <script>
+
+
+        // Get the modal
+        var modalExams = document.getElementById("SubmitExams");
+
+        // Get the button that opens the modal
+        var btnExams = document.getElementById("SubmitBtn");
+
+        // Get the <span> element that closes the modal
+        var spanExams = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btnExams.onclick = function () {
+            modalExams.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        spanExams.onclick = function () {
+            modalExams.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modalExams) {
+                modalExams.style.display = "none";
+            }
+        }
+
+        function closeFormDelete() {
+            modalExams.style.display = "none";
+        }
+    </script>
 </div>
        

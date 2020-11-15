@@ -110,7 +110,7 @@
             </tr>
         </c:forEach>
 
-        <div id="myModal" class="modal" style="z-index: 10000">
+        <div id="myModal" class="modal" style="z-index: 2">
 
             <!-- Modal content -->
             <div class="modal-content">

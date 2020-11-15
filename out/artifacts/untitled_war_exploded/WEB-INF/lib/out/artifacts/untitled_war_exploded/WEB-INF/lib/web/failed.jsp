@@ -17,10 +17,10 @@
     <div id="notfound" style="background: #edf6f9!important;">
         <div class="notfound" >
             <div class="notfound-404">
-                <h1 style="font-size: 55px; width: 600px">Oops! <br><span>Add failed</span></h1>
+                <h1 style="font-size: 55px; width: 600px">Oops! <br><span>Add failed Because Gmail or Username is Already Exist, Check it again</span></h1>
             </div>
-            <a href="HomeController?action=home">Go To Home</a>
-            <a href="HomeController?action=register">Add again</a>
+            <a href="home?action=home">Go To Home</a>
+            <a href="home?action=login">Add again</a>
         </div>
     </div>
 </body>

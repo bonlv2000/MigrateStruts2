@@ -116,9 +116,10 @@ public class QuestionAction extends ActionSupport {
     public String execute() throws Exception {
         String questionPage = "";
         if(action == null)
-            return "questionPage";
+            return "badRequest";
         switch (action) {
             case "add":
+                this.index = db.totalQuestionByCourseCode(coursename,"")+"";
                 add();
                 questionPage = "questionPage";
                 break;
@@ -150,6 +151,7 @@ public class QuestionAction extends ActionSupport {
                 questionPage = "deletePage";
                 break;
             case "delete":
+                delete();
                 coursename = ActionContext.getContext().getSession().get("courseName").toString();
                 this.query = ActionContext.getContext().getSession().get("query").toString();
                 int indexTemp = Integer.parseInt(ActionContext.getContext().getSession().get("index").toString());
@@ -162,7 +164,6 @@ public class QuestionAction extends ActionSupport {
                 else {
                     this.index = indexTemp+"";
                 }
-                delete();
                 questionPage = "deletePage";
                 break;
         }

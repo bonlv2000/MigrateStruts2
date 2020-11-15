@@ -101,14 +101,11 @@ public class PagingAction extends ActionSupport {
                 if(coursename==null) {
                     return returnPage;
                 }
-                list = db.pagingQuestion(index,coursename);
+                list = db.pagingQuestion(index,coursename,query);
                 ActionContext.getContext().getSession().put("pagingItems",(ArrayList<Questions>)list);
                 returnPage = "question";
                 break;
             case "course":
-                if(coursename==null) {
-                    return returnPage;
-                }
                 list = db.getAllCoursesPaging(index,query);
                 ActionContext.getContext().getSession().put("pagingItems",(ArrayList<Courses>)list);
                 returnPage = "course";

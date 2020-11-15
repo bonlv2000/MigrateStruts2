@@ -5,6 +5,54 @@
 <%@ page import="Models.classes.Courses" %>
 <%@ page import="Models.DatabaseClass" %>
 <jsp:useBean id="pDAO" class="Models.DatabaseClass" scope="page"/>
+<style>
+
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 163px;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+
+        font-size: 28px;
+        float: right;
+        font-weight: bold;
+        position: relative;
+        left: 210px;
+        top: -10px;
+    }
+
+
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
 
 <style>
     .content-area {
@@ -18,29 +66,15 @@
     .question-label {
         height: 65px !important;
     }
+
+
 </style>
 
-<div class="sidebar" style="background-image: url(Common/Manual/sidebar-1.jpg)">
-    <div class="sidebar-background">
-        <h2 class="logo-text">
-            Online Examination System
-        </h2>
-        <div class="left-menu">
-            <a href="std-page.jsp?pgprt=0"><h2>Profile</h2></a>
-            <a class="active" href="std-page.jsp?pgprt=1"><h2>Exams</h2></a>
-            <a href="std-page.jsp?pgprt=2"><h2>Results</h2></a>
-        </div>
-    </div>
-
-</div>
 
 <!-- CONTENT AREA -->
 <div class="content-area">
     <% if (session.getAttribute("examStarted") != null) { %>
-
     <% }%>
-
-
     <%
         if (session.getAttribute("examStarted") != null) {
             if (session.getAttribute("examStarted").equals("1")) {
@@ -54,7 +88,7 @@
     <script>
         let time,sec;
         if(window.localStorage.getItem("time")==null || localStorage.getItem("examId")==null
-        || localStorage.getItem("examId")!=<%=session.getAttribute("examId").toString()%>) {
+            || localStorage.getItem("examId")!=<%=session.getAttribute("examId").toString()%>) {
             time = <%=time%>;
             sec = 0;
             window.localStorage.setItem("time",time);
@@ -81,22 +115,30 @@
                 document.getElementById("remainingTime").innerHTML = "00 : 00";
                 document.getElementById("myform").submit();
             }
-            if (sec <= 0) {
+            if (sec < 0) {
                 sec = 59;
                 time--;
                 window.localStorage.setItem("time",time);
             }
             document.getElementById("remainingTime").innerHTML = time + " : " + sec;
         }
+        <c:if test="${sessionScope.examStarted!=null}">
         window.onbeforeunload = function(e) {
-            document.getElementById("myform").submit();
-            <%session.removeAttribute("examStarted");%>
-            return null;
+            <%session.setAttribute("examStarted",null);%>
+            return "Your test wil be failed";
+        }
+
+        </c:if>
+        function validate() {
+            if(!confirm("Do you really want to do this?")) {
+                return false;
+            }
+            <%session.setAttribute("examStarted",null);%>
+            this.form.submit();
         }
     </script>
 
-    <form id="myform" action="exam.action" method="post">
-
+    <form id="myform" onsubmit="return validate(this)" name="abc" action="exam.action" method="post">
         <%
             ArrayList<Questions> list = pDAO.getQuestions(request.getParameter("coursename"));
             Questions question;
@@ -108,7 +150,6 @@
             for (int i = 0; i < list.size(); i++) {
                 question = list.get(i);
         %>
-
         <center>
             <div class="question-panel">
                 <div class="question">
@@ -136,10 +177,32 @@
             <input type="hidden" name="qid<%=i%>" value="<%=question.getQuestionId()%>">
                 <%
                        }
-                       
+
                        %>
-            <input type="hidden" name="action" value="submitted">
-            <input type="submit" class="add-btn" value="Done">
+
+            <div id="SubmitExams" class="modal">
+                <!-- Modal content -->
+                <div style="margin-top: 90px;width: 32%;" class="modal-content">
+                    <span class="close">&times;</span>
+
+                        <h1 style="margin: auto">Submit Exams</h1>
+                        <p style="margin: auto">Are you sure you want to Submit Exams?</p>
+                        <div class="modal-footer">
+                            <input type="hidden" name="action" value="submitted">
+                            <input type="submit" class="add-btn" style="position: relative;right: 117px;" value="Finished"/>
+                            <button type="button" style="position: relative;right: 101px;top: 9px;" class="alert alert-info" data-dismiss="modal" onclick="closeFormDelete()">
+                                Close
+                            </button>
+                        </div>
+
+                </div>
+
+            </div>
+
+            <a id="SubmitBtn" class="button" style="text-decoration: none!important;"><span class="add-btn" style="margin-left: 43px;
+    background-color: white;
+    color: black;
+    border: 2px solid #1e1c1c;">Finished</span></a>
     </form>
 
 
@@ -153,13 +216,13 @@
     <div class="panel" style="float: left;max-width: 900px">
         <div class="title">Result of Recent Exam</div>
         <div class="profile">
-            <span class="tag">Exam Date</span><span class="val"><%=result.getDate() %></span><br/>
-            <span class="tag">Start Time</span><span class="val"><%=result.getStartTime() %></span><br/>
-            <span class="tag">End Time</span><span class="val"><%=result.getEndTime() %></span><br/>
-            <span class="tag">Course Name</span><span class="val"><%=result.getcName() %></span><br/>
-            <span class="tag">Obt Marks</span><span class="val"><%=result.getObtMarks() %></span><br/>
-            <span class="tag">Total Marks</span><span class="val"><%=result.gettMarks() %></span><br/>
-            <span class="tag">Result</span><span class="val"><%=result.getStatus() %></span></h2>
+            <span class="tag" style="font-size: 14px">Exam Date</span><span class="val"><%=result.getDate() %></span><br/>
+            <span class="tag"style="font-size: 14px">Start Time</span><span class="val"><%=result.getStartTime() %></span><br/>
+            <span class="tag"style="font-size: 14px">End Time</span><span class="val"><%=result.getEndTime() %></span><br/>
+            <span class="tag"style="font-size: 14px">Course Name</span><span class="val"><%=result.getcName() %></span><br/>
+            <span class="tag"style="font-size: 14px">Obt Marks</span><span class="val"><%=result.getObtMarks() %></span><br/>
+            <span class="tag"style="font-size: 14px">Total Marks</span><span class="val"><%=result.gettMarks() %></span><br/>
+            <span class="tag"style="font-size: 14px">Result</span><span class="val"><%=result.getStatus() %></span></h2>
         </div>
         <p></p>
         <p></p>
@@ -192,6 +255,45 @@
             <input type="submit" value="Take Exam" class="form-button">
         </form>
     </div>
+    <%
+        if(session.getAttribute("isDelete")!=null) {
+            out.println("<script>var modal = document.getElementById(\"Delete\");" +
+                    "modal.style.display = \"block\";</script>");
+        }
+    %>
     <% }%>
+    <script>
+
+
+        // Get the modal
+        var modalExams = document.getElementById("SubmitExams");
+
+        // Get the button that opens the modal
+        var btnExams = document.getElementById("SubmitBtn");
+
+        // Get the <span> element that closes the modal
+        var spanExams = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btnExams.onclick = function () {
+            modalExams.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        spanExams.onclick = function () {
+            modalExams.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modalExams) {
+                modalExams.style.display = "none";
+            }
+        }
+
+        function closeFormDelete() {
+            modalExams.style.display = "none";
+        }
+    </script>
 </div>
        

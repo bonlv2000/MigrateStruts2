@@ -27,7 +27,7 @@
         <a href="home?action=logout" style="padding: 1rem; font-size: 1.2rem;" class="logout_btn">Log Out</a>
     </div>
     <div class="right_area">
-        <a href="home?action=logout" style="padding: 1rem; font-size: 1.2rem;background-color: #238052" class="logout_btn">Back To HomePage</a>
+        <a href="home?action=home" style="padding: 1rem; font-size: 1.2rem;background-color: #238052" class="logout_btn">Back To HomePage</a>
     </div>
 </header>
 <!--header area end-->

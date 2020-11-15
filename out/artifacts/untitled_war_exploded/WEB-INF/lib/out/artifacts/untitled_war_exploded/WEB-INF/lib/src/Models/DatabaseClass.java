@@ -28,7 +28,7 @@
          String dbURL = "jdbc:sqlserver://localhost:1433;"
                  + "databaseName=ExaminationOnline;";
          String userName ="sa";
-         String password ="hoaibao0806";
+         String password ="maiyeuem123";
 
          try {
              Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -896,7 +896,6 @@
          }
          return total;
      }
-
      public ArrayList<Answers> getAllAnswersByExamId(int examId,int index, String query) {
          ArrayList<Answers> list = new ArrayList<>();
          try {

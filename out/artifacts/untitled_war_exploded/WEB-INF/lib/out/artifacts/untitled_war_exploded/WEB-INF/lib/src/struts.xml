@@ -57,8 +57,10 @@
 
         <action name="question" class="Actions.QuestionAction" method="execute">
             <result name="questionPage" type="redirect">
-                <param name="location">adm-page.jsp?pgprt=4</param>
+                <param name="location">paging?action=question</param>
                 <param name="coursename">${coursename}</param>
+                <param name="index">${index}</param>
+                <param name="query">${query}</param>
             </result>
             <result name="badRequest" type="redirectAction">home?action=badRequest</result>
         </action>
