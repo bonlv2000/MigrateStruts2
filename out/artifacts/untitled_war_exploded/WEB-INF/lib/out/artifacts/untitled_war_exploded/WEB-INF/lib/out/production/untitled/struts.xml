@@ -6,33 +6,23 @@
 
 <struts>
     <package extends="struts-default" namespace="" name="serveAll">
-
-
     <action name="*">
-
     <result>/badRequest.jsp</result>
-
 </action>
 
 </package>
     <package name="default" extends="struts-default">
 
-
         <global-results>
             <result>index.jsp</result>
         </global-results>
-        <action name="test" class="Actions.LoginAction" method="execute">
-            <result name="success">Register.jsp</result>
-        </action>
-
 
         <action name="login" class="Actions.LoginAction" method="loginPost">
             <result name="success">login.jsp</result>
             <result name="checkLogin" type="redirectAction">loginGet</result>
-            <result name="login">login.jsp</result>
+            <result name="input">login.jsp</result>
+            <result name="badRequest" type="redirectAction">home?action=badRequest</result>
         </action>
-
-
         <action name="loginGet" class="Actions.LoginAction" method="loginGet">
             <result name="login">login.jsp</result>
             <result name="admin">adm-page.jsp?pgprt=0</result>
@@ -51,24 +41,29 @@
 
         <action name="course" class="Actions.CourseAction" method="execute">
             <result name="coursePage">adm-page.jsp?pgprt=2</result>
+            <result name="badRequest" type="redirectAction">home?action=badRequest</result>
         </action>
 
         <action name="question" class="Actions.QuestionAction" method="execute">
             <result name="questionPage" type="redirect">
-                <param name="location">adm-page.jsp?pgprt=4</param>
+                <param name="location">paging?action=question</param>
                 <param name="coursename">${coursename}</param>
+                <param name="index">${index}</param>
+                <param name="query">${query}</param>
             </result>
+            <result name="badRequest" type="redirectAction">home?action=badRequest</result>
         </action>
 
         <action name="exam" class="Actions.ExamAction" method="execute">
             <result name="examPage" type="redirect">
-                <param name="location">std-page.jsp?pgprt=1</param>
+                <param name="location">pagingUser?action=questionExamContent</param>
                 <param name="coursename">${coursename}</param>
             </result>
             <result name="result" type="redirect">
                 <param name="location">std-page.jsp?pgprt=1&amp;showresult=1</param>
                 <param name="eId">${eId}</param>
             </result>
+            <result name="badRequest" type="redirectAction">home?action=badRequest</result>
         </action>
 
         <action name="loginGoogle" class="Actions.LoginGoogleAction" method="execute">
@@ -101,6 +96,20 @@
                 Register.jsp
             </result>
             <result name="success">success.jsp</result>
+            <result name="failed">failed.jsp</result>
+            <result name="badRequest" type="redirectAction">home?action=badRequest</result>
+        </action>
+
+        <action name="addUserFromAdmin" class="Actions.UserAction" method="execute">
+            <result name="input">
+                failed.jsp
+            </result>
+            <result name="accountPage" type="redirect">
+                <param name="location">paging?action=account</param>
+                <param name="query">${query}</param>
+                <param name="index">${index}</param>
+            </result>
+            <result name="failed">failed.jsp</result>
         </action>
 
         <action name="updateUser" class="Actions.UserAction" method="execute">
@@ -113,33 +122,41 @@
                 <param name="query">${query}</param>
             </result>
             <result name="input">adm-page.jsp?pgprt=1</result>
+            <result name="badRequest" type="redirectAction">home?action=badRequest</result>
         </action>
 
         <action name="DeleteUser" class="Actions.UserAction" method="execute">
             <result name="home" type="redirectAction">
                 <param name="location">home?action=home</param>
             </result>
-            <result name="DeletePage">adm-page.jsp?pgprt=1</result>
-
-            <result name="input">adm-page.jsp?pgprt=1</result>
+            <result name="badRequest" type="redirectAction">home?action=badRequest</result>
+            <result name="DeletePage" type="redirect">
+                <param name="location">paging?action=account</param>
+                <param name="index">${index}</param>
+                <param name="query">${query}</param>
+            </result>
         </action>
 
         <action name="updateCourse" class="Actions.CourseAction" method="execute">
             <result name="home" type="redirectAction">
                 <param name="location">home?action=home</param>
             </result>
-            <result name="updatePage">adm-page.jsp?pgprt=2</result>
-
-            <result name="input">adm-page.jsp?pgprt=2</result>
+            <result name="updatePage" type="redirect">
+                <param name="location">paging?action=course</param>
+                <param name="index">${index}</param>
+                <param name="query">${query}</param>
+            </result>
         </action>
 
         <action name="deleteCourse" class="Actions.CourseAction" method="execute">
             <result name="home" type="redirectAction">
                 <param name="location">home?action=home</param>
             </result>
-            <result name="deletePage">adm-page.jsp?pgprt=2</result>
-
-            <result name="input">adm-page.jsp?pgprt=2</result>
+            <result name="deletePage" type="redirect">
+                <param name="location">paging?action=course</param>
+                <param name="index">${index}</param>
+                <param name="query">${query}</param>
+            </result>
         </action>
 
         <action name="updateQuestion" class="Actions.QuestionAction" method="execute">
@@ -147,21 +164,39 @@
                 <param name="location">paging?action=question</param>
                 <param name="coursename">${coursename}</param>
                 <param name="index">${index}</param>
+                <param name="query">${query}</param>
             </result>
         </action>
 
         <action name="deleteQuestion" class="Actions.QuestionAction" method="execute">
             <result name="deletePage" type="redirect">
-                <param name="location">adm-page.jsp?pgprt=4</param>
+                <param name="location">paging?action=question</param>
                 <param name="coursename">${coursename}</param>
+                <param name="index">${index}</param>
+                <param name="query">${query}</param>
             </result>
         </action>
 
+        <action name="pagingUser" class="Actions.PagingAction" method="execute">
+            <result name="result">std-page.jsp?pgprt=2</result>
+            <result name="resultDetail">
+                <param name="location">std-page.jsp?pgprt=2</param>
+                <param name="eId">${eId}</param>
+            </result>
+            <result name="questionExam">
+                <param name="location">std-page.jsp?pgprt=1</param>
+                <param name="coursename">${coursename}</param>
+            </result>
+        </action>
         <action name="paging" class="Actions.PagingAction" method="execute">
             <result name="result">std-page.jsp?pgprt=2</result>
             <result name="account">adm-page.jsp?pgprt=1</result>
             <result name="question">
                 <param name="location">adm-page.jsp?pgprt=4</param>
+                <param name="coursename">${coursename}</param>
+            </result>
+            <result name="questionExam">
+                <param name="location">std-page.jsp?pgprt=1</param>
                 <param name="coursename">${coursename}</param>
             </result>
             <result name="badRequest" type="redirectAction">home?action=badRequest</result>

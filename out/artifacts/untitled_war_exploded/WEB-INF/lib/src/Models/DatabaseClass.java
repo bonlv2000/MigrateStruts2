@@ -28,7 +28,7 @@
          String dbURL = "jdbc:sqlserver://localhost:1433;"
                  + "databaseName=ExaminationOnline;";
          String userName ="sa";
-         String password ="maiyeuem123";
+         String password ="hoaibao0806";
 
          try {
              Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -548,6 +548,27 @@
          return marks;
      }
 
+     public ArrayList getAllQuestions() {
+         ArrayList<Questions> list = new ArrayList<>();
+         try {
+
+             String sql = "Select * from questions";
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             ResultSet rs = pstm.executeQuery();
+             Questions question;
+             while (rs.next()) {
+                 question = new Questions(
+                         rs.getInt(1), rs.getString(3), rs.getString(4), rs.getString(5),
+                         rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(2)
+                 );
+                 list.add(question);
+             }
+             pstm.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return list;
+     }
      public ArrayList getAllQuestions(String courseCode) {
          ArrayList<Questions> list = new ArrayList<>();
          try {
@@ -661,6 +682,25 @@
 
      }
 
+     public ArrayList<Exams> getAllResults() {
+         ArrayList<Exams> list = new ArrayList<>();
+         Exams exam = null;
+         try {
+             PreparedStatement pstm = conn.prepareStatement("select * from exams");
+             ResultSet rs = pstm.executeQuery();
+             while (rs.next()) {
+                 exam = new Exams(rs.getInt(1), rs.getString(2),
+                         rs.getString(3), rs.getString(4), rs.getString(5),
+                         getFormatedTime(rs.getString(6)),getFormatedTime(rs.getString(7)),
+                         rs.getString(8),rs.getString(9),rs.getInt(10));
+                 list.add(exam);
+             }
+         } catch (SQLException ex) {
+         }
+         return list;
+
+     }
+
      public ArrayList<Exams> getAllResultsFromExams(int stdId) {
          ArrayList<Exams> list = new ArrayList<>();
          Exams exam = null;
@@ -716,6 +756,9 @@
              }
          } catch (SQLException ex) {
              Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         if(size == 0) {
+             return 0;
          }
          float rat = (float) tMarks / size;
          rat = m * rat;
@@ -979,10 +1022,6 @@
              Logger.getLogger(DatabaseClass.class.getName()).log(Level.SEVERE, null, ex);
          }
          return list;
-     }
-
-     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-         System.out.println("23424524a".matches("[0-9]+"));
      }
 
  }

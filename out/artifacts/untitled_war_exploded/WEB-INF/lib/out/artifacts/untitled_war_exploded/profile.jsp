@@ -1,14 +1,42 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@page import="Models.classes.User" %>
 <%@page import="java.util.ArrayList" %>
+<%@ page import="Models.DatabaseClass" %>
 <jsp:useBean id="pDAO" class="Models.DatabaseClass" scope="page"/>
 
 <%
     User user = pDAO.getUserDetails(session.getAttribute("userId").toString());
     if (user.getType().endsWith("admin")) {
 %>
+<div style="display: flex;flex-wrap: wrap;margin: 4rem auto;margin-bottom: 0rem; text-align: center" >
+    <div class="card" style="width: 18rem;margin-left: 1rem">
+        <div class="card-body">
+            <h5 class="card-title">Account</h5><i class="fas fa-users"></i>
+            <p class="card-text" style="font-size: 3rem; padding: 0"><%=new DatabaseClass().getAllUsers().size()%></p>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;margin-left: 1rem">
+        <div class="card-body">
+            <h5 class="card-title">Courses</h5><i class="fas fa-book-open"></i>
+            <p class="card-text" style="font-size: 3rem; padding: 0"><%=new DatabaseClass().getAllCourses().size()%></p>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;margin-left: 1rem">
+        <div class="card-body">
+            <h5 class="card-title">Questions</h5><i class="fas fa-question"></i>
+            <p class="card-text" style="font-size: 3rem; padding: 0"><%=new DatabaseClass().getAllQuestions().size()%></p>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;margin-left: 1rem">
+        <div class="card-body">
+            <h5 class="card-title">Exams Took</h5><i class="fas fa-broom"></i>
+            <p class="card-text" style="font-size: 3rem; padding: 0"><%=new DatabaseClass().getAllResults().size()%></p>
+        </div>
+    </div>
+</div>
 <div class="content-area">
-    <div class="panel" style="float: left;max-width: 600px">
+
+    <div class="panel" style="float: left;max-width: 600px; margin-left: 18rem;margin-top: 10px">
 
 
             <%

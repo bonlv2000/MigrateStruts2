@@ -152,10 +152,34 @@ public class UserAction extends ActionSupport {
                 result = "redirectToReset";
                 break;
             case "update":
-                this.index = ActionContext.getContext().getSession().get("index").toString();
-                this.query = ActionContext.getContext().getSession().get("query").toString();
+                if(ActionContext.getContext().getSession().get("query")!=null) {
+                    this.query = ActionContext.getContext().getSession().get("query").toString();
+                }
+                if(ActionContext.getContext().getSession().get("index")!=null) {
+                    this.index = ActionContext.getContext().getSession().get("index").toString();
+                }
+                ActionContext.getContext().getSession().remove("isUpdate");
                 update();
                 result = "updatePage";
+                break;
+            case "addFromAdmin":
+                if(ActionContext.getContext().getSession().get("query")!=null) {
+                    this.query = ActionContext.getContext().getSession().get("query").toString();
+                }
+                if(ActionContext.getContext().getSession().get("index")!=null) {
+                    this.index = ActionContext.getContext().getSession().get("index").toString();
+                    int indexTemp = Integer.parseInt(this.index);
+                    if(db.totalPageAccount(query)%3==0) {
+                        indexTemp++;
+                    }
+                    this.index = indexTemp+"";
+                }
+                try {
+                    register();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                result = "accountPage";
                 break;
             case "delete":
                 delete();

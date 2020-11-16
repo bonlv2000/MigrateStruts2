@@ -31,4 +31,7 @@ public class EncryptPassword {
         return hash.toString();
     }
 
+    public static void main(String[] args) {
+        System.out.println(generateHash("hoaibao0806"));
+    }
 }

@@ -29,6 +29,7 @@
             <h1><span>4</span><span>0</span><span>4</span></h1>
         </div>
         <h2>we are sorry, but the page you requested was not found</h2>
+        <h3><a href="home?action=home">Home</a></h3>
     </div>
 </div>
 

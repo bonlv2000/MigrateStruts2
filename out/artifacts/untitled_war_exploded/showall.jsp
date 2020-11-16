@@ -61,7 +61,15 @@
     }
 </style>
 
-
+<%
+    if(session.getAttribute("name")==null)
+        response.sendRedirect("home?action=login");
+    else {
+        if(!session.getAttribute("type").toString().equals("1")) {
+            response.sendRedirect("loginGet");
+        }
+    }
+%>
 <div style="padding: 1rem">
     <a href="adm-page.jsp?pgprt=3"><i class="fas fa-arrow-circle-left" style="color: #80350e;font-size: 2rem;">Go Back</i></a>
 </div>

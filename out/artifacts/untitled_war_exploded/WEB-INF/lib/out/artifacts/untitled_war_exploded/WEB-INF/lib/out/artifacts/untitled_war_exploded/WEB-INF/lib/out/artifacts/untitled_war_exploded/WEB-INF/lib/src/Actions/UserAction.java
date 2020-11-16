@@ -105,7 +105,6 @@ public class UserAction extends ActionSupport {
                     if(db.getAllUsers().stream().anyMatch(s ->s.getUserName().equals(userName))) {
                         addFieldError("userName","Username has already exist, must be unique!");
                     }
-
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -153,12 +152,17 @@ public class UserAction extends ActionSupport {
                 result = "redirectToReset";
                 break;
             case "update":
-                this.index = ActionContext.getContext().getSession().get("index").toString();
-                this.query = ActionContext.getContext().getSession().get("query").toString();
+                if(ActionContext.getContext().getSession().get("query")!=null) {
+                    this.query = ActionContext.getContext().getSession().get("query").toString();
+                }
+                if(ActionContext.getContext().getSession().get("index")!=null) {
+                    this.index = ActionContext.getContext().getSession().get("index").toString();
+                }
                 update();
                 result = "updatePage";
                 break;
             case "delete":
+                delete();
                 this.query = ActionContext.getContext().getSession().get("query").toString();
                 int indexTemp = Integer.parseInt(ActionContext.getContext().getSession().get("index").toString());
                 int totalPage = db.totalPageAccount(this.query);
@@ -170,7 +174,6 @@ public class UserAction extends ActionSupport {
                 else {
                     this.index = indexTemp+"";
                 }
-                delete();
                 result="DeletePage";
                 break;
             case "register":
@@ -187,10 +190,13 @@ public class UserAction extends ActionSupport {
     private String register() throws SQLException {
 
         String pass= EncryptPassword.generateHash(password);
-        if(db.isGmailExist(email)) {
-            return "input";
+        try {
+            db.addNewStudent(firstName,lastName,userName,email,pass);
         }
-        db.addNewStudent(firstName,lastName,userName,email,pass);
+        catch (Exception e) {
+            return "failed";
+        }
+
         return "success";
     }
 

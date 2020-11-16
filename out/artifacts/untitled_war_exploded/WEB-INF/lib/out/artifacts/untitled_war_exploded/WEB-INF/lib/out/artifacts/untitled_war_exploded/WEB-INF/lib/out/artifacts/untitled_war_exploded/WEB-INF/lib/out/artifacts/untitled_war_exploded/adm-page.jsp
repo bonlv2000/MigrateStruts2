@@ -1,3 +1,4 @@
+<%@ page import="Models.DatabaseClass" %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -18,17 +19,30 @@
 <!--header area start-->
 <header style="height: 80px">
     <label for="check">
-        <i class="fas fa-bars" id="sidebar_btn"></i>
-    </label>
+        <i class="fas fa-bars" id="sidebar_btn"></i>    </label>
     <div class="left_area">
         <h3>Admin <span>Panel</span></h3>
     </div>
     <div class="right_area">
-        <a href="home?action=logout" style="padding: 1rem; font-size: 1.2rem" class="logout_btn bg-info">Log Out</a>
+        <a href="home?action=logout" style="padding: 1rem; font-size: 1.2rem;" class="logout_btn">Log Out</a>
     </div>
     <div class="right_area">
-        <a href="home?action=logout" style="padding: 1rem; font-size: 1.2rem" class="logout_btn">Back To HomePage</a>
+<%--        <a href="home?action=home" style="padding: 1rem; font-size: 1.2rem;background-color: #238052" --%>
+<%--           class="logout_btn">Back To HomePage</a>--%>
+        <div class="dropdown" style="margin-left: 80rem">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </div>
     </div>
+
+
+
 </header>
 <!--header area end-->
 <!--mobile navigation bar start-->
@@ -60,6 +74,35 @@
 </script>
 
 <div class="content" style="background-color: ghostwhite">
+
+<div style="display: flex;flex-wrap: wrap;margin: 4rem auto;margin-bottom: 0rem; text-align: center" >
+    <div class="card" style="width: 18rem;margin-left: 1rem">
+        <div class="card-body">
+            <h5 class="card-title">Account</h5><i class="fas fa-users"></i>
+            <p class="card-text" style="font-size: 3rem; padding: 0"><%=new DatabaseClass().getAllUsers().size()%></p>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;margin-left: 1rem">
+        <div class="card-body">
+            <h5 class="card-title">Courses</h5><i class="fas fa-book-open"></i>
+            <p class="card-text" style="font-size: 3rem; padding: 0"><%=new DatabaseClass().getAllCourses().size()%></p>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;margin-left: 1rem">
+        <div class="card-body">
+            <h5 class="card-title">Questions</h5><i class="fas fa-question"></i>
+            <p class="card-text" style="font-size: 3rem; padding: 0"><%=new DatabaseClass().getAllQuestions().size()%></p>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;margin-left: 1rem">
+        <div class="card-body">
+            <h5 class="card-title">Exams Took</h5><i class="fas fa-broom"></i>
+            <p class="card-text" style="font-size: 3rem; padding: 0"><%=new DatabaseClass().getAllResults().size()%></p>
+        </div>
+    </div>
+</div>
+
+
     <%
         if (session.getAttribute("userStatus") != null) {
             if (session.getAttribute("userStatus").equals("1") && session.getAttribute("type").equals("1")) {
@@ -117,6 +160,21 @@
         });
     });
 </script>
+<!-- plugins:js -->
+<script src="Common/Admin/vendors/base/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- Plugin js for this page-->
+<script src="Common/Admin/vendors/chart.js/Chart.min.js"></script>
+<!-- End plugin js for this page-->
+<!-- inject:js -->
+<script src="Common/Admin/js/off-canvas.js"></script>
+<script src="Common/Admin/js/hoverable-collapse.js"></script>
+<script src="Common/Admin/js/template.js"></script>
+<script src="Common/Admin/js/todolist.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="Common/Admin/js/dashboard.js"></script>
+<!-- End custom js for this page-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

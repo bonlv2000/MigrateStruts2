@@ -2,9 +2,12 @@ package Actions;
 
 import Models.DatabaseClass;
 import Models.classes.*;
+import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 
+import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -101,14 +104,23 @@ public class PagingAction extends ActionSupport {
                 if(coursename==null) {
                     return returnPage;
                 }
-                list = db.pagingQuestion(index,coursename);
+                list = db.pagingQuestion(index,coursename,query);
                 ActionContext.getContext().getSession().put("pagingItems",(ArrayList<Questions>)list);
                 returnPage = "question";
                 break;
-            case "course":
+            case "questionExam":
                 if(coursename==null) {
                     return returnPage;
                 }
+                list = db.pagingQuestion(index,coursename,"");
+                ActionContext.getContext().getSession().put("pagingItems",(ArrayList<Questions>)list);
+                Gson gson = new Gson();
+                String jsonString = gson.toJson(db.pagingQuestion(index,coursename,""));
+                HttpServletResponse response = ServletActionContext.getResponse();
+                response.setContentType("application/json");
+                response.getWriter().write(jsonString);
+                return null;
+            case "course":
                 list = db.getAllCoursesPaging(index,query);
                 ActionContext.getContext().getSession().put("pagingItems",(ArrayList<Courses>)list);
                 returnPage = "course";

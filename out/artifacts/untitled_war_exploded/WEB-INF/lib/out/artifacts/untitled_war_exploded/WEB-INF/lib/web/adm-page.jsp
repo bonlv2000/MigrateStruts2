@@ -1,3 +1,4 @@
+<%@ page import="Models.DatabaseClass" %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -6,7 +7,7 @@
     <title>Responsive Sidebar Dashboard Template</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="Common/Manual/style-backend.css">
     <link rel="stylesheet" href="/Common/login/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -16,18 +17,25 @@
 
 <input type="checkbox" id="check">
 <!--header area start-->
+<script>
+
+    function test() {
+        let i = 0;
+        console.log(`this is ${i}`);
+    }
+</script>
 <header style="height: 80px">
     <label for="check">
-        <i class="fas fa-bars" id="sidebar_btn"></i>
-    </label>
+        <i class="fas fa-bars" id="sidebar_btn"></i>    </label>
     <div class="left_area">
-        <h3>Admin <span>Panel</span></h3>
+        <h3 onclick="test()">Admin <span>Panel</span></h3>
     </div>
     <div class="right_area">
         <a href="home?action=logout" style="padding: 1rem; font-size: 1.2rem;" class="logout_btn">Log Out</a>
     </div>
     <div class="right_area">
-        <a href="home?action=home" style="padding: 1rem; font-size: 1.2rem;background-color: #238052" class="logout_btn">Back To HomePage</a>
+        <a href="home?action=home" style="padding: 1rem; font-size: 1.2rem;background-color: #238052"
+           class="logout_btn">Back To HomePage</a>
     </div>
 </header>
 <!--header area end-->
@@ -43,6 +51,7 @@
         <a href="paging?action=account"><i class="fas fa-users"></i><span>Accounts</span></a>
     </div>
 </div>
+
 <!--mobile navigation bar end-->
 <!--sidebar start-->
 <div class="sidebar" style="margin-top: 80px">
@@ -60,6 +69,10 @@
 </script>
 
 <div class="content" style="background-color: ghostwhite">
+
+
+
+
     <%
         if (session.getAttribute("userStatus") != null) {
             if (session.getAttribute("userStatus").equals("1") && session.getAttribute("type").equals("1")) {
@@ -117,7 +130,21 @@
         });
     });
 </script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<!-- plugins:js -->
+<script src="Common/Admin/vendors/base/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- Plugin js for this page-->
+<script src="Common/Admin/vendors/chart.js/Chart.min.js"></script>
+<!-- End plugin js for this page-->
+<!-- inject:js -->
+<script src="Common/Admin/js/off-canvas.js"></script>
+<script src="Common/Admin/js/hoverable-collapse.js"></script>
+<script src="Common/Admin/js/template.js"></script>
+<script src="Common/Admin/js/todolist.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="Common/Admin/js/dashboard.js"></script>
+<!-- End custom js for this page-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>

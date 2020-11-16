@@ -105,7 +105,9 @@
               </c:if>
 
               <c:if test="${sessionScope.name==null}">
-                <li class="btn-cta" ><a href="home?action=login" ><span style="font-size: 120%!important;padding: 4px 4rem!important;">Login</span></a></li>
+                <li class="btn-cta" ><a href="home?action=register" ><span style="font-size: 120%!important;padding: 4px 4rem!important;">Sign Up</span></a></li>
+                <li class="btn-cta" ><a href="home?action=login" ><span style="background-color:darkseagreen;font-size: 120%!important;padding: 4px 4rem!important;">Sign In</span></a></li>
+
               </c:if>
 
             </ul>

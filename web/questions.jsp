@@ -50,6 +50,15 @@
         cursor: pointer;
     }
 </style>
+<%
+    if(session.getAttribute("name")==null)
+        response.sendRedirect("home?action=login");
+    else {
+        if(!session.getAttribute("type").toString().equals("1")) {
+            response.sendRedirect("loginGet");
+        }
+    }
+%>
 <div class="panel form-style-6" style="min-width: 300px;max-width: 390px;margin-top: 10rem">
     <form action="paging.action" method="get">
         <div class="title">Show All Questions for</div>

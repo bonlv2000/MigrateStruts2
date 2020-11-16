@@ -150,7 +150,15 @@
     </section>
 
 </div>
-
+<script>
+    document.getElementById("signup-form").addEventListener('submit',(e) => {
+        if(document.getElementById("fname").value==='') {
+            alert("hhh");
+            console.log("Hhhhhh")
+            e.preventDefault();
+        }
+    })
+</script>
 <!-- JS -->
 <script src="Common/register/vendor/jquery/jquery.min.js"></script>
 <script src="Common/register/js/main.js"></script>

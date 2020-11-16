@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,12 +7,13 @@
     <title>Responsive Sidebar Dashboard Template</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="Common/Manual/style-backend.css">
 <%--    <link rel="stylesheet" type="text/css" href="Common/Manual/style-front.css">--%>
 <%--    <link rel="stylesheet" type="text/css" href="Common/Manual/style.css">--%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 </head>
 <body>
 
@@ -28,7 +28,11 @@
         <h3>Student <span>Panel</span></h3>
     </div>
     <div class="right_area">
-        <a href="home?action=logout" style="padding: 1rem; font-size: 1.2rem" class="logout_btn">Log out</a>
+        <a href="home?action=logout" style="padding: 1rem; font-size: 1.2rem;" class="logout_btn">Log Out</a>
+    </div>
+    <div class="right_area">
+        <a href="home?action=home" style="padding: 1rem; font-size: 1.2rem;background-color: #238052"
+           class="logout_btn">Back To HomePage</a>
     </div>
 </header>
 <!--header area end-->

@@ -14,6 +14,15 @@
         margin: 3rem auto;
     }
 </style>
+<%
+    if(session.getAttribute("name")==null)
+        response.sendRedirect("home?action=login");
+    else {
+        if(!session.getAttribute("type").toString().equals("0")) {
+            response.sendRedirect("loginGet");
+        }
+    }
+%>
 
 <!-- CONTENT AREA -->
 <div class="content-area">
@@ -28,10 +37,10 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="paging?action=result">All</a>
-                <a class="dropdown-item" href="paging?action=result&query=Pass">Pass</a>
-                <a class="dropdown-item" href="paging?action=result&query=Fail">Fail</a>
-                <a class="dropdown-item" href="paging?action=result&query=Terminated">Terminated</a>
+                <a class="dropdown-item" href="pagingUser?action=result">All</a>
+                <a class="dropdown-item" href="pagingUser?action=result&query=Pass">Pass</a>
+                <a class="dropdown-item" href="pagingUser?action=result&query=Fail">Fail</a>
+                <a class="dropdown-item" href="pagingUser?action=result&query=Terminated">Terminated</a>
             </div>
         </div>
         <table id="rounded-corner">
@@ -60,7 +69,7 @@
                     <c:if test="${item.status.equals('Terminated')}">
                         <td style="background: bisque ;">Terminated</td>
                     </c:if>
-                    <td><a href="paging?action=resultDetail&eId=${item.examId}">Details</a></td>
+                    <td><a href="pagingUser?action=resultDetail&eId=${item.examId}">Details</a></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -69,10 +78,10 @@
             <ul class="pagination">
                 <c:forEach begin="1" end="${sessionScope.totalPageResult}" var="i">
                     <c:if test="${sessionScope.index.equals(i)}">
-                        <li class="page-item active"><a class="page-link" href="paging.action?action=result&index=${i}&query=${sessionScope.query}">${i}</a></li>
+                        <li class="page-item active"><a class="page-link" href="pagingUser.action?action=result&index=${i}&query=${sessionScope.query}">${i}</a></li>
                     </c:if>
                     <c:if test="${!sessionScope.index.equals(i)}">
-                        <li class="page-item"><a class="page-link" href="paging.action?action=result&index=${i}&query=${sessionScope.query}">${i}</a></li>
+                        <li class="page-item"><a class="page-link" href="pagingUser.action?action=result&index=${i}&query=${sessionScope.query}">${i}</a></li>
                     </c:if>
                 </c:forEach>
             </ul>
@@ -86,14 +95,14 @@
             session.setAttribute("totalPageResult",totalPage);
         %>
         <div class="title">Result Details</div>
-        <form action="paging.action" class="row" method="post">
+        <form action="pagingUser.action" class="row" method="post">
             <input type="hidden" name="action" value="resultDetail">
             <input type="hidden" name="eId" value=<%=request.getParameter("eId")%>>
             <div class="form-group col-6" style="margin-left: 2rem">
                 <input name="query" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter question search">
             </div>
             <button type="submit" class="btn btn-primary " style="height: 40px">Search</button>
-            <a href="paging?action=result" class="btn btn-danger" style="height: 40px; margin-left: 10px">Back to result</a>
+            <a href="pagingUser?action=result" class="btn btn-danger" style="height: 40px; margin-left: 10px">Back to result</a>
         </form>
         <table id="gradient-style">
             <c:forEach items="${sessionScope.pagingItems}" var="item">
@@ -120,10 +129,10 @@
             <ul class="pagination">
                 <c:forEach begin="1" end="${sessionScope.totalPageResult}" var="i">
                     <c:if test="${sessionScope.index.equals(i)}">
-                        <li class="page-item active"><a class="page-link" href="paging.action?action=resultDetail&index=${i}&query=${sessionScope.query}&eId=${sessionScope.eId}">${i}</a></li>
+                        <li class="page-item active"><a class="page-link" href="pagingUser.action?action=resultDetail&index=${i}&query=${sessionScope.query}&eId=${sessionScope.eId}">${i}</a></li>
                     </c:if>
                     <c:if test="${!sessionScope.index.equals(i)}">
-                        <li class="page-item"><a class="page-link" href="paging.action?action=resultDetail&index=${i}&query=${sessionScope.query}&eId=${sessionScope.eId}">${i}</a></li>
+                        <li class="page-item"><a class="page-link" href="pagingUser.action?action=resultDetail&index=${i}&query=${sessionScope.query}&eId=${sessionScope.eId}">${i}</a></li>
                     </c:if>
                 </c:forEach>
             </ul>

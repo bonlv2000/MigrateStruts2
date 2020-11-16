@@ -97,11 +97,12 @@
                 <img src="Common/test/images/img-01.png" alt="IMG">
             </div>
 
-            <form class="login100-form validate-form" action="login.action" method="post">
+            <form class="login100-form validate-form" action="login.action" method="post" id="login-form">
 					<span class="login100-form-title">
 						<img src="Common/login/IMG/login.png" height="70" width="70" style="margin-bottom: .5rem"><br>
                         Login
 					</span>
+                <input type="hidden" name="action" value="login">
                 <s:actionerror style="color:red;margin-bottom:10px"></s:actionerror>
                 <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                     <input class="input100" type="text" name="username" placeholder="username">
@@ -112,7 +113,7 @@
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                    <input class="input100" type="password" name="password" placeholder="Password">
+                    <input class="input100" type="password" name="password" id="password" placeholder="Password">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -139,7 +140,7 @@
 
                 </div>
                 <h3 class="omb_authTitle" style="text-align: center; margin-top: 1rem;">Login or Sign up with</h3>
-                <div class="row omb_row-sm-offset-3 omb_socialButtons" style="margin: 1rem auto">
+                <div class="row omb_row-sm-offset-3 omb_socialButtons" style="margin: 0rem auto;">
                     <div class="col-5" style="position: relative;left: -42px;">
                         <a href="https://www.facebook.com/dialog/oauth?client_id=1029406370872772&redirect_uri=http://localhost:8080/loginFacebook" style="position: relative;right: 74px;" class="btn btn-lg btn-block omb_btn-facebook">
                             <i style="position: relative;left: 36px;top: 1px;color: white;" class="fa fa-facebook visible-xs"></i>
@@ -165,15 +166,7 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById("login").addEventListener("click",()=> {
-
-        })
-    </script>
 </div>
-
-
-
 
 <!--===============================================================================================-->
 <script src="/Common/test/vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -188,8 +181,6 @@
     $('.js-tilt').tilt({
         scale: 1.1
     })
-
-
 </script>
 <!--===============================================================================================-->
 <script src="test/js/main.js"></script>

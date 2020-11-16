@@ -6,6 +6,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
+    if(session.getAttribute("name")==null)
+        response.sendRedirect("home?action=login");
+    else {
+        if(!session.getAttribute("type").toString().equals("1")) {
+            response.sendRedirect("loginGet");
+        }
+    }
+%>
+<%
 
     User user = new DatabaseClass().getUserDetails(session.getAttribute("userId").toString());
     if (user.getType().endsWith("admin")) {
@@ -203,7 +212,9 @@
             <span class="closeReg">&times;</span>
             <form action="addUserFromAdmin.action" method="POST">
                 <div class="modal-body">
-                    <h2>Reg Account</h2>
+                    <h2>Add Account</h2>
+                    <input type="hidden" name="query" value=<%=request.getParameter("query")%>>
+                    <input type="hidden" name="index" value=<%=request.getParameter("index")%>>
                     <div class="form-group">
                         <label>First Name</label>
                         <input type="text" class="form-control" name="firstName" id="fname" placeholder="First Name"/>
@@ -232,7 +243,7 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeFormReg()">
                         Close
                     </button>
-                    <input type="hidden" name="action" value="register">
+                    <input type="hidden" name="action" value="addFromAdmin">
                     <input type="submit" style="cursor: pointer;" name="submit" id="submit" class="btn btn-primary" value="Sign up"/>
                 </div>
             </form>

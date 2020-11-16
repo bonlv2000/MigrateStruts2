@@ -3,6 +3,19 @@
 <%@ page import="Models.DatabaseClass" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="pDAO" class="Models.DatabaseClass" scope="page"/>
+<%
+    if(session.getAttribute("name")==null)
+        response.sendRedirect("home?action=login");
+    else {
+        if(!session.getAttribute("type").toString().equals("1")) {
+            response.sendRedirect("loginGet");
+        }
+    }
+
+    if(session.getAttribute("courseUpdate")==null) {
+        session.removeAttribute("isUpdate");
+    }
+%>
 <style>
 
 
@@ -110,7 +123,7 @@
             </tr>
         </c:forEach>
 
-        <div id="myModal" class="modal">
+        <div id="myModal" class="modal" style="z-index: 2">
 
             <!-- Modal content -->
             <div class="modal-content">
