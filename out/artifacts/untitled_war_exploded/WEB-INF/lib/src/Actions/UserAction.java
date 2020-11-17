@@ -9,12 +9,15 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class UserAction extends ActionSupport {
-    private String action="",userId="",firstName="",lastName="",email="",password="",userName="",query="";
+    private String action="",userId="",firstName="",lastName="",email,password="",userName="",query="";
     private DatabaseClass db = new DatabaseClass();
     private String index;
 
@@ -102,9 +105,9 @@ public class UserAction extends ActionSupport {
                 if(db.isGmailExist(email)) {
                     addFieldError("email","Email has already exist, must be unique!");
                 }
-                    if(db.getAllUsers().stream().anyMatch(s ->s.getUserName().equals(userName))) {
-                        addFieldError("userName","Username has already exist, must be unique!");
-                    }
+                if(db.getAllUsers().stream().anyMatch(s ->s.getUserName().equals(userName))) {
+                    addFieldError("userName","Username has already exist, must be unique!");
+                }
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -112,8 +115,29 @@ public class UserAction extends ActionSupport {
             if(db.getAllUsers().stream().anyMatch(s -> !s.getUserName().equals(userName)
                     && s.getEmail().equals(email))) {
                 addFieldError("emailValidation","Email has already exist, must be unique!");
-                ActionContext.getContext().getSession().put("isUpdate",1);
+                ActionContext.getContext().getSession().remove("contentEmailValidate");
+                ActionContext.getContext().getSession().put("isUpdate","1");
+                ActionContext.getContext().getSession().put("contentEmailValidate","Email has already exist, must be unique!");
             }
+        }
+        else if(action.equals("addFromAdmin")) {
+            try {
+                ActionContext.getContext().getSession().remove("contentEmailAddValidate");
+                ActionContext.getContext().getSession().remove("contentUsernameValidate");
+                if(db.isGmailExist(email)) {
+                    addFieldError("email","Email has already exist, must be unique!");
+                    ActionContext.getContext().getSession().put("isAdding","1");
+                    ActionContext.getContext().getSession().put("contentEmailAddValidate","1");
+                }
+                if(db.getAllUsers().stream().anyMatch(s ->s.getUserName().equals(userName))) {
+                    addFieldError("userName","Username has already exist, must be unique!");
+                    ActionContext.getContext().getSession().put("isAdding","1");
+                    ActionContext.getContext().getSession().put("contentUsernameValidate","1");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 
@@ -124,10 +148,17 @@ public class UserAction extends ActionSupport {
             return "badRequest";
         switch (action) {
             case "resetGet":
+                if(email==null) {
+                    return "badRequest";
+                }
                 ActionContext.getContext().getSession().put("email",email);
                 result = "resetPage";
                 break;
+            case "reset":
+                reset();
+                break;
             case "updateGet":
+
                 if(ActionContext.getContext().getSession().get("index")!=null) {
                     this.index = ActionContext.getContext().getSession().get("index").toString();
                 }
@@ -159,6 +190,7 @@ public class UserAction extends ActionSupport {
                     this.index = ActionContext.getContext().getSession().get("index").toString();
                 }
                 ActionContext.getContext().getSession().remove("isUpdate");
+                ActionContext.getContext().getSession().remove("contentEmailValidate");
                 update();
                 result = "updatePage";
                 break;
@@ -174,6 +206,9 @@ public class UserAction extends ActionSupport {
                     }
                     this.index = indexTemp+"";
                 }
+                ActionContext.getContext().getSession().put("isAdding",null);
+                ActionContext.getContext().getSession().remove("contentEmailAddValidate");
+                ActionContext.getContext().getSession().remove("contentUsernameValidate");
                 try {
                     register();
                 } catch (SQLException e) {
@@ -207,6 +242,28 @@ public class UserAction extends ActionSupport {
         return result;
     }
 
+    private void reset() throws IOException {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletResponse response = ServletActionContext.getResponse();
+        if(request.getSession().getAttribute("code")!=null) {
+            String code = request.getParameter("code");
+            String newPass = request.getParameter("password");
+            String email = request.getSession().getAttribute("email").toString();
+            if(code.equals(request.getSession().getAttribute("code").toString())) {
+                db.updatePassword(email,EncryptPassword.generateHash(newPass));
+                request.getSession().setAttribute("code",null);
+                request.getSession().setAttribute("email",null);
+                response.sendRedirect("home?action=success");
+            }
+            else {
+                response.sendRedirect("user?action=resetGet&email="+email);
+            }
+        }
+        else {
+            response.sendRedirect("home?action=badRequest");
+        }
+    }
+
     private String register() throws SQLException {
 
         String pass= EncryptPassword.generateHash(password);
@@ -231,6 +288,7 @@ public class UserAction extends ActionSupport {
         User user = db.getUserDetails(userId);
         ActionContext.getContext().getSession().put("isUpdate",1);
         ActionContext.getContext().getSession().put("userUpdate",user);
+        ActionContext.getContext().getSession().put("contentEmailValidate",null);
     }
 
     private void delete() {
@@ -247,7 +305,7 @@ public class UserAction extends ActionSupport {
     }
 
     private void sendMailReset() {
-        int code = new Random().nextInt(9999);
+        int code = ThreadLocalRandom.current().nextInt(1000, 9998 + 1);
         ActionContext.getContext().getSession().put("code",code);
         HttpServletRequest request = ServletActionContext.getRequest();
         request.getSession().setMaxInactiveInterval(120);

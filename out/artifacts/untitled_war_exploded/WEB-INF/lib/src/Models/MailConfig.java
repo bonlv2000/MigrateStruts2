@@ -34,11 +34,9 @@ public class MailConfig {
             MimeMessage message = new MimeMessage(session);
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
             message.setSubject("Our Exam Support");
-            message.setText(content);
-
+            message.setText(content+"\n The code will expired in 2 minutes");
             // send message
             Transport.send(message);
-
             System.out.println("Message sent successfully");
         } catch (MessagingException e) {
             throw new RuntimeException(e);

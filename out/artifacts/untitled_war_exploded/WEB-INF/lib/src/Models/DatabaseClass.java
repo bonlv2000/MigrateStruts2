@@ -235,7 +235,7 @@
              PreparedStatement pstm = conn.prepareStatement(sql);
              pstm.setString(1, fName);
              pstm.setString(2, lName);
-             pstm.setString(3, email);
+             pstm.setString(3, "Facebook Login");
              pstm.setString(4, email);
              pstm.setString(5,email);
              pstm.setString(6, "student");

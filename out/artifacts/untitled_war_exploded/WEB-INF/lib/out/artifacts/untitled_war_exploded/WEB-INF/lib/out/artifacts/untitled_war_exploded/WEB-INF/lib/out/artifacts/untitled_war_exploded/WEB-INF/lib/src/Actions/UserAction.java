@@ -102,9 +102,9 @@ public class UserAction extends ActionSupport {
                 if(db.isGmailExist(email)) {
                     addFieldError("email","Email has already exist, must be unique!");
                 }
-                    if(db.getAllUsers().stream().anyMatch(s ->s.getUserName().equals(userName))) {
-                        addFieldError("userName","Username has already exist, must be unique!");
-                    }
+                if(db.getAllUsers().stream().anyMatch(s ->s.getUserName().equals(userName))) {
+                    addFieldError("userName","Username has already exist, must be unique!");
+                }
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -112,8 +112,29 @@ public class UserAction extends ActionSupport {
             if(db.getAllUsers().stream().anyMatch(s -> !s.getUserName().equals(userName)
                     && s.getEmail().equals(email))) {
                 addFieldError("emailValidation","Email has already exist, must be unique!");
-                ActionContext.getContext().getSession().put("isUpdate",1);
+                ActionContext.getContext().getSession().remove("contentEmailValidate");
+                ActionContext.getContext().getSession().put("isUpdate","1");
+                ActionContext.getContext().getSession().put("contentEmailValidate","Email has already exist, must be unique!");
             }
+        }
+        else if(action.equals("addFromAdmin")) {
+            try {
+                ActionContext.getContext().getSession().remove("contentEmailAddValidate");
+                ActionContext.getContext().getSession().remove("contentUsernameValidate");
+                if(db.isGmailExist(email)) {
+                    addFieldError("email","Email has already exist, must be unique!");
+                    ActionContext.getContext().getSession().put("isAdding","1");
+                    ActionContext.getContext().getSession().put("contentEmailAddValidate","1");
+                }
+                if(db.getAllUsers().stream().anyMatch(s ->s.getUserName().equals(userName))) {
+                    addFieldError("userName","Username has already exist, must be unique!");
+                    ActionContext.getContext().getSession().put("isAdding","1");
+                    ActionContext.getContext().getSession().put("contentUsernameValidate","1");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 
@@ -128,6 +149,7 @@ public class UserAction extends ActionSupport {
                 result = "resetPage";
                 break;
             case "updateGet":
+
                 if(ActionContext.getContext().getSession().get("index")!=null) {
                     this.index = ActionContext.getContext().getSession().get("index").toString();
                 }
@@ -158,8 +180,32 @@ public class UserAction extends ActionSupport {
                 if(ActionContext.getContext().getSession().get("index")!=null) {
                     this.index = ActionContext.getContext().getSession().get("index").toString();
                 }
+                ActionContext.getContext().getSession().remove("isUpdate");
+                ActionContext.getContext().getSession().remove("contentEmailValidate");
                 update();
                 result = "updatePage";
+                break;
+            case "addFromAdmin":
+                if(ActionContext.getContext().getSession().get("query")!=null) {
+                    this.query = ActionContext.getContext().getSession().get("query").toString();
+                }
+                if(ActionContext.getContext().getSession().get("index")!=null) {
+                    this.index = ActionContext.getContext().getSession().get("index").toString();
+                    int indexTemp = Integer.parseInt(this.index);
+                    if(db.totalPageAccount(query)%3==0) {
+                        indexTemp++;
+                    }
+                    this.index = indexTemp+"";
+                }
+                ActionContext.getContext().getSession().put("isAdding",null);
+                ActionContext.getContext().getSession().remove("contentEmailAddValidate");
+                ActionContext.getContext().getSession().remove("contentUsernameValidate");
+                try {
+                    register();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                result = "accountPage";
                 break;
             case "delete":
                 delete();
@@ -211,6 +257,7 @@ public class UserAction extends ActionSupport {
         User user = db.getUserDetails(userId);
         ActionContext.getContext().getSession().put("isUpdate",1);
         ActionContext.getContext().getSession().put("userUpdate",user);
+        ActionContext.getContext().getSession().put("contentEmailValidate",null);
     }
 
     private void delete() {

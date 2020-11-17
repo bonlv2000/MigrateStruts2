@@ -7,7 +7,7 @@
     <title>Responsive Sidebar Dashboard Template</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="Common/Manual/style-backend.css">
     <link rel="stylesheet" href="/Common/login/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -17,11 +17,18 @@
 
 <input type="checkbox" id="check">
 <!--header area start-->
+<script>
+
+    function test() {
+        let i = 0;
+        console.log(`this is ${i}`);
+    }
+</script>
 <header style="height: 80px">
     <label for="check">
         <i class="fas fa-bars" id="sidebar_btn"></i>    </label>
     <div class="left_area">
-        <h3>Admin <span>Panel</span></h3>
+        <h3 onclick="test()">Admin <span>Panel</span></h3>
     </div>
     <div class="right_area">
         <a href="home?action=logout" style="padding: 1rem; font-size: 1.2rem;" class="logout_btn">Log Out</a>
@@ -44,6 +51,7 @@
         <a href="paging?action=account"><i class="fas fa-users"></i><span>Accounts</span></a>
     </div>
 </div>
+
 <!--mobile navigation bar end-->
 <!--sidebar start-->
 <div class="sidebar" style="margin-top: 80px">
@@ -54,40 +62,17 @@
     <a href="paging?action=course"><i class="fas fa-book"></i><span>Courses</span></a>
     <a href="adm-page.jsp?pgprt=3"><i class="far fa-question-circle"></i><span>Questions</span></a>
     <a href="paging?action=account"><i class="fas fa-users"></i><span>Accounts</span></a>
+    <div class="spinner-border text-info" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
 </div>
 <!--sidebar end-->
 <script>
-
 </script>
 
 <div class="content" style="background-color: ghostwhite">
 
-<div style="display: flex;flex-wrap: wrap;margin: 4rem auto;margin-bottom: 0rem; text-align: center" >
-    <div class="card" style="width: 18rem;margin-left: 1rem">
-        <div class="card-body">
-            <h5 class="card-title">Account</h5><i class="fas fa-users"></i>
-            <p class="card-text" style="font-size: 3rem; padding: 0"><%=new DatabaseClass().getAllUsers().size()%></p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;margin-left: 1rem">
-        <div class="card-body">
-            <h5 class="card-title">Courses</h5><i class="fas fa-book-open"></i>
-            <p class="card-text" style="font-size: 3rem; padding: 0"><%=new DatabaseClass().getAllCourses().size()%></p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;margin-left: 1rem">
-        <div class="card-body">
-            <h5 class="card-title">Questions</h5><i class="fas fa-question"></i>
-            <p class="card-text" style="font-size: 3rem; padding: 0"><%=new DatabaseClass().getAllQuestions().size()%></p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;margin-left: 1rem">
-        <div class="card-body">
-            <h5 class="card-title">Exams Took</h5><i class="fas fa-broom"></i>
-            <p class="card-text" style="font-size: 3rem; padding: 0"><%=new DatabaseClass().getAllResults().size()%></p>
-        </div>
-    </div>
-</div>
+
 
 
     <%
@@ -162,7 +147,6 @@
 <!-- Custom js for this page-->
 <script src="Common/Admin/js/dashboard.js"></script>
 <!-- End custom js for this page-->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>

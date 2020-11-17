@@ -62,10 +62,12 @@
     <a href="paging?action=course"><i class="fas fa-book"></i><span>Courses</span></a>
     <a href="adm-page.jsp?pgprt=3"><i class="far fa-question-circle"></i><span>Questions</span></a>
     <a href="paging?action=account"><i class="fas fa-users"></i><span>Accounts</span></a>
+    <div class="spinner-border text-info" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
 </div>
 <!--sidebar end-->
 <script>
-
 </script>
 
 <div class="content" style="background-color: ghostwhite">

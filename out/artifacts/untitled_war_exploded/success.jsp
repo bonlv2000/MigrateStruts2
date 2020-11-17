@@ -15,7 +15,7 @@
     <div class="jumbotron text-center" style="height: 100vh;">
         <div style="height: 10vh"></div>
         <h1 class="display-3">Thank You!</h1>
-        <p class="lead">Your register is <strong>completed</strong></p>
+        <p class="lead">Your work is <strong>completed</strong></p>
         <hr>
         <p>
             Having trouble? <a href="https://www.facebook.com/hoai.bao.96742/">Contact us</a>
@@ -24,7 +24,7 @@
             <a class="btn btn-primary btn-sm" href="home?action=home" role="button">Continue to homepage</a>
         </p>
         <p class="lead">
-            <a class="btn btn-info btn-sm" href="home?action=login" role="button">Go to your panel</a>
+            <a class="btn btn-info btn-sm" href="home?action=login" role="button">Login</a>
         </p>
 
     </div>

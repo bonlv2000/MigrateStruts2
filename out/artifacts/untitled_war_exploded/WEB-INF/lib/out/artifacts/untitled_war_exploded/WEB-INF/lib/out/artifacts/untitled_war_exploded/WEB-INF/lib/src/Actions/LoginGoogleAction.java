@@ -36,7 +36,7 @@ public class LoginGoogleAction extends ActionSupport {
                         ActionContext.getContext().getSession().put("userId",db.getUserId(googlePojo.getEmail()));
                     }
                     else {
-                        returnResult = "login";
+                        returnResult = "failed";
                     }
                 }
                 else {
@@ -44,6 +44,7 @@ public class LoginGoogleAction extends ActionSupport {
                     ActionContext.getContext().getSession().put("type", "0");
                     ActionContext.getContext().getSession().put("userStatus", "1");
                     ActionContext.getContext().getSession().put("userId",db.getUserId(googlePojo.getEmail()));
+                    ActionContext.getContext().getSession().put("name",googlePojo.getEmail());
                 }
             } catch (Exception e) {
                 e.printStackTrace();

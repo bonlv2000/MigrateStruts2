@@ -51,7 +51,7 @@
 <!--sidebar start-->
 <div class="sidebar" style="margin-top: 80px">
     <div class="profile_info">
-        <h4><%=session.getAttribute("userName")%></h4>
+        <h4><%=session.getAttribute("name")%></h4>
     </div>
     <a href="std-page.jsp?pgprt=0"><i class="fas fa-id-card-alt"></i><span>Profile</span></a>
     <a href="std-page.jsp?pgprt=1"><i class="fas fa-book"></i><span>Exams</span></a>

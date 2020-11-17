@@ -6,6 +6,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
+    if(session.getAttribute("name")==null)
+        response.sendRedirect("home?action=login");
+    else {
+        if(!session.getAttribute("type").toString().equals("1")) {
+            response.sendRedirect("loginGet");
+        }
+    }
+%>
+<%
 
     User user = new DatabaseClass().getUserDetails(session.getAttribute("userId").toString());
     if (user.getType().endsWith("admin")) {
@@ -109,6 +118,7 @@
                     <a href="updateUser?action=updateGet&userId=${item.userId}"
                        type="submit" class="btn btn-primary" id="myBtn"><i class="fas fa-edit"></i>
                     </a>
+
                 </td>
                 <td style="padding: 12px 15px;">
                     <a href="DeleteUser?action=deleteGet&userId=${item.userId}"
@@ -132,12 +142,17 @@
             </c:forEach>
         </ul>
     </nav>
+    <script>
+
+    </script>
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form action="updateUser.action" method="POST">
+            <form action="updateUser.action" method="POST" id="formAccount">
                 <input type="hidden" name="userName" value="${sessionScope.userUpdate.userName}">
+                <input type="hidden" name="query" value=<%=request.getParameter("query")%>>
+                <input type="hidden" name="index" value=<%=request.getParameter("index")%>>
                 <div class="modal-body">
                     <h2>Update Info</h2>
                     <input type="hidden" name="userId" id="edit_id" value="${sessionScope.userUpdate.userId}">
@@ -151,7 +166,7 @@
                         <input type="text" name="lastName" id="edit_lname" class="form-control"
                                value="${sessionScope.userUpdate==null ? "":sessionScope.userUpdate.lastName}">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group emailValidate" id="form-email">
                         <s:fielderror fieldName="emailValidation" style="color:red"></s:fielderror>
                         <label>Email</label>
                         <input type="text" name="email" id="edit_class" class="form-control"
@@ -160,7 +175,7 @@
                     <div class="form-group">
                         <label>Pass</label>
                         <input type="password" name="password" id="edit_password" class="form-control"
-                               value="" >
+                               value="${sessionScope.userUpdate==null ? "":sessionScope.userUpdate.password}" >
                         <i class="far fa-eye" style="position: relative;left: 95%;bottom: 30px;" id="togglePassword" onClick="hideAndShow()"></i>
 
                     </div>
@@ -198,15 +213,13 @@
 
     </div>
 
-
     <div id="myModalReg" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
             <span class="closeReg">&times;</span>
-            <form action="user.action" method="POST">
+            <form action="addUserFromAdmin.action" method="POST" >
                 <div class="modal-body">
-                    <h2>Reg Account</h2>
+                    <h2>Add Account</h2>
 
                     <div class="form-group">
                         <label>First Name</label>
@@ -216,11 +229,11 @@
                         <label>Last Name</label>
                         <input type="text" class="form-control" name="lastName" id="lname" placeholder="Last Name"/>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="form_add_username">
                         <label>User Name</label>
                         <input type="text" class="form-control" name="userName" id="uname" placeholder="User Name"/>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="form_add_email">
                         <label>Your Email</label>
                         <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"/>
                     </div>
@@ -236,18 +249,20 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeFormReg()">
                         Close
                     </button>
-                    <input type="hidden" name="action" value="register">
+                    <input type="hidden" name="action" value="addFromAdmin">
                     <input type="submit" style="cursor: pointer;" name="submit" id="submit" class="btn btn-primary" value="Sign up"/>
                 </div>
             </form>
         </div>
-
     </div>
-
-
     <%
         if(session.getAttribute("isDelete")!=null) {
             out.println("<script>var modal = document.getElementById(\"Delete\");" +
+                    "modal.style.display = \"block\";</script>");
+        }
+
+        if(session.getAttribute("isAdding")!=null) {
+            out.println("<script>var modal = document.getElementById(\"myModalReg\");" +
                     "modal.style.display = \"block\";</script>");
         }
     %>
@@ -261,7 +276,26 @@
         %>
         <script>
 
+            if($("#form-email").find(".emailHere").length>0) {
+                $(".emailHere").remove();
+            }
+            if(${sessionScope.contentEmailValidate!=null}) {
+                $('#form-email').append("<p class='emailHere' style='color: red'>Update Email is already exist</p>");
+            }
 
+
+            if($("#form_add_email").find(".emailHere").length>0) {
+                $(".emailHere").remove();
+            }
+            if(${sessionScope.contentEmailValidate!=null}) {
+                $('#form_add_email').append("<p class='emailHere' style='color: red'>Email is already exist</p>");
+            }
+            if($("#form_add_username").find(".emailHere").length>0) {
+                $(".emailHere").remove();
+            }
+            if(${sessionScope.contentEmailValidate!=null}) {
+                $('#form-email').append("<p class='emailHere' style='color: red'>Update Email is already exist</p>");
+            }
             // Get the modal
             var modal = document.getElementById("myModal");
 
@@ -287,7 +321,6 @@
                     modal.style.display = "none";
                 }
             }
-
             function closeForm() {
                 modal.style.display = "none";
                 <%
@@ -365,6 +398,7 @@
 
         function closeFormReg() {
             modalReg.style.display = "none";
+            <%session.removeAttribute("isAdding");%>
         }
 
 

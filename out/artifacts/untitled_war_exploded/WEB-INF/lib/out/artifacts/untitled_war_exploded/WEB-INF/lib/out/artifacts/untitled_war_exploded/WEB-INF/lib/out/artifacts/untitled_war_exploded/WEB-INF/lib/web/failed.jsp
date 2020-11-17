@@ -14,13 +14,13 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
 </head>
 <body>
-    <div id="notfound" style="background: wheat!important;">
+    <div id="notfound" style="background: #edf6f9!important;">
         <div class="notfound" >
             <div class="notfound-404">
-                <h1 style="font-size: 55px; width: 600px">Oops! <br><span>Add failed</span></h1>
+                <h1 style="font-size: 30px; width: 1100px">Oops! <br><span>Your email is already register of another account</span></h1>
             </div>
-            <a href="HomeController?action=home">Go To Home</a>
-            <a href="HomeController?action=register">Add again</a>
+            <a href="home?action=home">Go To Home</a>
+            <a href="home?action=login">Login again</a>
         </div>
     </div>
 </body>

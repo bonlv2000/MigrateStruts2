@@ -32,6 +32,6 @@ public class EncryptPassword {
     }
 
     public static void main(String[] args) {
-        System.out.println(generateHash("hoaibao0806"));
+        System.out.println(generateHash("hoaibao080620"));
     }
 }

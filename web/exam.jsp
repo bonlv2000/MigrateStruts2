@@ -96,7 +96,7 @@
     int time = new DatabaseClass().getRemainingTime(Integer.parseInt(session.getAttribute("examId").toString()));
 %>
 <script>
-    let time, sec;
+    let time, sec,isSubmited = false;
     if (window.localStorage.getItem("time") == null || localStorage.getItem("examId") == null
         || localStorage.getItem("examId") !=<%=session.getAttribute("examId").toString()%>) {
         time = <%=time%>;
@@ -117,6 +117,7 @@
         sec--;
         window.localStorage.setItem("sec", sec);
         if (time < 0) {
+            isSubmited = true;
             clearInterval(x);
             document.getElementById("remainingTime").innerHTML = "00 : 00";
             document.getElementById("myform").submit();
@@ -133,7 +134,13 @@
     <c:if test="${sessionScope.examStarted!=null}">
     window.onbeforeunload = function (e) {
         <%session.setAttribute("examStarted",null);%>
-        return "Your test wil be failed";
+        if(isSubmited==false) {
+            return "Your test wil be failed";
+        }
+        else {
+            return null;
+        }
+
     }
 
     </c:if>
@@ -156,6 +163,7 @@
        value="<%=pDAO.getTotalMarksByCode(request.getParameter("coursename"))%>">
 <c:if test="${sessionScope.pagingItems.size()>0 and sessionScope.pagingItems!=null}">
     <div id="question-content">
+
 <%--        <c:forEach begin="0" end="${sessionScope.pagingItems.size()-1}" var="i">--%>
 <%--            <div class="question-panel">--%>
 <%--                <div class="question">--%>
@@ -202,7 +210,7 @@
 
     </div>
     <br>
-    <a id="SubmitBtn" class="button" style="text-decoration: none!important;"><span class="add-btn" style="margin-left: 43px;background-color: white;color: black;border: 2px solid #1e1c1c;">Finished</span></a>
+    <a id="SubmitBtn" class="button" style="text-decoration: none!important;text-align: center"><span class="add-btn" style="margin-left: 43px;background-color: white;color: black;border: 2px solid #1e1c1c;">Finished</span></a>
 
     </form>
 <%--    <nav aria-label="Page navigation example" style="margin:1rem 45%">--%>
@@ -222,7 +230,20 @@
 
     <script>
         let offset = 1;
+        function delay(delayInms) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(2);
+                }, delayInms);
+            });
+        }
 
+        async function sample() {
+            $("#question-content")
+                .append("<h1 class='noti' style='text-align: center; color: green'>Waiting!</h1>")
+            let delayres = await delay(2000);
+            $(".noti").remove();
+        }
         function loadMoreData() {
             let content = $("#question-content");
             if (offset<=${sessionScope.totalPageResult}) {
@@ -279,15 +300,7 @@
 
         $(window).scroll(function() {
             if($(window).scrollTop() == $(document).height() - $(window).height()) {
-                const timer = ms => new Promise(res => setTimeout(res, ms))
-                let content = $("#question-content");
-                setTimeout(() => {
-                    content.append(`<div id="spinner" class="spinner-border text-primary" role="status">
-                      <span class="sr-only">Loading...</span>
-                    </div>`);
-                },2000);
-                $("#spinner").remove();
-                loadMoreData();
+                sample().then(() => loadMoreData());
             }
         });
     </script>
@@ -323,6 +336,7 @@
         }
     } else if (session.getAttribute("examStarted") == null) {
     %>
+
     <div class="panel form-style-6" style="float: left;max-width: 900px; padding-top: 40px;">
     <div class="title" style="margin-top: -60px;">Select Course to Take Exam</div>
     <br/>

@@ -48,6 +48,9 @@ public class HomeAction extends ActionSupport {
             case "badRequest":
                 returnText = "badRequest";
                 break;
+            case "success":
+                returnText = "success";
+                break;
             default:
                 return "home";
         }

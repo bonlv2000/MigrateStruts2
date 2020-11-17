@@ -141,12 +141,17 @@
             </c:forEach>
         </ul>
     </nav>
+    <script>
+
+    </script>
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form action="updateUser.action" method="POST">
+            <form action="updateUser.action" method="POST" id="formAccount">
                 <input type="hidden" name="userName" value="${sessionScope.userUpdate.userName}">
+                <input type="hidden" name="query" value=<%=request.getParameter("query")%>>
+                <input type="hidden" name="index" value=<%=request.getParameter("index")%>>
                 <div class="modal-body">
                     <h2>Update Info</h2>
                     <input type="hidden" name="userId" id="edit_id" value="${sessionScope.userUpdate.userId}">
@@ -160,8 +165,7 @@
                         <input type="text" name="lastName" id="edit_lname" class="form-control"
                                value="${sessionScope.userUpdate==null ? "":sessionScope.userUpdate.lastName}">
                     </div>
-                    <div class="form-group">
-                        <s:fielderror fieldName="emailValidation" style="color:red"></s:fielderror>
+                    <div class="form-group emailValidate" id="form-email">
                         <label>Email</label>
                         <input type="text" name="email" id="edit_class" class="form-control"
                                value="${sessionScope.userUpdate==null ? "":sessionScope.userUpdate.email}">
@@ -171,7 +175,6 @@
                         <input type="password" name="password" id="edit_password" class="form-control"
                                value="${sessionScope.userUpdate==null ? "":sessionScope.userUpdate.password}" >
                         <i class="far fa-eye" style="position: relative;left: 95%;bottom: 30px;" id="togglePassword" onClick="hideAndShow()"></i>
-
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -206,15 +209,15 @@
         </div>
 
     </div>
+
     <div id="myModalReg" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
             <span class="closeReg">&times;</span>
-            <form action="addUserFromAdmin.action" method="POST">
+            <form action="addUserFromAdmin.action" method="POST" >
                 <div class="modal-body">
                     <h2>Add Account</h2>
-                    <input type="hidden" name="query" value=<%=request.getParameter("query")%>>
-                    <input type="hidden" name="index" value=<%=request.getParameter("index")%>>
+
                     <div class="form-group">
                         <label>First Name</label>
                         <input type="text" class="form-control" name="firstName" id="fname" placeholder="First Name"/>
@@ -223,18 +226,17 @@
                         <label>Last Name</label>
                         <input type="text" class="form-control" name="lastName" id="lname" placeholder="Last Name"/>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="form_add_username">
                         <label>User Name</label>
                         <input type="text" class="form-control" name="userName" id="uname" placeholder="User Name"/>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="form_add_email">
                         <label>Your Email</label>
                         <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"/>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
                         <input type="password" class="form-control" name="pass" id="password" placeholder="Password"/>
-
                         <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                         <i class="far fa-eye" style="position: relative;left: 95%;bottom: 30px;" id="togglePasswordReg" onClick="hideAndShowReg()"></i>
                     </div>
@@ -254,9 +256,12 @@
             out.println("<script>var modal = document.getElementById(\"Delete\");" +
                     "modal.style.display = \"block\";</script>");
         }
+
+        if(session.getAttribute("isAdding")!=null) {
+            out.println("<script>var modal = document.getElementById(\"myModalReg\");" +
+                    "modal.style.display = \"block\";</script>");
+        }
     %>
-
-
     <%
             if (session.getAttribute("isUpdate") != null) {
                 out.println("<script>var modal = document.getElementById(\"myModal\");" +
@@ -265,6 +270,33 @@
         %>
         <script>
 
+            function checkEmail() {
+                if($("#form-email").find(".emailHere").length>0) {
+                    $(".emailHere").remove();
+                }
+            }
+            checkEmail();
+            if(${sessionScope.contentEmailValidate!=null}) {
+                $('#form-email').append("<p class='emailHere' style='color: red'>Update Email is already exist</p>");
+            }
+            function checkAddEmail() {
+                if($("#form_add_email").find(".emailHere").length>0) {
+                    $(".emailHere").remove();
+                }
+            }
+            checkAddEmail();
+            if(${sessionScope.contentEmailAddValidate!=null}) {
+                $('#form_add_email').append("<p class='emailHere' style='color: red'>Email is already exist</p>");
+            }
+            function checkUsername() {
+                if($("#form_add_username").find(".emailHere").length>0) {
+                    $(".emailHere").remove();
+                }
+            }
+            checkUsername();
+            if(${sessionScope.contentUsernameValidate!=null}) {
+                $('#form_add_username').append("<p class='emailHere' style='color: red'>Username is already exist</p>");
+            }
 
             // Get the modal
             var modal = document.getElementById("myModal");
@@ -283,21 +315,23 @@
             // When the user clicks on <span> (x), close the modal
             span.onclick = function () {
                 modal.style.display = "none";
+                checkEmail();
             }
 
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
+                    checkEmail();
                 }
             }
-
             function closeForm() {
                 modal.style.display = "none";
                 <%
                     session.removeAttribute("isUpdate");
 //                        session.removeAttribute("userUpdate");
                 %>
+                checkEmail();
             }
         </script>
 
@@ -321,6 +355,7 @@
         // When the user clicks on <span> (x), close the modal
         spanDelete.onclick = function () {
             modalDelete.style.display = "none";
+
         }
 
         // When the user clicks anywhere outside of the modal, close it
@@ -334,7 +369,6 @@
             modalDelete.style.display = "none";
             <%
                 session.removeAttribute("isDelete");
-//                        session.removeAttribute("userUpdate");
             %>
         }
     </script>
@@ -358,23 +392,27 @@
         // When the user clicks on <span> (x), close the modal
         spanReg.onclick = function () {
             modalReg.style.display = "none";
+            checkAddEmail();
+            checkUsername();
         }
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
             if (event.target == modalReg) {
                 modalReg.style.display = "none";
+                checkAddEmail();
+                checkUsername();
             }
         }
 
         function closeFormReg() {
             modalReg.style.display = "none";
+            checkAddEmail();
+            checkUsername();
+            <%session.removeAttribute("isAdding");%>
         }
 
-
     </script>
-
-
     <script>
         function hideAndShow(){
             var vip = document.querySelectorAll("input[id=edit_password]")[0].type;

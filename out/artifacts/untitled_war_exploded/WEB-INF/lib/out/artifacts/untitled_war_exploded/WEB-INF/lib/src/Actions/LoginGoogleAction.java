@@ -36,7 +36,7 @@ public class LoginGoogleAction extends ActionSupport {
                         ActionContext.getContext().getSession().put("userId",db.getUserId(googlePojo.getEmail()));
                     }
                     else {
-                        returnResult = "login";
+                        returnResult = "failed";
                     }
                 }
                 else {

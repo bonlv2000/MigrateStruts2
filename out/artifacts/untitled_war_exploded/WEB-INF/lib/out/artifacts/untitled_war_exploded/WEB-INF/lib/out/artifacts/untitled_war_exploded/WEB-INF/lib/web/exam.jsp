@@ -71,7 +71,15 @@
 
 
 </style>
-
+<%
+    if(session.getAttribute("name")==null)
+        response.sendRedirect("home?action=login");
+    else {
+        if(!session.getAttribute("type").toString().equals("0")) {
+            response.sendRedirect("loginGet");
+        }
+    }
+%>
 
 <!-- CONTENT AREA -->
 <div class="content-area" style="margin-left: 0">
@@ -121,6 +129,7 @@
         document.getElementById("remainingTime").innerHTML = time + " : " + sec;
     }
 
+    //jhagdjhagdjhgadhjgajhdgajh
     <c:if test="${sessionScope.examStarted!=null}">
     window.onbeforeunload = function (e) {
         <%session.setAttribute("examStarted",null);%>
@@ -147,6 +156,7 @@
        value="<%=pDAO.getTotalMarksByCode(request.getParameter("coursename"))%>">
 <c:if test="${sessionScope.pagingItems.size()>0 and sessionScope.pagingItems!=null}">
     <div id="question-content">
+
 <%--        <c:forEach begin="0" end="${sessionScope.pagingItems.size()-1}" var="i">--%>
 <%--            <div class="question-panel">--%>
 <%--                <div class="question">--%>
@@ -213,7 +223,24 @@
 
     <script>
         let offset = 1;
+        function delay(delayInms) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(2);
+                }, delayInms);
+            });
+        }
 
+        async function sample() {
+            console.log("a");
+            $("#question-content").append('<div id="spinner" class="spinner-border text-primary" role="status">\n' +
+                '  <span class="sr-only">Loading...</span>\n' +
+                '</div>')
+
+            let delayres = await delay(5000);
+            console.log("b");
+            $("#spinner").remove();
+        }
         function loadMoreData() {
             let content = $("#question-content");
             if (offset<=${sessionScope.totalPageResult}) {
@@ -226,7 +253,7 @@
                         offset++;
                         for (let i = index,j=0;i<data.length+index;i++,j++) {
                             console.log("hello")
-                            content.append(`<div class="question-panel">
+                            content.append(`<div class="question-panel" style="margin-left: 10rem">
                                         <div class="question">
                                            <label class="question-label">`+(i+1)+`
                                             </label>
@@ -255,7 +282,7 @@
             }
             else {
                 if(content.find(".noti").length==0) {
-                    content.append("<p class='noti'>No more data to load!</p>");
+                    content.append("<h1 class='noti' style='text-align: center'>No more data to load!</h1>");
                 }
             }
         }
@@ -270,14 +297,7 @@
 
         $(window).scroll(function() {
             if($(window).scrollTop() == $(document).height() - $(window).height()) {
-                let content = $("#question-content");
-                setTimeout(() => {
-                    content.append(`<div id="spinner" class="spinner-border text-primary" role="status">
-                      <span class="sr-only">Loading...</span>
-                    </div>`);
-                },2000);
-                $("#spinner").remove();
-                loadMoreData();
+                sample().then(() => loadMoreData());
             }
         });
     </script>
@@ -313,6 +333,9 @@
         }
     } else if (session.getAttribute("examStarted") == null) {
     %>
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
     <div class="panel form-style-6" style="float: left;max-width: 900px; padding-top: 40px;">
     <div class="title" style="margin-top: -60px;">Select Course to Take Exam</div>
     <br/>
